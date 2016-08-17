@@ -60,7 +60,7 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-        <tiles:insertAttribute name="left"/>
+        <tiles:insertAttribute name="left" ignore="true"/>
         </div>
         <div class="col-sm-8 text-left">
         <tiles:insertAttribute name="content"/>
