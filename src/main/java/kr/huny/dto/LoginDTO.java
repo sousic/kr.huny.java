@@ -10,4 +10,5 @@ public class LoginDTO {
     private String userid;
     private String userpwd;
     private boolean remember;
+    private String nickname;
 }
