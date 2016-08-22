@@ -1,11 +1,14 @@
 package kr.huny.controller;
 
+import kr.huny.dto.LoginDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by sousic on 2016. 8. 17..
@@ -23,8 +26,11 @@ public class SignController {
     }
 
     @RequestMapping(value = "/signin", method = RequestMethod.POST)
-    public String loginOK()
+    public String loginOK(LoginDTO loginDTO, HttpServletResponse response)
     {
-        return "redirect:/home";
+
+        logger.info(loginDTO.toString());
+
+        return "redirect:/";
     }
 }
