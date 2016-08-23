@@ -1,6 +1,7 @@
 package kr.huny.domain;
 
 import lombok.Data;
+import lombok.Generated;
 
 import java.util.Date;
 
