@@ -6,7 +6,6 @@ import kr.huny.dto.LoginDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
 
 import javax.annotation.Resource;
 
@@ -39,7 +38,6 @@ public class SignInHelper {
             else
             {
                 //2순위는 로그인 횟수 확인
-                logger.info("loginFialLimitCount : " + loginFialLimitCount);
                 if (membersVO.getPwdfailcnt() >= loginFialLimitCount) {
                     membersEnum = MembersEnum.PwdFailCount;
                 }
