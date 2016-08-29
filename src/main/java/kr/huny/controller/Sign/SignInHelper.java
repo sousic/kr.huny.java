@@ -3,6 +3,7 @@ package kr.huny.controller.Sign;
 import kr.huny.domain.MembersEnum;
 import kr.huny.domain.MembersVO;
 import kr.huny.dto.LoginDTO;
+import kr.huny.utils.SHA256Helper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -54,7 +55,10 @@ public class SignInHelper {
         return membersEnum;
     }
 
-    private boolean CheckPassword(String userpwd, String userpwd1) {
-        return userpwd.equals(userpwd1);
+    private boolean CheckPassword(String encPwd, String loginPwd)
+    {
+        String encLoginPwd = SHA256Helper.encrpyt(loginPwd);
+
+        return encPwd.equals(encLoginPwd);
     }
 }

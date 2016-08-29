@@ -9,4 +9,11 @@
         <put-attribute name="content" value="/WEB-INF/views/sign/signin.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp"/>
     </definition>
+
+    <definition name="sign/register" extends="layout">
+        <put-attribute name="top" value="/WEB-INF/views/layout/top.jsp"/>
+        <put-attribute name="left" value=""/>
+        <put-attribute name="content" value="/WEB-INF/views/sign/register.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp"/>
+    </definition>
 </tiles-definitions>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -43,6 +44,18 @@ public class SignController {
 
         MembersEnum membersEnum= signInHelper.memberCheck(membersVO, loginDTO);
 
+        return "redirect:/";
+    }
+
+    @RequestMapping(value="/register", method = RequestMethod.GET)
+    public String register(Model model) throws Exception
+    {
+        return "sign/register";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String registerOK(MembersVO membersVO, RedirectAttributes rtts) throws Exception
+    {
         return "redirect:/";
     }
 }
