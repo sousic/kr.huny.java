@@ -64,7 +64,7 @@ public class SignController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/checker", method = RequestMethod.GET)
+    @RequestMapping(value = "/checker", method = RequestMethod.GET, produces = "application/json;charset=utf8")
     public ResponseEntity<Map<String, Object>> idChecker(String userid)
     {
         ResponseEntity<Map<String, Object>> entity = null;
@@ -72,7 +72,7 @@ public class SignController {
 
         try {
             map.put("retCode", 1);
-            map.put("retMsg","ok");
+            map.put("retMsg","성공");
             entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
         }
         catch (Exception ex)
@@ -80,7 +80,7 @@ public class SignController {
             ex.printStackTrace();
             map.put("retCode", 0
             );
-            map.put("retMsg","fail");
+            map.put("retMsg","실패");
             entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.BAD_REQUEST);
         }
 
