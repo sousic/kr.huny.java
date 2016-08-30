@@ -18,7 +18,7 @@
                     <form role="form" id="registForm" method="post" data-toggle="validator">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control input-sm" id="userid" name="userid" placeholder="아이디" required autofocus>
+                                <input type="text" class="form-control input-sm" id="userid" name="userid" placeholder="아이디" required autofocus value="${memberVO.getUserid()}">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default btn-sm" id="btnIdChecker">중복체크</button>
                                 </span>
@@ -31,7 +31,7 @@
                             <input type="password" class="form-control input-sm" id="userpwd2" name="userpwd2" placeholder="비밀번호 확인" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control input-sm" id="nickname" name="nickname" placeholder="별명" required>
+                            <input type="text" class="form-control input-sm" id="nickname" name="nickname" placeholder="별명" value="${memberVO.getNickname()}" required>
                         </div>
                         <input type="hidden" id="idchecked" value=""/>
                         <button type="submit" class="btn btn-primary">가입</button>
@@ -42,6 +42,11 @@
     </div>
 </div>
 <script>
+    $(function() {
+        if("${msg}" == "-1") {
+            alert('아이다가 사용중입니다.');
+        }
+    });
     $("#registForm").on("submit", function () {
         if($.trim($("#userpwd").val()) != $.trim($("#userpwd2").val()))
         {

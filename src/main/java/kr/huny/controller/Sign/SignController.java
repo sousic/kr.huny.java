@@ -5,21 +5,18 @@ import kr.huny.domain.MembersVO;
 import kr.huny.dto.LoginDTO;
 import kr.huny.service.SignService;
 import kr.huny.utils.PropertyHelper;
+import kr.huny.utils.SHA256Helper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -37,7 +34,6 @@ public class SignController {
     private SignService signService;
     @Inject
     private SignInHelper signInHelper;
-
     @Autowired
     private PropertyHelper propertyHelper;
 
@@ -70,18 +66,38 @@ public class SignController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registerOK(MembersVO membersVO, RedirectAttributes rtts) throws Exception
     {
+        membersVO.setUserpwd(SHA256Helper.encrpyt(membersVO.getUserpwd()));
+        logger.info(membersVO.toString());
+
+        int result = signService.register(membersVO);
+        if(result != 1)
+        {
+            rtts.addAttribute(membersVO);
+            rtts.addAttribute("msg",result);
+            return "sign/register";
+        }
+
         return "redirect:/";
     }
 
     @RequestMapping(value = "/checker", method = RequestMethod.GET, produces = "application/json;charset=utf8")
     public ResponseEntity<Map<String, Object>> idChecker(String userid)
     {
+        logger.info(userid);
         ResponseEntity<Map<String, Object>> entity = null;
         Map<String, Object> map = new HashMap<String, Object>();
 
         try {
-            map.put("resultCode", 1);
-            map.put("resultMsg","성공");
+            MembersVO membersVO = signService.idChecker(userid);
+            if(membersVO == null) {
+                map.put("resultCode", 1);
+                map.put("resultMsg", "성공");
+            }
+            else
+            {
+                map.put("resultCode", -1);
+                map.put("resultMsg","사용중");
+            }
             entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
         }
         catch (Exception ex)

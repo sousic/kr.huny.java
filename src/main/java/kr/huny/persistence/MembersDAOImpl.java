@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
-import java.lang.reflect.Member;
 
 /**
  * Created by dhjang on 2016-08-22.
@@ -25,5 +24,10 @@ public class MembersDAOImpl implements MembersDAO {
     @Override
     public MembersVO idChecker(String userid) throws Exception {
         return sqlSession.selectOne(namespace + ".idChecker", userid);
+    }
+
+    @Override
+    public void register(MembersVO membersVO) throws Exception {
+        sqlSession.insert(namespace + ".register", membersVO);
     }
 }
