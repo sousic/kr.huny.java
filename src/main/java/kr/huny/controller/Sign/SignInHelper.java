@@ -20,7 +20,6 @@ public class SignInHelper {
 
     private static final Logger logger = LoggerFactory.getLogger(SignInHelper.class);
 
-    //@Resource(name="loginFailLimitCount")
     @Value("#{prop['loginFailLimitCount']}")
     private int loginFailLimitCount;
 
