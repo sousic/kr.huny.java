@@ -4,8 +4,12 @@ import kr.huny.domain.MembersEnum;
 import kr.huny.domain.MembersVO;
 import kr.huny.dto.LoginDTO;
 import kr.huny.service.SignService;
+import kr.huny.utils.PropertyHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -33,6 +38,10 @@ public class SignController {
     @Inject
     private SignInHelper signInHelper;
 
+    @Autowired
+    private PropertyHelper propertyHelper;
+
+
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public String login(Model model)
     {
@@ -43,8 +52,8 @@ public class SignController {
     @RequestMapping(value = "/signin", method = RequestMethod.POST)
     public String loginOK(LoginDTO loginDTO, HttpServletResponse response) throws Exception
     {
+        loginDTO.setPwdfailcntLimit(propertyHelper.getLoginFailLimitCount());
         logger.info(loginDTO.toString());
-
         MembersVO membersVO = signService.login(loginDTO);
 
         MembersEnum membersEnum= signInHelper.memberCheck(membersVO, loginDTO);
@@ -71,16 +80,16 @@ public class SignController {
         Map<String, Object> map = new HashMap<String, Object>();
 
         try {
-            map.put("retCode", 1);
-            map.put("retMsg","성공");
+            map.put("resultCode", 1);
+            map.put("resultMsg","성공");
             entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
         }
         catch (Exception ex)
         {
             ex.printStackTrace();
-            map.put("retCode", 0
+            map.put("resultCode", 0
             );
-            map.put("retMsg","실패");
+            map.put("resultMsg","실패");
             entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.BAD_REQUEST);
         }
 

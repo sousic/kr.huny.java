@@ -8,4 +8,6 @@ import kr.huny.dto.LoginDTO;
  */
 public interface MembersDAO {
     public MembersVO login(LoginDTO loginDTO) throws Exception;
+
+    public MembersVO idChecker(String userid) throws Exception;
 }

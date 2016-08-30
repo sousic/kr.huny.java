@@ -48,7 +48,7 @@ public class SignControllerTest {
     }
 
     @Test
-    public void idChecker() throws Exception {
+    public void test_idChecker() throws Exception {
         mockMvc.perform(get("/sign/checker?userid=test")).andExpect(status().isOk());
         String resultContent = mockMvc.perform(get("/sign/checker?userid=test")).andReturn().getResponse().getContentAsString();
 

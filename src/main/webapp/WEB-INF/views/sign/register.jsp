@@ -20,7 +20,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control input-sm" id="userid" name="userid" placeholder="아이디" required autofocus>
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default btn-sm">중복체크</button>
+                                    <button type="button" class="btn btn-default btn-sm" id="btnIdChecker">중복체크</button>
                                 </span>
                             </div>
                         </div>
@@ -33,6 +33,7 @@
                         <div class="form-group">
                             <input type="password" class="form-control input-sm" id="nickname" name="nickname" placeholder="별명" required>
                         </div>
+                        <input type="hidden" id="idchecked" value=""/>
                         <button type="submit" class="btn btn-primary">가입</button>
                     </form>
                 </div>
@@ -46,6 +47,29 @@
         {
             $("#userpwd2").val("").focus();
             return false;
+        }
+    });
+
+    $("#btnIdChecker").click(function() {
+        if($.trim($("#userid").val()) == '') {
+            alert("아이디를 입력해 주세요.");
+            $("#userid").focus();
+            return false;
+        }
+        else
+        {
+            $.getJSON("/sign/checker?userid=" + $("#userid").val(), function(data) {
+                if(data.resultCode == 1)
+                {
+                    alert("사용 가능 합니다.");
+                    $("#idchecked").val(1);
+                }
+                else
+                {
+                    alert(data.resultMsg);
+                    return false;
+                }
+            });
         }
     });
 </script>

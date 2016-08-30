@@ -11,4 +11,5 @@ public class LoginDTO {
     private String userpwd;
     private boolean remember;
     private String nickname;
+    private int pwdfailcntLimit;
 }
