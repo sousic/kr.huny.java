@@ -11,24 +11,41 @@
 <div class="container">
     <h2>회원가입</h2>
     <div class="panel-group">
-        <div class="col-md-4 center-pill">
+        <div class="col-md-8 center-pill">
             <div class="panel panel-default">
                 <div class="panel-heading text-center">회원 가입하기</div>
                 <div class="panel-body">
-                    <form role="form" id="loginForm" method="post">
+                    <form role="form" id="registForm" method="post" data-toggle="validator">
                         <div class="form-group">
-                            <input type="text" class="form-control input-sm" id="userid" name="userid" placeholder="아이디" required autofocus>
+                            <div class="input-group">
+                                <input type="text" class="form-control input-sm" id="userid" name="userid" placeholder="아이디" required autofocus>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-sm">중복체크</button>
+                                </span>
+                            </div>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control input-sm" id="userpwd" name="userpwd" placeholder="비밀번호" required>
                         </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" id="remember" name="remember"> 로그인 유지</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-sm" id="userpwd2" name="userpwd2" placeholder="비밀번호 확인" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">로그인</button>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-sm" id="nickname" name="nickname" placeholder="별명" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">가입</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $("#registForm").on("submit", function () {
+        if($.trim($("#userpwd").val()) != $.trim($("#userpwd2").val()))
+        {
+            $("#userpwd2").val("").focus();
+            return false;
+        }
+    });
+</script>

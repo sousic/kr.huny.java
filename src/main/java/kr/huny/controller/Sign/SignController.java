@@ -6,14 +6,19 @@ import kr.huny.dto.LoginDTO;
 import kr.huny.service.SignService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by sousic on 2016. 8. 17..
@@ -57,5 +62,28 @@ public class SignController {
     public String registerOK(MembersVO membersVO, RedirectAttributes rtts) throws Exception
     {
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/checker", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, Object>> idChecker(String userid)
+    {
+        ResponseEntity<Map<String, Object>> entity = null;
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        try {
+            map.put("retCode", 1);
+            map.put("retMsg","ok");
+            entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            map.put("retCode", 0
+            );
+            map.put("retMsg","fail");
+            entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.BAD_REQUEST);
+        }
+
+        return entity;
     }
 }
