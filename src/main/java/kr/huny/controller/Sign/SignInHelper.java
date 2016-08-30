@@ -6,6 +6,7 @@ import kr.huny.dto.LoginDTO;
 import kr.huny.utils.SHA256Helper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,8 +20,9 @@ public class SignInHelper {
 
     private static final Logger logger = LoggerFactory.getLogger(SignInHelper.class);
 
-    @Resource(name="loginFialLimitCount")
-    private int loginFialLimitCount;
+    //@Resource(name="loginFailLimitCount")
+    @Value("#{prop['loginFailLimitCount']}")
+    private int loginFailLimitCount;
 
     public MembersEnum memberCheck(MembersVO membersVO, LoginDTO loginDTO)
     {
@@ -39,7 +41,7 @@ public class SignInHelper {
             else
             {
                 //2순위는 로그인 횟수 확인
-                if (membersVO.getPwdfailcnt() >= loginFialLimitCount) {
+                if (membersVO.getPwdfailcnt() >= loginFailLimitCount) {
                     membersEnum = MembersEnum.PwdFailCount;
                 }
                 else
