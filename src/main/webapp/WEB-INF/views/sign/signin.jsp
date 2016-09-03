@@ -17,7 +17,7 @@
                 <div class="panel-body">
                     <form role="form" id="loginForm" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control input-sm" id="userid" name="userid" placeholder="아이디" required autofocus>
+                            <input type="text" class="form-control input-sm" id="userid" name="userid" value="${userid}" placeholder="아이디" required autofocus>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control input-sm" id="userpwd" name="userpwd" placeholder="비밀번호" required>

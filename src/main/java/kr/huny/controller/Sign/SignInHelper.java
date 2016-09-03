@@ -25,7 +25,7 @@ public class SignInHelper {
 
     public MembersEnum memberCheck(MembersVO membersVO, LoginDTO loginDTO)
     {
-        MembersEnum membersEnum = null;
+        MembersEnum membersEnum = MembersEnum.LoginOK;
 
         if(membersVO == null) {
             membersEnum = MembersEnum.NotUserID;

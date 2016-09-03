@@ -46,15 +46,22 @@ public class SignController {
     }
 
     @RequestMapping(value = "/signin", method = RequestMethod.POST)
-    public String loginOK(LoginDTO loginDTO, HttpServletResponse response) throws Exception
+    public String loginOK(LoginDTO loginDTO, HttpServletResponse response, RedirectAttributes rtts) throws Exception
     {
         loginDTO.setPwdfailcntLimit(propertyHelper.getLoginFailLimitCount());
-        logger.info(loginDTO.toString());
         MembersVO membersVO = signService.login(loginDTO);
 
         MembersEnum membersEnum= signInHelper.memberCheck(membersVO, loginDTO);
 
-        return "redirect:/";
+        logger.info(membersVO.toString());
+        logger.info(membersEnum.toString());
+
+        if(membersEnum.getValue() == MembersEnum.LoginOK.getValue()){
+            return "redirect:/";
+        }
+        rtts.addFlashAttribute("flag", membersEnum);
+        rtts.addFlashAttribute("userid",loginDTO.getUserid());
+        return "redirect:/sign/signin";
     }
 
     @RequestMapping(value="/register", method = RequestMethod.GET)
@@ -72,9 +79,9 @@ public class SignController {
         int result = signService.register(membersVO);
         if(result != 1)
         {
-            rtts.addAttribute(membersVO);
-            rtts.addAttribute("msg",result);
-            return "sign/register";
+            rtts.addFlashAttribute(membersVO);
+            rtts.addFlashAttribute("msg",result);
+            return "redirect:/sign/register";
         }
 
         return "redirect:/";

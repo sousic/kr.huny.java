@@ -4,7 +4,7 @@ package kr.huny.domain;
  * Created by dhjang on 2016-08-23.
  */
 public enum MembersEnum {
-    NotUserID(1), NotUserPWD(2), PwdFailCount(3), LoginBlock(4);
+    LoginOK(1), NotUserID(-1), NotUserPWD(-2), PwdFailCount(-3), LoginBlock(-4);
     private int value;
 
     private MembersEnum(int value)
@@ -15,4 +15,6 @@ public enum MembersEnum {
     public int getValue() {
         return this.value;
     }
+
+
 }

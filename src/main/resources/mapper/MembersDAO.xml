@@ -5,7 +5,9 @@
         INSERT INTO members(userid, userpwd, nickname) VALUES (#{userid}, #{userpwd}, #{nickname})
     </insert>
     <select id="login" resultType="kr.huny.domain.MembersVO">
-        SELECT * from members where userid = #{userid} and pwdfailcnt = #{pwdfailcntLimit} and isloginblock = 0
+    <![CDATA[
+        SELECT * from members where userid = #{userid} and pwdfailcnt <= #{pwdfailcntLimit} and isloginblock = 0
+    ]]>
     </select>
     <select id="idChecker" resultType="kr.huny.domain.MembersVO">
         SELECT * from members where userid = #{userid}
