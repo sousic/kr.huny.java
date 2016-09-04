@@ -2,7 +2,6 @@ package kr.huny.utils;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,4 +15,7 @@ public class PropertyHelper {
 
     @Value("#{prop['aes.secretkey']}")
     private String AESSecretKey;
+
+    @Value("#{prop['cookie.name']}")
+    private String cookieName;
 }

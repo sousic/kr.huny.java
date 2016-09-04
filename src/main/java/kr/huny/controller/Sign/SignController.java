@@ -6,6 +6,7 @@ import kr.huny.dto.LoginDTO;
 import kr.huny.service.SignService;
 import kr.huny.utils.PropertyHelper;
 import kr.huny.utils.SHA256Helper;
+import kr.huny.utils.SessionHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,8 @@ public class SignController {
     private SignInHelper signInHelper;
     @Autowired
     private PropertyHelper propertyHelper;
-
+    @Autowired
+    private SessionHelper sessionHelper;
 
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public String login(Model model)
@@ -57,6 +59,7 @@ public class SignController {
         logger.info(membersEnum.toString());
 
         if(membersEnum.getValue() == MembersEnum.LoginOK.getValue()){
+            sessionHelper.SetLoginSession(membersVO, response);
             return "redirect:/";
         }
         rtts.addFlashAttribute("flag", membersEnum);
