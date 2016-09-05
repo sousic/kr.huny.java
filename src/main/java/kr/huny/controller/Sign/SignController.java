@@ -1,10 +1,10 @@
 package kr.huny.controller.Sign;
 
+import kr.huny.controller.common.baseController;
 import kr.huny.domain.MembersEnum;
 import kr.huny.domain.MembersVO;
 import kr.huny.dto.LoginDTO;
 import kr.huny.service.SignService;
-import kr.huny.utils.PropertyHelper;
 import kr.huny.utils.SHA256Helper;
 import kr.huny.utils.SessionHelper;
 import org.slf4j.Logger;
@@ -28,15 +28,13 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value="/sign")
-public class SignController {
+public class SignController extends baseController {
     private static final Logger logger = LoggerFactory.getLogger(SignController.class);
 
     @Inject
     private SignService signService;
     @Inject
     private SignInHelper signInHelper;
-    @Autowired
-    private PropertyHelper propertyHelper;
     @Autowired
     private SessionHelper sessionHelper;
 

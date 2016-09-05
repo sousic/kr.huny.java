@@ -15,3 +15,12 @@ CREATE TABLE `members` (
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
+
+CREATE TABLE `member_grade` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `desc` varchar(200) DEFAULT NULL,
+  `count` int(11) DEFAULT NULL,
+  `createdate` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`seq`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

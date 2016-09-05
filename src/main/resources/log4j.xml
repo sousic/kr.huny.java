@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="kr.huny.java">
+	<logger name="kr.huny.controller">
 		<level value="info" />
 	</logger>
 	
@@ -33,6 +33,10 @@
 	</logger>
 
 	<logger name="kr.huny.persistence">
+		<level value="debug"/>
+	</logger>
+
+	<logger name="kr.huny.utils">
 		<level value="debug"/>
 	</logger>
 
