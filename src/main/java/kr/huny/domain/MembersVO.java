@@ -1,7 +1,6 @@
 package kr.huny.domain;
 
 import lombok.Data;
-import lombok.Generated;
 
 import java.util.Date;
 
@@ -18,5 +17,6 @@ public class MembersVO {
     private Date regdate;
     private Date lastlogindate;
     private short isloginblock;
+    private int grade;
 }
 

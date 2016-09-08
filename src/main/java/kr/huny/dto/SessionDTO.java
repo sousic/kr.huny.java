@@ -9,5 +9,4 @@ import lombok.Data;
 public class SessionDTO {
     private String userid;
     private String nickname;
-    
 }
