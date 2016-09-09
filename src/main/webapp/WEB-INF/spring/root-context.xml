@@ -8,7 +8,7 @@
 	<util:properties id="prop" location="classpath:/config/config.properties"/>
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<context:property-placeholder location="classpath:/db.properties"/>
+	<context:property-placeholder location="classpath:/db.properties" ignore-unresolvable="true"/>
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driver}"/>

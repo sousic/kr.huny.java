@@ -27,7 +27,7 @@ CREATE TABLE `member_grade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --게시판 관리 정보
-CREATE TABLE `BoardManager` (
+CREATE TABLE `boardManager` (
   `seq` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `description` varchar(500) DEFAULT NULL,

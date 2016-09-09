@@ -29,7 +29,6 @@ import java.util.Map;
 @Controller
 @RequestMapping(value="/sign")
 public class SignController extends baseController {
-    private static final Logger logger = LoggerFactory.getLogger(SignController.class);
 
     @Inject
     private SignService signService;
