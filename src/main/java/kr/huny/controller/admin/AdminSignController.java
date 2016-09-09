@@ -16,6 +16,6 @@ public class AdminSignController extends baseController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String Login()
     {
-        return "admin/Login/Login";
+        return "admin/sign/Login";
     }
 }
