@@ -18,4 +18,7 @@ public class PropertyHelper {
 
     @Value("#{prop['cookie.name']}")
     private String cookieName;
+
+    @Value("#{prop['register.member.grade']}")
+    private int registerMemberGrade;
 }

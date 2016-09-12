@@ -2,8 +2,12 @@ package kr.huny.service;
 
 import kr.huny.domain.MembersVO;
 import kr.huny.dto.LoginDTO;
+import kr.huny.persistence.MemberGradeDAO;
 import kr.huny.persistence.MembersDAO;
+import kr.huny.utils.PropertyHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 
@@ -13,8 +17,12 @@ import javax.inject.Inject;
 @Service
 public class SignServiceImpl implements SignService {
 
-    @Inject
+    @Autowired
     MembersDAO membersDAO;
+    @Autowired
+    MemberGradeDAO memberGradeDAO;
+    @Autowired
+    PropertyHelper propertyHelper;
 
     @Override
     public MembersVO login(LoginDTO loginDTO) throws Exception {
@@ -26,6 +34,7 @@ public class SignServiceImpl implements SignService {
         return membersDAO.idChecker(userid);
     }
 
+    @Transactional
     @Override
     public int register(MembersVO membersVO) throws Exception
     {
@@ -39,6 +48,8 @@ public class SignServiceImpl implements SignService {
 
         try {
             membersDAO.register(membersVO);
+            //회원가입시 일반 회원등급인 10레벨로 고정함
+            memberGradeDAO.UpdateMemberGradeCount(propertyHelper.getRegisterMemberGrade());
             result = 1;
         } catch (Exception ex) {
             ex.printStackTrace();

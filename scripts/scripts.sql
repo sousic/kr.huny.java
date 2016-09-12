@@ -17,18 +17,18 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
 
-CREATE TABLE IF NOT EXISTS `member_grade` (
+CREATE TABLE IF NOT EXISTS `memberGrade` (
   `seq` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `desc` varchar(200) DEFAULT NULL,
   `grade` tinyint(4) DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
-  `createdate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `regdate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`seq`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --데이터 추가
-INSERT INTO `member_grade` (name`, `desc`, `grade`, `count`, `createdate`) VALUES
+INSERT INTO `memberGrade` (name`, `desc`, `grade`, `count`, `createdate`) VALUES
 	('일반', '일반 회원', 10, 0, '2016-09-12 11:05:14'),
 	('슈퍼관리자', '슈퍼관리자', 1, 0, '2016-09-12 11:06:31');
 
