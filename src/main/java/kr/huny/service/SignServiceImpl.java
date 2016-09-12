@@ -29,19 +29,22 @@ public class SignServiceImpl implements SignService {
     @Override
     public int register(MembersVO membersVO) throws Exception
     {
+        int result = 0;
         MembersVO idCheckerVO = idChecker(membersVO.getUserid());
 
         if(idCheckerVO != null && idCheckerVO.getUserid().equals(membersVO.getUserid()))
         {
-            return -1;
+            result = -1;
         }
 
         try {
             membersDAO.register(membersVO);
-            return 1;
+            result = 1;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return 0;
+            result = 0;
         }
+
+        return result;
     }
 }

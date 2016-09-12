@@ -1,8 +1,9 @@
 package kr.huny.controller.admin;
 
 import kr.huny.controller.common.baseController;
-import org.springframework.beans.factory.annotation.Value;
+import kr.huny.dto.LoginDTO;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,8 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AdminSignController extends baseController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String Login()
+    public String Login(Model model)
     {
-        return "admin/sign/Login";
+        model.addAttribute("adminPath", adminPath);
+        return "admin/sign/login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String LoginOK(LoginDTO loginDTO, Model model)
+    {
+        return "admin/sign/login";
     }
 }

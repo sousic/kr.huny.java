@@ -7,12 +7,26 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ page session="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <br/><br/>
 <div class="container">
     <h2>회원가입</h2>
     <div class="panel-group">
         <div class="col-md-8 center-pill">
             <div class="panel panel-default">
+                <c:set var="msg" value="${msg}"/>
+                <c:if test="${msg ne '1'}">
+                <div class="alert-warning">
+                    <c:choose>
+                        <c:when test="${msg eq '0'}">
+                            잠시 후 다시 이용해 주세요.
+                        </c:when>
+                        <c:when test="${msg eq '-1'}">
+                            해당 아이디는 이미 사용 중입니다.
+                        </c:when>
+                    </c:choose>
+                </div>
+                </c:if>
                 <div class="panel-heading text-center">회원 가입하기</div>
                 <div class="panel-body">
                     <form role="form" id="registForm" method="post" data-toggle="validator">

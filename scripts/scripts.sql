@@ -9,7 +9,7 @@ CREATE TABLE `members` (
 	`regdate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`lastlogindate` TIMESTAMP NULL DEFAULT NULL,
 	`isloginblock` TINYINT(4) NULL DEFAULT '0' COMMENT '0-허용,1-로그인 불가',
-	`grade` int(11) DEFAULT NULL DEFAULT '10',
+	`grade` TINYINT(4) DEFAULT NULL DEFAULT '10',
 	PRIMARY KEY (`userid`),
 	INDEX `seq` (`seq`)
 )
@@ -17,14 +17,20 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
 
-CREATE TABLE `member_grade` (
+CREATE TABLE IF NOT EXISTS `member_grade` (
   `seq` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `desc` varchar(200) DEFAULT NULL,
+  `grade` tinyint(4) DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
   `createdate` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`seq`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--데이터 추가
+INSERT INTO `member_grade` (name`, `desc`, `grade`, `count`, `createdate`) VALUES
+	('일반', '일반 회원', 10, 0, '2016-09-12 11:05:14'),
+	('슈퍼관리자', '슈퍼관리자', 1, 0, '2016-09-12 11:06:31');
 
 --게시판 관리 정보
 CREATE TABLE `boardManager` (

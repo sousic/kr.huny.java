@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page session="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
@@ -27,7 +28,6 @@
     <link href="/resources/css/nprogress.css" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
     <link href="/resources/css/prettify.min.css" rel="stylesheet">
-
     <!-- Custom styling plus plugins -->
     <link href="/resources/css/custom.min.css" rel="stylesheet">
 </head>
@@ -168,7 +168,7 @@
 <!-- bootstrap-wysiwyg -->
 <script>
     $(document).ready(function() {
-        function initToolbarBootstrapBindings() {
+        /*function initToolbarBootstrapBindings() {
             var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier',
                         'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
                         'Times New Roman', 'Verdana'
@@ -207,7 +207,7 @@
             } else {
                 $('.voiceBtn').hide();
             }
-        }
+        }*/
 
         function showErrorAlert(reason, detail) {
             var msg = '';
@@ -220,7 +220,7 @@
                     '<strong>File upload error</strong> ' + msg + ' </div>').prependTo('#alerts');
         }
 
-        initToolbarBootstrapBindings();
+        //initToolbarBootstrapBindings();
 
         $('#editor').wysiwyg({
             fileUploadError: showErrorAlert
