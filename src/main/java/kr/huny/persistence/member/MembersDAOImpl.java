@@ -30,4 +30,9 @@ public class MembersDAOImpl implements MembersDAO {
     public void register(MembersVO membersVO) throws Exception {
         sqlSession.insert(namespace + ".register", membersVO);
     }
+
+    @Override
+    public void UpdatePwdFailCount(MembersVO membersVO) {
+        sqlSession.update(namespace + ".UpdatePwdFailCount", membersVO);
+    }
 }

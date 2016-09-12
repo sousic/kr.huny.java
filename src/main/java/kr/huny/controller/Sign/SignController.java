@@ -9,6 +9,7 @@ import kr.huny.dto.LoginDTO;
 import kr.huny.service.LoginHistoryService;
 import kr.huny.service.SignService;
 import kr.huny.utils.CookieHelper;
+import kr.huny.utils.RequestHelper;
 import kr.huny.utils.SHA256Helper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -58,22 +59,26 @@ public class SignController extends baseController {
         MembersVO membersVO = signService.login(loginDTO);
         MembersEnum membersEnum= signInHelper.memberCheck(membersVO, loginDTO);
 
+        if(membersEnum.getValue() == MembersEnum.NotUserPWD.getValue() || membersEnum.getValue() == membersEnum.PwdFailCount.getValue()) {
+            membersVO.setPwdfailcnt((short)1);
+            signService.UpdatePwdFailCount(membersVO);
+        }
+
         loginHistoryVO = new LoginHistoryVO();
         loginHistoryVO.setUserid(loginDTO.getUserid());
-        loginHistoryVO.setRemoteip(request.getRemoteAddr());
+        loginHistoryVO.setRemoteip(RequestHelper.remoteIP(request));
         loginHistoryVO.setFlag((short)1);
-
-        logger.info(membersVO.toString());
-        logger.info(membersEnum.toString());
+        loginHistoryVO.setResult(membersEnum.toString());
+        loginHistoryService.InsertLoginHistory(loginHistoryVO);
 
         if(membersEnum.getValue() == MembersEnum.LoginOK.getValue()){
-            loginHistoryVO.setResult(membersEnum.toString());
-            loginHistoryService.InsertLoginHistory(loginHistoryVO);
+            membersVO.setPwdfailcnt((short)0);
+            signService.UpdatePwdFailCount(membersVO);
+
             CookieHelper.SetLoginSession(membersVO, response, propertyHelper);
             return "redirect:/";
         }
 
-        loginHistoryVO.setResult(membersEnum.toString());
         rtts.addFlashAttribute("flag", membersEnum);
         rtts.addFlashAttribute("userid",loginDTO.getUserid());
         return "redirect:/sign/signin";

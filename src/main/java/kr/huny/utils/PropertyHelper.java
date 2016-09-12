@@ -21,4 +21,7 @@ public class PropertyHelper {
 
     @Value("#{prop['register.member.grade']}")
     private int registerMemberGrade;
+
+    @Value("#{prop['signin.logging']}")
+    private boolean SigninLogging;
 }

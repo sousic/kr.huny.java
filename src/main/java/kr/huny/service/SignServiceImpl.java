@@ -56,4 +56,9 @@ public class SignServiceImpl implements SignService {
 
         return result;
     }
+
+    @Override
+    public void UpdatePwdFailCount(MembersVO membersVO) {
+        membersDAO.UpdatePwdFailCount(membersVO);
+    }
 }

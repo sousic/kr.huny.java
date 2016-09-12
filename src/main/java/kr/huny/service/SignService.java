@@ -3,6 +3,8 @@ package kr.huny.service;
 import kr.huny.domain.member.MembersVO;
 import kr.huny.dto.LoginDTO;
 
+import java.lang.reflect.Member;
+
 /**
  * Created by dhjang on 2016-08-22.
  */
@@ -17,4 +19,6 @@ public interface SignService {
      * @throws Exception
      */
     public int register(MembersVO membersVO) throws Exception;
+
+    public void UpdatePwdFailCount(MembersVO membersVO);
 }

@@ -1,0 +1,2 @@
+톰캣 ipv4 루프팩
+-Djava.net.preferIPv4Stack=true

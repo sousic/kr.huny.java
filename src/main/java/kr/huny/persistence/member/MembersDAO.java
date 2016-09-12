@@ -12,4 +12,6 @@ public interface MembersDAO {
     public MembersVO idChecker(String userid) throws Exception;
 
     public void register(MembersVO membersVO) throws Exception;
+
+    public void UpdatePwdFailCount(MembersVO membersVO);
 }

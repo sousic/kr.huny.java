@@ -4,10 +4,23 @@
     <insert id="register">
         INSERT INTO members(userid, userpwd, nickname, grade) VALUES (#{userid}, #{userpwd}, #{nickname}, 10)
     </insert>
+    <update id="UpdatePwdFailCount">
+        UPDATE members set
+        <choose>
+            <when  test="pwdfailcnt == 0">
+              pwdfailcnt = 0
+            </when>
+            <otherwise>
+                pwdfailcnt = pwdfailcnt + 1
+            </otherwise>
+        </choose>
+        WHERE seq = #{seq}
+    </update>
     <select id="login" resultType="kr.huny.domain.member.MembersVO">
     <![CDATA[
-        SELECT * from members where userid = #{userid} and pwdfailcnt <= #{pwdfailcntLimit} and isloginblock = 0
+        SELECT * from members where userid = #{userid}
     ]]>
+    <!-- and pwdfailcnt <= #{pwdfailcntLimit} and isloginblock = 0 -->
     </select>
     <select id="idChecker" resultType="kr.huny.domain.member.MembersVO">
         SELECT * from members where userid = #{userid}
