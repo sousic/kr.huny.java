@@ -2,14 +2,13 @@ package kr.huny.controller.Sign;
 
 import kr.huny.Exceptions.LogException;
 import kr.huny.controller.common.baseController;
-import kr.huny.domain.MembersEnum;
-import kr.huny.domain.MembersVO;
+import kr.huny.domain.member.MembersEnum;
+import kr.huny.domain.member.MembersVO;
 import kr.huny.dto.LoginDTO;
 import kr.huny.service.SignService;
 import kr.huny.utils.CookieHelper;
 import kr.huny.utils.SHA256Helper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -30,7 +29,7 @@ import java.util.Map;
 @RequestMapping(value="/sign")
 public class SignController extends baseController {
 
-    @Inject
+    @Autowired
     private SignService signService;
     @Inject
     private SignInHelper signInHelper;

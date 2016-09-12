@@ -1,6 +1,6 @@
-package kr.huny.persistence;
+package kr.huny.persistence.board;
 
-import kr.huny.domain.BoardManageVO;
+import kr.huny.domain.board.BoardManageVO;
 import kr.huny.domain.PageInfo;
 
 import java.util.List;

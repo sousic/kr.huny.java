@@ -1,4 +1,4 @@
-package kr.huny.domain;
+package kr.huny.domain.member;
 
 /**
  * Created by dhjang on 2016-08-23.

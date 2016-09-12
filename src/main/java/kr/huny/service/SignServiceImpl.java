@@ -1,15 +1,13 @@
 package kr.huny.service;
 
-import kr.huny.domain.MembersVO;
+import kr.huny.domain.member.MembersVO;
 import kr.huny.dto.LoginDTO;
-import kr.huny.persistence.MemberGradeDAO;
-import kr.huny.persistence.MembersDAO;
+import kr.huny.persistence.member.MemberGradeDAO;
+import kr.huny.persistence.member.MembersDAO;
 import kr.huny.utils.PropertyHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.inject.Inject;
 
 /**
  * Created by dhjang on 2016-08-22.

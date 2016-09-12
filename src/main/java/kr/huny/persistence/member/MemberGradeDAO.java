@@ -1,6 +1,6 @@
-package kr.huny.persistence;
+package kr.huny.persistence.member;
 
-import kr.huny.domain.MemberGradeVO;
+import kr.huny.domain.member.MemberGradeVO;
 
 /**
  * Created by sousic on 2016-09-12.

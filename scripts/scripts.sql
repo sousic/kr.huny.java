@@ -32,6 +32,24 @@ INSERT INTO `memberGrade` (name`, `desc`, `grade`, `count`, `createdate`) VALUES
 	('일반', '일반 회원', 10, 0, '2016-09-12 11:05:14'),
 	('슈퍼관리자', '슈퍼관리자', 1, 0, '2016-09-12 11:06:31');
 
+--로그인 시도 기록
+CREATE TABLE `loginhistory` (
+	`seq` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`userid` VARCHAR(50) NOT NULL DEFAULT '0',
+	`remoteip` VARCHAR(23) NOT NULL DEFAULT '0' COMMENT 'ipv4/ipv6',
+	`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`result` VARCHAR(50) NULL DEFAULT NULL,
+	`flag` TINYINT(1) NULL DEFAULT NULL COMMENT '1-사용자,2-관리자',
+	PRIMARY KEY (`seq`),
+	INDEX `userid` (`userid`),
+	INDEX `userid_flag` (`userid`, `flag`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+
+
 --게시판 관리 정보
 CREATE TABLE `boardManager` (
   `seq` int(11) NOT NULL AUTO_INCREMENT,

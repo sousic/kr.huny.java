@@ -2,7 +2,7 @@ package kr.huny.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kr.huny.domain.MembersVO;
+import kr.huny.domain.member.MembersVO;
 import kr.huny.dto.SessionDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

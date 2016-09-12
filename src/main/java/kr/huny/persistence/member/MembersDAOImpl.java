@@ -1,6 +1,6 @@
-package kr.huny.persistence;
+package kr.huny.persistence.member;
 
-import kr.huny.domain.MembersVO;
+import kr.huny.domain.member.MembersVO;
 import kr.huny.dto.LoginDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public class MembersDAOImpl implements MembersDAO {
     @Inject
     private SqlSession sqlSession;
-    private static String namespace = "kr.huny.persistence.MembersDAO";
+    private static String namespace = "kr.huny.persistence.member.MembersDAO";
 
     @Override
     public MembersVO login(LoginDTO loginDTO) throws Exception {

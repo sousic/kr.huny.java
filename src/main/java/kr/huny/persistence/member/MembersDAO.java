@@ -1,6 +1,6 @@
-package kr.huny.persistence;
+package kr.huny.persistence.member;
 
-import kr.huny.domain.MembersVO;
+import kr.huny.domain.member.MembersVO;
 import kr.huny.dto.LoginDTO;
 
 /**

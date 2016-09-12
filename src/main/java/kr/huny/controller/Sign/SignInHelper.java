@@ -1,7 +1,7 @@
 package kr.huny.controller.Sign;
 
-import kr.huny.domain.MembersEnum;
-import kr.huny.domain.MembersVO;
+import kr.huny.domain.member.MembersEnum;
+import kr.huny.domain.member.MembersVO;
 import kr.huny.dto.LoginDTO;
 import kr.huny.utils.PropertyHelper;
 import kr.huny.utils.SHA256Helper;

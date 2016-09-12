@@ -1,6 +1,6 @@
 package kr.huny.service;
 
-import kr.huny.domain.MembersVO;
+import kr.huny.domain.member.MembersVO;
 import kr.huny.dto.LoginDTO;
 
 /**

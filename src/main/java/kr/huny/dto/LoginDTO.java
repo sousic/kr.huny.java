@@ -12,4 +12,7 @@ public class LoginDTO {
     private boolean remember;
     private String nickname;
     private int pwdfailcntLimit;
+
+    private int grade;
+    private boolean isAdmin;
 }

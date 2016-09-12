@@ -22,5 +22,5 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="kr.huny.controller" />
+	<context:component-scan base-package="kr.huny.controller"/>
 </beans:beans>

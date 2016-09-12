@@ -1,4 +1,4 @@
-package kr.huny.domain;
+package kr.huny.domain.board;
 
 import lombok.Data;
 
