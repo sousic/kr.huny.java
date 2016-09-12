@@ -1,6 +1,8 @@
 package kr.huny.domain.member;
 
 import lombok.Data;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 

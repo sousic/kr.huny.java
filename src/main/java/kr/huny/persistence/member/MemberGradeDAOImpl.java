@@ -14,7 +14,7 @@ public class MemberGradeDAOImpl implements MemberGradeDAO {
 
     @Inject
     private SqlSession sqlSession;
-    private final String namespace = "kr.huny.persistence.member.MemberGradeDAO";
+    private final static  String namespace = "kr.huny.persistence.member.MemberGradeDAO";
 
     @Override
     public void UpdateMemberGradeCount(int grade) throws Exception {

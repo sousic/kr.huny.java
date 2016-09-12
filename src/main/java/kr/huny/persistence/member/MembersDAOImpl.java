@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public class MembersDAOImpl implements MembersDAO {
     @Inject
     private SqlSession sqlSession;
-    private static String namespace = "kr.huny.persistence.member.MembersDAO";
+    private final static String namespace = "kr.huny.persistence.member.MembersDAO";
 
     @Override
     public MembersVO login(LoginDTO loginDTO) throws Exception {
