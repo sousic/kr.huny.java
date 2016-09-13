@@ -21,6 +21,16 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+
 	<context:component-scan base-package="kr.huny.controller"/>
+
+	<beans:bean id="authAdminInterceptor" class="kr.huny.interceptor.AuthAdminInterceptor"/>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/${adminPath}/**/*"/>
+			<beans:ref bean="authAdminInterceptor"/>
+		</interceptor>
+	</interceptors>
+
 </beans:beans>

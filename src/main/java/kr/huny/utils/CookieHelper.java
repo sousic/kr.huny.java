@@ -119,4 +119,38 @@ public class CookieHelper {
 
         return sessionDTO;
     }
+
+    public static SessionAdminDTO LoginSessionAdmin(HttpServletRequest request, PropertyHelper propertyHelper) {
+        SessionAdminDTO sessionAdminDTO = null;
+        AES256Helper aes256Helper = null;
+
+        Cookie cookie = WebUtils.getCookie(request, propertyHelper.getCookieNameAdmin());
+
+        if(cookie != null) {
+            try {
+                aes256Helper = new AES256Helper(propertyHelper.getAESSecretKey());
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            String strDecSession = cookie.getValue();
+            if(!StringUtils.isEmpty(strDecSession)) {
+                try {
+                    strDecSession = aes256Helper.decrpyt(strDecSession);
+                } catch (GeneralSecurityException e) {
+                    e.printStackTrace();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                ObjectMapper objectMapper = new ObjectMapper();
+                try {
+                    sessionAdminDTO = objectMapper.readValue(strDecSession, SessionAdminDTO.class);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sessionAdminDTO;
+    }
 }
