@@ -14,7 +14,7 @@
     <div class="panel-group">
         <div class="col-md-4 center-pill">
             <div class="panel panel-default">
-                <div class="panel-heading text-center">아이디 로그인 - ${flag}</div>
+                <div class="panel-heading text-center">아이디 로그인</div>
                 <div class="panel-body">
                     <form role="form" id="loginForm" method="post">
                         <div class="form-group">

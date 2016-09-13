@@ -60,8 +60,14 @@ public class SignController extends baseController {
         MembersEnum membersEnum= signInHelper.memberCheck(membersVO, loginDTO);
 
         if(membersEnum.getValue() == MembersEnum.NotUserPWD.getValue() || membersEnum.getValue() == membersEnum.PwdFailCount.getValue()) {
-            membersVO.setPwdfailcnt((short)1);
             signService.UpdatePwdFailCount(membersVO);
+        }
+
+        logger.info(membersVO.toString());
+
+        if(membersVO.getPwdfailcnt() >= propertyHelper.getLoginFailLimitCount())
+        {
+            signService.SetIsLoginBlock(membersVO.getSeq(), 1);
         }
 
         loginHistoryVO = new LoginHistoryVO();
@@ -74,6 +80,7 @@ public class SignController extends baseController {
         if(membersEnum.getValue() == MembersEnum.LoginOK.getValue()){
             membersVO.setPwdfailcnt((short)0);
             signService.UpdatePwdFailCount(membersVO);
+            signService.SetIsLoginBlock(membersVO.getSeq(), 0);
 
             CookieHelper.SetLoginSession(membersVO, response, propertyHelper);
             return "redirect:/";

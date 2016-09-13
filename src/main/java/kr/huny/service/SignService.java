@@ -21,4 +21,6 @@ public interface SignService {
     public int register(MembersVO membersVO) throws Exception;
 
     public void UpdatePwdFailCount(MembersVO membersVO);
+
+    public void SetIsLoginBlock(long seq, int flag);
 }

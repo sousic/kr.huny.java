@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by dhjang on 2016-08-22.
  */
@@ -60,5 +63,14 @@ public class SignServiceImpl implements SignService {
     @Override
     public void UpdatePwdFailCount(MembersVO membersVO) {
         membersDAO.UpdatePwdFailCount(membersVO);
+    }
+
+    @Override
+    public void SetIsLoginBlock(long seq, int flag) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("seq", seq);
+        params.put("isloginblock", flag);
+
+        membersDAO.SetIsLoginBlock(params);
     }
 }

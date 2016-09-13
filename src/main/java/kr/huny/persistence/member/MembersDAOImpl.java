@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
+import java.util.Map;
 
 /**
  * Created by dhjang on 2016-08-22.
@@ -34,5 +35,10 @@ public class MembersDAOImpl implements MembersDAO {
     @Override
     public void UpdatePwdFailCount(MembersVO membersVO) {
         sqlSession.update(namespace + ".UpdatePwdFailCount", membersVO);
+    }
+
+    @Override
+    public void SetIsLoginBlock(Map<String, Object> params) {
+        sqlSession.update(namespace +".SetIsLoginBlock", params);
     }
 }

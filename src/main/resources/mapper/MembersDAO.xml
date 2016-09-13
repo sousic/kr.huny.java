@@ -16,6 +16,9 @@
         </choose>
         WHERE seq = #{seq}
     </update>
+    <update id="SetIsLoginBlock">
+        UPDATE  members set isloginblock = #{isloginblock} where seq = #{seq}
+    </update>
     <select id="login" resultType="kr.huny.domain.member.MembersVO">
     <![CDATA[
         SELECT * from members where userid = #{userid}

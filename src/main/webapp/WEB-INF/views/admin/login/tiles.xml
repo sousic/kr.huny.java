@@ -3,7 +3,9 @@
         "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-    <definition name="admin/Home/Index" extends="admin_layout">
-        <put-attribute name="content" value="/WEB-INF/views/admin/home/Index.jsp"/>
+    <definition name="admin/login/login" extends="admin_layout">
+        <put-attribute name="top" value=""/>
+        <put-attribute name="left" value=""/>
+        <put-attribute name="content" value="/WEB-INF/views/admin/login/login.jsp"/>
     </definition>
 </tiles-definitions>

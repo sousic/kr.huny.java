@@ -18,12 +18,12 @@ public class AdminSignController extends baseController {
     public String Login(Model model)
     {
         model.addAttribute("adminPath", adminPath);
-        return "admin/sign/login";
+        return "admin/login/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String LoginOK(LoginDTO loginDTO, Model model)
     {
-        return "admin/sign/login";
+        return "admin/login/login";
     }
 }
