@@ -19,8 +19,8 @@
             <img src="/resources/images/img.jpg" alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
-            <span>Welcome,</span>
-            <h2>John Doe</h2>
+            <span>환영합니다.</span>
+            <h2>${nickname}</h2>
         </div>
     </div>
     <!-- /menu profile quick info -->

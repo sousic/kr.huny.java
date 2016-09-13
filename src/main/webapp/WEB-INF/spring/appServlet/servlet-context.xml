@@ -29,6 +29,8 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/${adminPath}/**/*"/>
+			<!-- 로그인 페이지 예외 -->
+			<exclude-mapping path="/${adminPath}/login"/>
 			<beans:ref bean="authAdminInterceptor"/>
 		</interceptor>
 	</interceptors>

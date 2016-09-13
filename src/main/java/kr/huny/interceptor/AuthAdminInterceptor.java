@@ -26,7 +26,7 @@ public class AuthAdminInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         SessionAdminDTO sessionAdminDTO = CookieHelper.LoginSessionAdmin(request, propertyHelper);
-        logger.info(sessionAdminDTO.toString());
+        //logger.info(sessionAdminDTO.toString());
         if(sessionAdminDTO == null)
         {
             response.sendRedirect("/");
