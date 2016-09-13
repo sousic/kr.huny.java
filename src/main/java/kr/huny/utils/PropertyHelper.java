@@ -24,4 +24,7 @@ public class PropertyHelper {
 
     @Value("#{prop['signin.logging']}")
     private boolean SigninLogging;
+
+    @Value("#{prop['cookie.name.admin']}")
+    private String cookieNameAdmin;
 }

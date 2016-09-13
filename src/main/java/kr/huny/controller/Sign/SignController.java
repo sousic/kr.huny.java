@@ -63,8 +63,6 @@ public class SignController extends baseController {
             signService.UpdatePwdFailCount(membersVO);
         }
 
-        logger.info(membersVO.toString());
-
         if(membersVO.getPwdfailcnt() >= propertyHelper.getLoginFailLimitCount())
         {
             signService.SetIsLoginBlock(membersVO.getSeq(), 1);
