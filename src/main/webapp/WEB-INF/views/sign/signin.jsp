@@ -46,6 +46,10 @@
         <c:when test="${flag eq 'LoginBlock'}">
         alert('비밀번호 오류로 로그인이 차단 되었습니다.');
         </c:when>
+        <c:when test="${flag eq 'NotUserPWD'}">
+        alert('비밀번호가 일치 하지 않습니다.');
+        </c:when>
+
         </c:choose>
     });
     </c:if>

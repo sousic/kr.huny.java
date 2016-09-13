@@ -43,6 +43,7 @@ public class SignController extends baseController {
     @Inject
     private SignInHelper signInHelper;
 
+    @Autowired
     private LoginHistoryVO loginHistoryVO;
 
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
@@ -68,7 +69,6 @@ public class SignController extends baseController {
             signService.SetIsLoginBlock(membersVO.getSeq(), 1);
         }
 
-        loginHistoryVO = new LoginHistoryVO();
         loginHistoryVO.setUserid(loginDTO.getUserid());
         loginHistoryVO.setRemoteip(RequestHelper.remoteIP(request));
         loginHistoryVO.setFlag((short)1);
