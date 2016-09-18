@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `memberGrade` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --데이터 추가
-INSERT INTO `memberGrade` (name`, `desc`, `grade`, `count`, `createdate`) VALUES
+INSERT INTO `memberGrade` (name`, `desc`, `grade`, `count`, `regdate`) VALUES
 	('일반', '일반 회원', 10, 0, '2016-09-12 11:05:14'),
 	('슈퍼관리자', '슈퍼관리자', 1, 0, '2016-09-12 11:06:31');
 

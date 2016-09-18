@@ -1,0 +1,29 @@
+{
+  "name": "kr.huny.java",
+  "version": "0.0.1",
+  "homepage": "https://github.com/sousic/kr.huny.java",
+  "authors": [
+    "sousic <sousics@naver.com>"
+  ],
+  "description": "study site",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery": "1.12.4",
+    "bootstrap": "3.3.7"
+  },
+  "install": {
+    "path": {
+      "less":"src/main/webapp/resources/less",
+      "css": "src/main/webapp/resources/css",
+      "js": "src/main/webapp/resources/js"
+    }
+  }
+}
