@@ -4,4 +4,7 @@
     <insert id="InsertLoginHisotry">
         INSERT INTO loginHistory(userid, remoteip, result, flag) values (#{userid}, #{remoteip}, #{result}, #{flag})
     </insert>
+    <select id="GetLoginHistoryList" resultType="kr.huny.domain.member.LoginHistoryVO">
+        select * loginHistory where seq desc limit 1, #{page}, #{perPageNum}
+    </select>
 </mapper>

@@ -1,10 +1,13 @@
 package kr.huny.service;
 
+import kr.huny.domain.PageInfo;
 import kr.huny.domain.member.LoginHistoryVO;
 import kr.huny.persistence.member.LoginHistoryDAO;
 import kr.huny.utils.PropertyHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by sousic on 2016-09-12.
@@ -22,5 +25,10 @@ public class LoginHistoryServiceImpl implements LoginHistoryService {
         if(propertyHelper.isSigninLogging()) {
             loginHistoryDAO.InsertLoginHisotry(loginHistoryVO);
         }
+    }
+
+    @Override
+    public List<LoginHistoryVO> GetLoginHistoryList(PageInfo pageInfo) {
+        return loginHistoryDAO.GetLoginHistoryList(pageInfo);
     }
 }

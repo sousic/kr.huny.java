@@ -56,17 +56,7 @@
                                     <th>Flag</th>
                                 </tr>
                                 </thead>
-
-
-                                <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
+                                <tbody id="historyList">
                                 </tbody>
                             </table>
                             </div>
@@ -77,3 +67,47 @@
         </div>
     </div>
     <!-- /page content -->
+    <script type="text/jsx">
+    var HistoryItem = React.createClass({
+       render:function () {
+           var items = this.props.data.map(function(item) {
+               return (
+                   <tr>
+                       <td>{item.seq}</td>
+                       <td>{item.userid}</td>
+                       <td>{item.remoteip}</td>
+                       <td>{item.date}</td>
+                       <td>{item.result}</td>
+                       <td>{item.flag}</td>
+                   </tr>
+               );
+           });
+           return(
+                {items}
+           )
+       }
+    });
+    var HistoryList = React.createClass({
+        getInitialState:function () {
+            return {data:[]};
+        },
+        componentDidMount:function () {
+            $.ajax({
+                url:this.props.url,
+                dataType:'json',
+                cache:false,
+                success:function (data) {
+                    if(data.resultCode == 1) {
+                        this.setState({data: data.data});
+                    }
+                }.bind(this)
+            });
+        },
+        render:function () {
+            return (
+                <HistoryItem data={this.state.data} />
+            );
+        }
+    });
+    React.render(<HistoryList url="${adminPath}/member/historylist" />, document.getElementById('historyList') );
+    </script>

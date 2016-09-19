@@ -24,13 +24,13 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%--<link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.css">--%>
     <!-- Font Awesome -->
-    <link href="/resources/css/font-awesome/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/font-awesome/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="/resources/css/nprogress/nprogress.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/nprogress/nprogress.css" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
-    <link href="/resources/css/prettify.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/prettify.min.css" rel="stylesheet">
     <!-- Custom styling plus plugins -->
-    <link href="/resources/css/custom.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/custom.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -152,21 +152,26 @@
 
 <!-- jQuery -->
 <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--%>
-<script src="/resources/js/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <%--<script src="/resources/js/bootstrap/bootstrap.js"></script>--%>
 <!-- FastClick -->
-<script src="/resources/js/fastclick.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/fastclick.js"></script>
 <!-- NProgress -->
-<script src="/resources/js/nprogress/nprogress.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/nprogress/nprogress.js"></script>
 <!-- bootstrap-wysiwyg -->
-<script src="/resources/js/bootstrap-wysiwyg.min.js"></script>
-<script src="/resources/js/jquery.hotkeys.js"></script>
-<script src="/resources/js/prettify.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap-wysiwyg.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.hotkeys.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/prettify.min.js"></script>
+
+<!-- react.js -->
+<script src="//fb.me/react-0.13.3.js"> </script>
+// In-browser JSX transformer
+<script src="//fb.me/JSXTransformer-0.13.3.js"> </script>
 
 <!-- Custom Theme Scripts -->
-<script src="/resources/js/custom.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/custom.min.js"></script>
 
 <!-- bootstrap-wysiwyg -->
 <script>

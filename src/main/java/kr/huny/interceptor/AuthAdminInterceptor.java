@@ -42,13 +42,15 @@ public class AuthAdminInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         //super.postHandle(request, response, handler, modelAndView);
 
-        ModelMap modelMap = modelAndView.getModelMap();
+        if(modelAndView != null) {
+            ModelMap modelMap = modelAndView.getModelMap();
 
-        //관리자 페이지의 모델 정보가 있을시 관리자 페이지 경로가 커스텀이라서 모델에 추가해 준다
-        //닉네임도 같이 넣어줌
-        if(modelMap != null) {
-            modelMap.addAttribute("nickname", CookieHelper.NickName(propertyHelper));
-            modelMap.addAttribute("adminPath", String.format("/%s",propertyHelper.getAdminPath()));
+            //관리자 페이지의 모델 정보가 있을시 관리자 페이지 경로가 커스텀이라서 모델에 추가해 준다
+            //닉네임도 같이 넣어줌
+            if (modelMap != null) {
+                modelMap.addAttribute("nickname", CookieHelper.NickName(propertyHelper));
+                modelMap.addAttribute("adminPath", String.format("/%s", propertyHelper.getAdminPath()));
+            }
         }
     }
 }

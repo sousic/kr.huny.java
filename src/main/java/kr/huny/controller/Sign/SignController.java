@@ -114,28 +114,29 @@ public class SignController extends baseController {
     {
         logger.info(userid);
         ResponseEntity<Map<String, Object>> entity = null;
-        Map<String, Object> map = new HashMap<String, Object>();
+
+        resultJson = new HashMap<String, Object>();
 
         try {
             MembersVO membersVO = signService.idChecker(userid);
             if(membersVO == null) {
-                map.put("resultCode", 1);
-                map.put("resultMsg", "성공");
+                resultJson.put("resultCode", 1);
+                resultJson.put("resultMsg", "성공");
             }
             else
             {
-                map.put("resultCode", -1);
-                map.put("resultMsg","사용중");
+                resultJson.put("resultCode", -1);
+                resultJson.put("resultMsg","사용중");
             }
-            entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+            entity = new ResponseEntity<Map<String, Object>>(resultJson, HttpStatus.OK);
         }
         catch (Exception ex)
         {
             new LogException(ex).printStackTrace();
-            map.put("resultCode", 0
+            resultJson.put("resultCode", 0
             );
-            map.put("resultMsg","실패");
-            entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.BAD_REQUEST);
+            resultJson.put("resultMsg","실패");
+            entity = new ResponseEntity<Map<String, Object>>(resultJson, HttpStatus.BAD_REQUEST);
         }
 
         return entity;

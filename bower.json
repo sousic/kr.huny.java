@@ -20,7 +20,8 @@
   "dependencies": {
     "jquery": "1.12.4",
     "nprogress": "^0.2.0",
-    "font-awesome": "fontawesome#^4.6.3"
+    "font-awesome": "fontawesome#^4.6.3",
+    "react": "^15.3.1"
   },
   "install": {
     "path": {
@@ -31,15 +32,15 @@
       "woff": "src/main/webapp/resources/fonts",
       "woff2": "src/main/webapp/resources/fonts"
     },
-    "sources" : {
+    "sources": {
       "jquery": [
         "bower_components/jquery/dist/jquery.min.js"
       ],
-      "nprogress" :[
+      "nprogress": [
         "bower_components/nprogress/nprogress.css",
         "bower_components/nprogress/nprogress.js"
       ],
-      "font-awesome":[
+      "font-awesome": [
         "bower_components/font-awesome/css/font-awesome.min.css",
         "bower_components/font-awesome/fonts/fontawesome-webfont.ttf",
         "bower_components/font-awesome/fonts/fontawesome-webfont.woff",

@@ -1,16 +1,12 @@
 package kr.huny.controller.common;
 
-import kr.huny.controller.Sign.SignController;
-import kr.huny.utils.CookieHelper;
 import kr.huny.utils.PropertyHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * Created by sousic on 2016. 9. 5..
@@ -25,4 +21,6 @@ public abstract class baseController {
 
     @Value("${adminPath}")
     protected String adminPath;
+
+    protected Map<String, Object> resultJson;
 }

@@ -1,10 +1,12 @@
 package kr.huny.persistence.member;
 
+import kr.huny.domain.PageInfo;
 import kr.huny.domain.member.LoginHistoryVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
+import java.util.List;
 
 /**
  * Created by sousic on 2016-09-12.
@@ -18,5 +20,10 @@ public class LoginHistoryDAOImpl implements LoginHistoryDAO {
     @Override
     public void InsertLoginHisotry(LoginHistoryVO loginHistoryVO) throws Exception {
         sqlSession.insert(namespace + ".InsertLoginHisotry", loginHistoryVO);
+    }
+
+    @Override
+    public List<LoginHistoryVO> GetLoginHistoryList(PageInfo pageInfo) {
+        return sqlSession.selectList(namespace + ".GetLoginHistoryList", pageInfo);
     }
 }
