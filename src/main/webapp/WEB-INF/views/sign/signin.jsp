@@ -35,7 +35,7 @@
 </div>
 <script>
     <c:if test="${flag ne null}">
-    $(window).load(function() {
+    $(window).ready(function() {
         <c:choose>
         <c:when test="${flag eq 'NotUserID'}">
             alert('ID가 존재 하지 않습니다.');

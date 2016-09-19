@@ -1,5 +1,6 @@
 package kr.huny.controller.admin;
 
+import kr.huny.Exceptions.LogException;
 import kr.huny.controller.Sign.SignInHelper;
 import kr.huny.controller.common.baseController;
 import kr.huny.domain.member.MembersEnum;
@@ -36,8 +37,13 @@ public class AdminSignController extends baseController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String LoginOK(LoginDTO loginDTO, Model model, HttpServletResponse response) throws Exception {
-        MembersVO membersVO = signService.login(loginDTO);
+    public String LoginOK(LoginDTO loginDTO, Model model, HttpServletResponse response) {
+        MembersVO membersVO = null;
+        try {
+            membersVO = signService.login(loginDTO);
+        } catch (Exception e) {
+            new LogException(e).printStackTrace();
+        }
         MembersEnum membersEnum= signInHelper.memberCheck(membersVO, loginDTO);
 
         if(membersEnum.getValue() == MembersEnum.LoginOK.getValue())

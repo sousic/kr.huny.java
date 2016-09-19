@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,7 +49,7 @@ public class MemberController  extends baseController {
             new LogException(ex).printStackTrace();
             resultJson.put("resultCode", 0);
             resultJson.put("resultMsg", "Error");
-            resultJson.put("errorMsg", ex.toString());
+            resultJson.put("errorMsg", ex.getStackTrace());
 
             entity = new ResponseEntity<Map<String, Object>>(resultJson, HttpStatus.OK);
         }

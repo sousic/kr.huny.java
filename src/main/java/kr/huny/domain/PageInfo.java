@@ -13,7 +13,7 @@ public class PageInfo {
     }
     public PageInfo(int pageSize)
     {
-        this.page = pageSize;
+        this.perPageNum = pageSize;
     }
 
     public void setPage(int page)

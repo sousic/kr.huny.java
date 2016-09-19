@@ -51,34 +51,47 @@ public class SignController extends baseController {
     }
 
     @RequestMapping(value = "/signin", method = RequestMethod.POST)
-    public String loginOK(LoginDTO loginDTO, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rtts) throws Exception
+    public String loginOK(LoginDTO loginDTO, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rtts)
     {
         loginDTO.setPwdfailcntLimit(propertyHelper.getLoginFailLimitCount());
-        MembersVO membersVO = signService.login(loginDTO);
+        MembersVO membersVO = null;
+        try {
+            membersVO = signService.login(loginDTO);
+        } catch (Exception e) {
+            new LogException(e).printStackTrace();
+        }
         MembersEnum membersEnum= signInHelper.memberCheck(membersVO, loginDTO);
 
         if(membersEnum.getValue() == MembersEnum.NotUserPWD.getValue() || membersEnum.getValue() == membersEnum.PwdFailCount.getValue()) {
             signService.UpdatePwdFailCount(membersVO);
         }
 
-        if(membersVO.getPwdfailcnt() >= propertyHelper.getLoginFailLimitCount())
-        {
-            signService.SetIsLoginBlock(membersVO.getSeq(), 1);
-        }
+        if(membersVO == null) {
+            rtts.addFlashAttribute("flag", MembersEnum.NotUserID);
+        } else {
 
-        loginHistoryVO.setUserid(loginDTO.getUserid());
-        loginHistoryVO.setRemoteip(RequestHelper.remoteIP(request));
-        loginHistoryVO.setFlag((short)1);
-        loginHistoryVO.setResult(membersEnum.toString());
-        loginHistoryService.InsertLoginHistory(loginHistoryVO);
+            if (membersVO.getPwdfailcnt() >= propertyHelper.getLoginFailLimitCount()) {
+                signService.SetIsLoginBlock(membersVO.getSeq(), 1);
+            }
 
-        if(membersEnum.getValue() == MembersEnum.LoginOK.getValue()){
-            membersVO.setPwdfailcnt((short)0);
-            signService.UpdatePwdFailCount(membersVO);
-            signService.SetIsLoginBlock(membersVO.getSeq(), 0);
+            loginHistoryVO.setUserid(loginDTO.getUserid());
+            loginHistoryVO.setRemoteip(RequestHelper.remoteIP(request));
+            loginHistoryVO.setFlag((short) 1);
+            loginHistoryVO.setResult(membersEnum.toString());
+            try {
+                loginHistoryService.InsertLoginHistory(loginHistoryVO);
+            } catch (Exception e) {
+                new LogException(e).printStackTrace();
+            }
 
-            CookieHelper.SetLoginSession(membersVO, response, propertyHelper);
-            return "redirect:/";
+            if (membersEnum.getValue() == MembersEnum.LoginOK.getValue()) {
+                membersVO.setPwdfailcnt((short) 0);
+                signService.UpdatePwdFailCount(membersVO);
+                signService.SetIsLoginBlock(membersVO.getSeq(), 0);
+
+                CookieHelper.SetLoginSession(membersVO, response, propertyHelper);
+                return "redirect:/";
+            }
         }
 
         rtts.addFlashAttribute("flag", membersEnum);
@@ -87,18 +100,23 @@ public class SignController extends baseController {
     }
 
     @RequestMapping(value="/register", method = RequestMethod.GET)
-    public String register(Model model) throws Exception
+    public String register(Model model)
     {
         return "sign/register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String registerOK(MembersVO membersVO, RedirectAttributes rtts) throws Exception
+    public String registerOK(MembersVO membersVO, RedirectAttributes rtts)
     {
         membersVO.setUserpwd(SHA256Helper.encrpyt(membersVO.getUserpwd()));
         logger.info(membersVO.toString());
 
-        int result = signService.register(membersVO);
+        int result = 0;
+        try {
+            result = signService.register(membersVO);
+        } catch (Exception e) {
+            new LogException(e).printStackTrace();
+        }
         if(result != 1)
         {
             rtts.addFlashAttribute(membersVO);
