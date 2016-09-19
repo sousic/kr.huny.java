@@ -31,7 +31,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
         "file:src/main/webapp/WEB-INF/spring/root-context.xml",
-        "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"
+        "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
+        "file:src/main/webapp/WEB-INF/spring/appServlet/beans-context.xml"
 })
 @WebAppConfiguration
 public class SignControllerTest {

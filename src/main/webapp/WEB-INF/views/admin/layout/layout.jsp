@@ -22,10 +22,11 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%--<link rel="stylesheet" href="/resources/css/bootstrap/bootstrap.css">--%>
     <!-- Font Awesome -->
-    <link href="/resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/resources/css/font-awesome/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="/resources/css/nprogress.css" rel="stylesheet">
+    <link href="/resources/css/nprogress/nprogress.css" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
     <link href="/resources/css/prettify.min.css" rel="stylesheet">
     <!-- Custom styling plus plugins -->
@@ -150,13 +151,15 @@
 <!-- /compose -->
 
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--%>
+<script src="/resources/js/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%--<script src="/resources/js/bootstrap/bootstrap.js"></script>--%>
 <!-- FastClick -->
 <script src="/resources/js/fastclick.js"></script>
 <!-- NProgress -->
-<script src="/resources/js/nprogress.js"></script>
+<script src="/resources/js/nprogress/nprogress.js"></script>
 <!-- bootstrap-wysiwyg -->
 <script src="/resources/js/bootstrap-wysiwyg.min.js"></script>
 <script src="/resources/js/jquery.hotkeys.js"></script>

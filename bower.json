@@ -13,17 +13,38 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "package.json",
+    "src"
   ],
   "dependencies": {
-    "jQuery": "1.12.4",
-    "bootstrap": "3.3.7"
+    "jquery": "1.12.4",
+    "nprogress": "^0.2.0",
+    "font-awesome": "fontawesome#^4.6.3"
   },
   "install": {
     "path": {
-      "less":"src/main/webapp/resources/less",
+      "/[cs|le]ss$/": "src/main/webapp/resources/css",
       "css": "src/main/webapp/resources/css",
-      "js": "src/main/webapp/resources/js"
+      "js": "src/main/webapp/resources/js",
+      "ttf": "src/main/webapp/resources/fonts",
+      "woff": "src/main/webapp/resources/fonts",
+      "woff2": "src/main/webapp/resources/fonts"
+    },
+    "sources" : {
+      "jquery": [
+        "bower_components/jquery/dist/jquery.min.js"
+      ],
+      "nprogress" :[
+        "bower_components/nprogress/nprogress.css",
+        "bower_components/nprogress/nprogress.js"
+      ],
+      "font-awesome":[
+        "bower_components/font-awesome/css/font-awesome.min.css",
+        "bower_components/font-awesome/fonts/fontawesome-webfont.ttf",
+        "bower_components/font-awesome/fonts/fontawesome-webfont.woff",
+        "bower_components/font-awesome/fonts/fontawesome-webfont.woff2"
+      ]
     }
   }
 }
