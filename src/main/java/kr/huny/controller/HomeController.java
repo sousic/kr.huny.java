@@ -3,8 +3,6 @@ package kr.huny.controller;
 import kr.huny.controller.common.baseController;
 import kr.huny.dto.SessionDTO;
 import kr.huny.utils.CookieHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

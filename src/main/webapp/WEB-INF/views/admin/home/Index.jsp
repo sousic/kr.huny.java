@@ -224,7 +224,7 @@
                                         </li>
                                         <li>
                                             <a href="#" class="atch-thumb">
-                                                <img src="#" alt="img" />
+                                                <img src="images/inbox.png" alt="img" />
                                             </a>
 
                                             <div class="file-name">

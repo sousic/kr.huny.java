@@ -35,8 +35,8 @@
                 <!-- 메뉴 -->
                 <li><a><i class="fa fa-list"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="">회원목록</a></li>
-                        <li><a href="">로그인기록</a></li>
+                        <li><a href="${adminPath}/member/list">회원목록</a></li>
+                        <li><a href="${adminPath}/member/history">로그인기록</a></li>
                     </ul>
                 </li>
                 <%--

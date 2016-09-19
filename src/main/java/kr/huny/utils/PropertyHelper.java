@@ -27,4 +27,7 @@ public class PropertyHelper {
 
     @Value("#{prop['cookie.name.admin']}")
     private String cookieNameAdmin;
+
+    @Value("#{prop['adminPath']}")
+    private String adminPath;
 }
