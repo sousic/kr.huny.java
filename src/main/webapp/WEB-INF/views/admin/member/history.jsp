@@ -78,6 +78,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="text-center">
+            ${pagingHelper.printPaging(pageContext.request)}
+        </div>
     </div>
     <!-- /page content -->
     <script>

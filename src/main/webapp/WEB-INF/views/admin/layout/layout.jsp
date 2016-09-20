@@ -47,9 +47,6 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-wysiwyg.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/jquery.hotkeys.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/prettify.min.js"></script>
-
-    <!-- Custom Theme Scripts -->
-    <script src="${pageContext.request.contextPath}/resources/js/custom.min.js"></script>
 </head>
 
 <body class="nav-md">
@@ -167,8 +164,8 @@
         <button id="send" class="btn btn-sm btn-success" type="button">Send</button>
     </div>
 </div>
-<!-- /compose -->
-
+<!-- Custom Theme Scripts -->
+<script src="${pageContext.request.contextPath}/resources/js/custom.min.js"></script>
 <!-- bootstrap-wysiwyg -->
 <script>
     $(document).ready(function() {
