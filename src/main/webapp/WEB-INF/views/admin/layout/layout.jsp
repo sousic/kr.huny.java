@@ -31,6 +31,25 @@
     <link href="${pageContext.request.contextPath}/resources/css/prettify.min.css" rel="stylesheet">
     <!-- Custom styling plus plugins -->
     <link href="${pageContext.request.contextPath}/resources/css/custom.min.css" rel="stylesheet">
+
+
+    <!-- jQuery -->
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--%>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%--<script src="/resources/js/bootstrap/bootstrap.js"></script>--%>
+    <!-- FastClick -->
+    <script src="${pageContext.request.contextPath}/resources/js/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="${pageContext.request.contextPath}/resources/js/nprogress/nprogress.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.hotkeys.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/prettify.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="${pageContext.request.contextPath}/resources/js/custom.min.js"></script>
 </head>
 
 <body class="nav-md">
@@ -149,29 +168,6 @@
     </div>
 </div>
 <!-- /compose -->
-
-<!-- jQuery -->
-<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--%>
-<script src="${pageContext.request.contextPath}/resources/js/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<%--<script src="/resources/js/bootstrap/bootstrap.js"></script>--%>
-<!-- FastClick -->
-<script src="${pageContext.request.contextPath}/resources/js/fastclick.js"></script>
-<!-- NProgress -->
-<script src="${pageContext.request.contextPath}/resources/js/nprogress/nprogress.js"></script>
-<!-- bootstrap-wysiwyg -->
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap-wysiwyg.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.hotkeys.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/prettify.min.js"></script>
-
-<!-- react.js -->
-<script src="//fb.me/react-0.13.3.js"> </script>
-// In-browser JSX transformer
-<script src="//fb.me/JSXTransformer-0.13.3.js"> </script>
-
-<!-- Custom Theme Scripts -->
-<script src="${pageContext.request.contextPath}/resources/js/custom.min.js"></script>
 
 <!-- bootstrap-wysiwyg -->
 <script>

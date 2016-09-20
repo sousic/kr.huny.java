@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: dhjang
@@ -13,6 +14,8 @@
                 <h3>회원관리 <small>로그인 기록 보기</small></h3>
             </div>
         </div>
+
+        <div class="clearfix"></div>
 
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -56,7 +59,17 @@
                                     <th>Flag</th>
                                 </tr>
                                 </thead>
-                                <tbody id="historyList">
+                                <tbody>
+                                <c:forEach items="${list}" var="loginHistoryVO">
+                                    <tr>
+                                        <td>${loginHistoryVO.seq}</td>
+                                        <td>${loginHistoryVO.userid}</td>
+                                        <td>${loginHistoryVO.remoteip}</td>
+                                        <td>${loginHistoryVO.date}</td>
+                                        <td>${loginHistoryVO.result}</td>
+                                        <td>${loginHistoryVO.flag}</td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                             </div>
@@ -67,47 +80,8 @@
         </div>
     </div>
     <!-- /page content -->
-    <script type="text/jsx">
-    var HistoryItem = React.createClass({
-       render:function () {
-           var items = this.props.data.map(function(item) {
-               return (
-                   <tr>
-                       <td>{item.seq}</td>
-                       <td>{item.userid}</td>
-                       <td>{item.remoteip}</td>
-                       <td>{item.date}</td>
-                       <td>{item.result}</td>
-                       <td>{item.flag}</td>
-                   </tr>
-               );
-           });
-           return(
-                {items}
-           )
-       }
+    <script>
+    $(function(){
+
     });
-    var HistoryList = React.createClass({
-        getInitialState:function () {
-            return {data:[]};
-        },
-        componentDidMount:function () {
-            $.ajax({
-                url:this.props.url,
-                dataType:'json',
-                cache:false,
-                success:function (data) {
-                    if(data.resultCode == 1) {
-                        this.setState({data: data.data});
-                    }
-                }.bind(this)
-            });
-        },
-        render:function () {
-            return (
-                <HistoryItem data={this.state.data} />
-            );
-        }
-    });
-    React.render(<HistoryList url="${adminPath}/member/historylist" />, document.getElementById('historyList') );
     </script>
