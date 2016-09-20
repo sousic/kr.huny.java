@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: dhjang
@@ -65,7 +66,7 @@
                                         <td>${loginHistoryVO.seq}</td>
                                         <td>${loginHistoryVO.userid}</td>
                                         <td>${loginHistoryVO.remoteip}</td>
-                                        <td>${loginHistoryVO.date}</td>
+                                        <td><fmt:formatDate value="${loginHistoryVO.date}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                                         <td>${loginHistoryVO.result}</td>
                                         <td>${loginHistoryVO.flag}</td>
                                     </tr>
