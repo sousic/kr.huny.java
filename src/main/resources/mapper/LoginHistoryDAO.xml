@@ -7,4 +7,7 @@
     <select id="GetLoginHistoryList" resultType="kr.huny.domain.member.LoginHistoryVO">
         select * from loginHistory order by seq desc limit #{startPage}, #{perPageNum}
     </select>
+    <select id="GetLoginHistoryListCount" resultType="java.lang.Integer">
+        select count(seq) from loginHistory
+    </select>
 </mapper>

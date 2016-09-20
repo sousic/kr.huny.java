@@ -12,4 +12,6 @@ public interface LoginHistoryService {
     public void InsertLoginHistory(LoginHistoryVO loginHistoryVO) throws Exception;
 
     public List<LoginHistoryVO> GetLoginHistoryList(PageInfo pageInfo);
+
+    public int GetLoginHistoryListCount();
 }

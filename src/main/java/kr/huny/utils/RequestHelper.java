@@ -17,4 +17,13 @@ public class RequestHelper {
         }
         return ip;
     }
+
+    public static HttpServletRequest getCurrentRequest()
+    {
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+
+        HttpServletRequest request = servletRequestAttributes.getRequest();
+
+        return request;
+    }
 }

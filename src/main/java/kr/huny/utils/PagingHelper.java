@@ -1,6 +1,9 @@
 package kr.huny.utils;
 
 import kr.huny.domain.PageInfo;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -19,6 +22,48 @@ public class PagingHelper {
     private int displayPageNum = 10;
 
     private PageInfo pageInfo;
+
+    private HttpServletRequest request;
+
+    private MultiValueMap<String, String> extendParameters;
+
+    /**
+     * 페이징 네비게이터 생성자
+     * @param request - 스프링 mvc request
+     * @param args - 추가 필요 querystring paramters 추가 ex) "test", "test" ...
+     */
+    public PagingHelper(HttpServletRequest request, String... args) {
+        this.request = request;
+
+        extendParameters = new LinkedMultiValueMap<String, String>();
+
+        //추가 파라메터값 세팅
+        if(args.length > 0) {
+            for(String key : args) {
+                if(StringUtils.isEmpty(request.getParameter(key)) == false) {
+                    extendParameters.add(key, request.getParameter(key));
+                }
+            }
+        }
+    }
+
+    /**
+     * 추가 파라메터값 추출 ( view 용 )
+     * @param key 추출할 키값
+     * @return "" or 키값
+     */
+    public String getExtendParameterValue(String key)
+    {
+        if(extendParameters != null)
+        {
+            if(extendParameters.containsKey(key))
+            {
+                return extendParameters.getFirst(key).toString();
+            }
+            return "";
+        }
+        return "";
+    }
 
     public void setPageInfo(PageInfo pageInfo) {
         this.pageInfo = pageInfo;
@@ -50,8 +95,11 @@ public class PagingHelper {
     {
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
                 .queryParam("page", page)
+                .queryParams(this.extendParameters)
                 .build();
-        return String.format("%s%s",request.getAttribute("javax.servlet.forward.request_uri"), uriComponents.toString()); //
+
+        //return String.format("%s%s",this.request.getAttribute("javax.servlet.forward.request_uri"), uriComponents.toString()); //
+        return String.format("%s%s",this.request.getRequestURI(), uriComponents.toString());
     }
 
     public String printPaging(HttpServletRequest request)

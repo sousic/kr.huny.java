@@ -31,4 +31,9 @@ public class LoginHistoryServiceImpl implements LoginHistoryService {
     public List<LoginHistoryVO> GetLoginHistoryList(PageInfo pageInfo) {
         return loginHistoryDAO.GetLoginHistoryList(pageInfo);
     }
+
+    @Override
+    public int GetLoginHistoryListCount() {
+        return loginHistoryDAO.GetLoginHistoryListCount();
+    }
 }

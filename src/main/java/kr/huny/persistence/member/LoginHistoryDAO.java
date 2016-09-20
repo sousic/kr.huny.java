@@ -12,4 +12,6 @@ public interface LoginHistoryDAO {
     public void InsertLoginHisotry(LoginHistoryVO loginHistoryVO) throws Exception;
 
     public List<LoginHistoryVO> GetLoginHistoryList(PageInfo pageInfo);
+
+    public int GetLoginHistoryListCount();
 }
