@@ -95,6 +95,7 @@ public class PagingHelper {
     {
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
                 .queryParam("page", page)
+                .queryParam("perPageNum", pageInfo.getPerPageNum())
                 .queryParams(this.extendParameters)
                 .build();
 

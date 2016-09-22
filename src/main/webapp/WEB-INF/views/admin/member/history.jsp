@@ -33,20 +33,20 @@
                         <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                             <form method="get" action="<%=RequestHelper.getCurrentRequest().getRequestURI()%>">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="dataTables_length" id="datatable_length">
+                                <div class="col-sm-4">
+                                    <div class="dataTables_length" id="perPageNum">
                                         <label>Show
-                                            <select name="datatable_length" aria-controls="datatable" class="form-control input-sm">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
+                                            <select name="perPageNum" aria-controls="datatable" class="form-control input-sm">
+                                            <option value="10" <c:if test="${10 == pagingHelper.pageInfo.perPageNum}">selected="selected"</c:if>>10</option>
+                                            <option value="25" <c:if test="${25 == pagingHelper.pageInfo.perPageNum}">selected="selected"</c:if>>25</option>
+                                            <option value="50" <c:if test="${50 == pagingHelper.pageInfo.perPageNum}">selected="selected"</c:if>>50</option>
+                                            <option value="100" <c:if test="${100 == pagingHelper.pageInfo.perPageNum}">selected="selected"</c:if>>100</option>
                                         </select>
                                         entries</label>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="검색어를 넣어주세요" aria-controls="datatable" id="schText" name="schText" value="${pagingHelper.getExtendParameterValue("schText")}"></label><button type="submit" class="btn btn-default">검색</button>
+                                <div class="col-sm-8">
+                                    <div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="검색어를 넣어주세요" aria-controls="datatable" id="schText" name="schText" value="${pagingHelper.getExtendParameterValue("schText")}"><button type="submit" class="btn btn-default">검색</button></label>
                                     </div>
                                 </div>
                             </div>

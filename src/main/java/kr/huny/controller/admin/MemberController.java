@@ -24,12 +24,14 @@ public class MemberController  extends baseController {
     @RequestMapping(value = "history", method = RequestMethod.GET)
     public String LoginHistory(Model model, PageInfo pageInfo)
     {
-        PagingHelper pagingHelper = new PagingHelper(RequestHelper.getCurrentRequest(), "schText", "schListSize");
+        PagingHelper pagingHelper = new PagingHelper(RequestHelper.getCurrentRequest());
         pagingHelper.setPageInfo(pageInfo);
         pagingHelper.setTotalCount(loginHistoryService.GetLoginHistoryListCount());
 
         model.addAttribute("list",loginHistoryService.GetLoginHistoryList(pageInfo));
         model.addAttribute("pagingHelper", pagingHelper);
+
+        logger.info(pagingHelper.toString());
 
         return "admin/member/history";
     }

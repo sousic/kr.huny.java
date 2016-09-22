@@ -31,7 +31,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/prettify.min.css" rel="stylesheet">
     <!-- Custom styling plus plugins -->
     <link href="${pageContext.request.contextPath}/resources/css/custom.min.css" rel="stylesheet">
-
+    <link href="${pageContext.request.contextPath}/resources/css/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- jQuery -->
     <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--%>
