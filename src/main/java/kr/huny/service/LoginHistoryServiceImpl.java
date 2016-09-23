@@ -33,7 +33,7 @@ public class LoginHistoryServiceImpl implements LoginHistoryService {
     }
 
     @Override
-    public int GetLoginHistoryListCount() {
-        return loginHistoryDAO.GetLoginHistoryListCount();
+    public int GetLoginHistoryListCount(PageInfo pageInfo) {
+        return loginHistoryDAO.GetLoginHistoryListCount(pageInfo);
     }
 }

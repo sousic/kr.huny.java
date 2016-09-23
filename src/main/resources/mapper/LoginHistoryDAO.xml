@@ -5,9 +5,18 @@
         INSERT INTO loginHistory(userid, remoteip, result, flag) values (#{userid}, #{remoteip}, #{result}, #{flag})
     </insert>
     <select id="GetLoginHistoryList" resultType="kr.huny.domain.member.LoginHistoryVO">
-        select * from loginHistory order by seq desc limit #{startPage}, #{perPageNum}
+        select * from loginHistory
+        <include refid="search"></include>
+        order by seq desc limit #{startPage}, #{perPageNum}
     </select>
     <select id="GetLoginHistoryListCount" resultType="java.lang.Integer">
         select count(seq) from loginHistory
+        <include refid="search"></include>
     </select>
+
+    <sql id="search">
+        <if test="schText != null">
+            where userid = #{schText}
+        </if>
+    </sql>
 </mapper>

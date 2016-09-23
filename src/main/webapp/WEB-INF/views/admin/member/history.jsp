@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
-                                    <div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="검색어를 넣어주세요" aria-controls="datatable" id="schText" name="schText" value="${pagingHelper.getExtendParameterValue("schText")}"><button type="submit" class="btn btn-default">검색</button></label>
+                                    <div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="검색어를 넣어주세요" aria-controls="datatable" id="schText" name="schText" value="${pagingHelper.pageInfo.schText}"><button type="submit" class="btn btn-default">검색</button></label>
                                     </div>
                                 </div>
                             </div>

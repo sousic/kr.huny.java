@@ -26,7 +26,7 @@ public class MemberController  extends baseController {
     {
         PagingHelper pagingHelper = new PagingHelper(RequestHelper.getCurrentRequest());
         pagingHelper.setPageInfo(pageInfo);
-        pagingHelper.setTotalCount(loginHistoryService.GetLoginHistoryListCount());
+        pagingHelper.setTotalCount(loginHistoryService.GetLoginHistoryListCount(pageInfo));
 
         model.addAttribute("list",loginHistoryService.GetLoginHistoryList(pageInfo));
         model.addAttribute("pagingHelper", pagingHelper);

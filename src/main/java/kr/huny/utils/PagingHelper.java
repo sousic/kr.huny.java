@@ -34,6 +34,11 @@ public class PagingHelper {
      */
     public PagingHelper(HttpServletRequest request, String... args) {
         this.request = request;
+        this.prev = false;
+        this.next = false;
+        this.totalCount = 0;
+        this.startPage = 0;
+        this.endPage = 0;
 
         extendParameters = new LinkedMultiValueMap<String, String>();
 
@@ -96,6 +101,7 @@ public class PagingHelper {
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
                 .queryParam("page", page)
                 .queryParam("perPageNum", pageInfo.getPerPageNum())
+                .queryParam("schText", pageInfo.getSchText())
                 .queryParams(this.extendParameters)
                 .build();
 
@@ -113,9 +119,15 @@ public class PagingHelper {
         sb.append(String.format("<li><a href=\"%s\">Prev</a></li>", strPrevUrl));
 
         //page button
-        for(int i = startPage; i <=endPage; i++)
+        if(startPage == 1 && endPage == 0)
         {
-            sb.append(String.format("<li %s><a href=\"%s\">%s</a></li>", (i == pageInfo.getPage() ? "class=\"active\"" : ""), makeQuery(request, i), i));
+            sb.append(String.format("<li %s><a href=\"%s\">%s</a></li>", "class=\"active\"", makeQuery(request, 1), 1));
+        }
+        else
+        {
+            for (int i = startPage; i <= endPage; i++) {
+                sb.append(String.format("<li %s><a href=\"%s\">%s</a></li>", (i == pageInfo.getPage() ? "class=\"active\"" : ""), makeQuery(request, i), i));
+            }
         }
 
         String strNextUrl = isNext() == false ? "#" : makeQuery(request, endPage+1);

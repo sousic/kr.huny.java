@@ -6,6 +6,7 @@ package kr.huny.domain;
 public class PageInfo {
     private int page;
     private int perPageNum;
+    private String schText;
 
     public PageInfo() {
         page = 1;
@@ -45,8 +46,20 @@ public class PageInfo {
         return perPageNum;
     }
 
+    public String getSchText() {
+        return schText;
+    }
+
+    public void setSchText(String schText) {
+        this.schText = schText;
+    }
+
     @Override
     public String toString() {
-        return "[PageInfo [page = " + this.page + ", perPageNum = " + this.perPageNum + "]";
+        return "PageInfo{" +
+                "page=" + page +
+                ", perPageNum=" + perPageNum +
+                ", schText='" + schText + '\'' +
+                '}';
     }
 }

@@ -28,7 +28,7 @@ public class LoginHistoryDAOImpl implements LoginHistoryDAO {
     }
 
     @Override
-    public int GetLoginHistoryListCount() {
-        return sqlSession.selectOne(namespace + ".GetLoginHistoryListCount");
+    public int GetLoginHistoryListCount(PageInfo pageInfo) {
+        return sqlSession.selectOne(namespace + ".GetLoginHistoryListCount", pageInfo);
     }
 }

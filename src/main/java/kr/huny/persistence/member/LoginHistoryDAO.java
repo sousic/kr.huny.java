@@ -13,5 +13,5 @@ public interface LoginHistoryDAO {
 
     public List<LoginHistoryVO> GetLoginHistoryList(PageInfo pageInfo);
 
-    public int GetLoginHistoryListCount();
+    public int GetLoginHistoryListCount(PageInfo pageInfo);
 }
