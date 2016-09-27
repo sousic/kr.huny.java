@@ -57,7 +57,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${list}" var="loginHistoryVO">
+                                    <%--<c:forEach items="${list}" var="loginHistoryVO">
                                         <tr>
                                             <td>${loginHistoryVO.seq}</td>
                                             <td>${loginHistoryVO.userid}</td>
@@ -66,7 +66,7 @@
                                             <td>${loginHistoryVO.result}</td>
                                             <td>${loginHistoryVO.flag}</td>
                                         </tr>
-                                    </c:forEach>
+                                    </c:forEach>--%>
                                     </tbody>
                                 </table>
                             </div>

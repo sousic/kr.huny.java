@@ -2,6 +2,8 @@ package kr.huny.controller.admin;
 
 import kr.huny.controller.common.baseController;
 import kr.huny.domain.PageInfo;
+import kr.huny.utils.PagingHelper;
+import kr.huny.utils.RequestHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,12 @@ public class BoardManager extends baseController {
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String list(Model model, PageInfo pageInfo)
     {
+        PagingHelper pagingHelper = new PagingHelper(RequestHelper.getCurrentRequest());
+        pagingHelper.setPageInfo(pageInfo);
+        pagingHelper.setTotalCount(0);
+
+        model.addAttribute("pagingHelper", pagingHelper);
+
         return "admin/board/manager/list";
     }
 

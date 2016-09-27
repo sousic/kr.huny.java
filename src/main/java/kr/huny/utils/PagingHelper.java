@@ -27,18 +27,27 @@ public class PagingHelper {
 
     private MultiValueMap<String, String> extendParameters;
 
+    public PagingHelper() {
+        this.prev = false;
+        this.next = false;
+        this.totalCount = 0;
+        this.startPage = 0;
+        this.endPage = 0;
+    }
+
     /**
      * 페이징 네비게이터 생성자
      * @param request - 스프링 mvc request
      * @param args - 추가 필요 querystring paramters 추가 ex) "test", "test" ...
      */
     public PagingHelper(HttpServletRequest request, String... args) {
+        this();
+
+        InitExtendParameters(request, args);
+    }
+
+    private void InitExtendParameters(HttpServletRequest request, String[] args) {
         this.request = request;
-        this.prev = false;
-        this.next = false;
-        this.totalCount = 0;
-        this.startPage = 0;
-        this.endPage = 0;
 
         extendParameters = new LinkedMultiValueMap<String, String>();
 
