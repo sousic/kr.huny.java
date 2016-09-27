@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
-  User: dhjang
+  User: sousic
   Date: 2016-09-19
   Time: 오후 3:34
   To change this template use File | Settings | File Templates.

@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: dhjang
+  User: sousic
   Date: 2016-09-09
   Time: 오후 5:24
   To change this template use File | Settings | File Templates.
@@ -33,10 +33,16 @@
             <h3>General</h3>
             <ul class="nav side-menu">
                 <!-- 메뉴 -->
-                <li><a><i class="fa fa-list"></i> Home <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-list"></i>Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="${adminPath}/member/list">회원목록</a></li>
                         <li><a href="${adminPath}/member/history">로그인기록</a></li>
+                    </ul>
+                </li>
+
+                <li><a><i class="fa fa-table"></i>게시판 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="${adminPath}/board/manager/list">게시판관리</a></li>
                     </ul>
                 </li>
                 <%--
