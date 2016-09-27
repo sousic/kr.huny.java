@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "${adminPath}/member")
 public class MemberController  extends baseController {
+    //@Autowired
+    //PagingHelper pagingHelper;
 
     @Autowired
     LoginHistoryService loginHistoryService;

@@ -1,6 +1,8 @@
 package kr.huny.utils;
 
 import kr.huny.domain.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by sousic on 2016-09-20.
  */
+@Component
 public class PagingHelper {
     private int totalCount;
     private int startPage;
@@ -44,6 +47,14 @@ public class PagingHelper {
         this();
 
         InitExtendParameters(request, args);
+    }
+
+    @Autowired
+    public PagingHelper(HttpServletRequest request)
+    {
+        this();
+
+        this.request = request;
     }
 
     private void InitExtendParameters(HttpServletRequest request, String[] args) {

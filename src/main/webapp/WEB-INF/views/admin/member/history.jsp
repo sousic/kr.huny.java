@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: sousic
@@ -65,6 +66,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <c:if test="${fn:length(list) == 0}">
+                                    <tr>
+                                        <td colspan="10" class="text-center">내용이 없습니다.</td>
+                                    </tr>
+                                </c:if>
+                                <c:if test="${fn:length(list) > 0}">
                                 <c:forEach items="${list}" var="loginHistoryVO">
                                     <tr>
                                         <td>${loginHistoryVO.seq}</td>
@@ -75,6 +82,7 @@
                                         <td>${loginHistoryVO.flag}</td>
                                     </tr>
                                 </c:forEach>
+                                </c:if>
                                 </tbody>
                             </table>
                             </div>

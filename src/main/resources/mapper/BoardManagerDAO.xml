@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kr.huny.persistence.board.BoardManagerDAO">
-    <select id="boardManagerListPage" resultType="kr.huny.domain.board.BoardManageVO">
-    <![CDATA[
-
-    ]]>
+    <select id="boardManagerList" resultType="kr.huny.domain.board.BoardManageVO">
+        select * From boardmanager
+        <include refid="search"></include>
+        order by seq desc limit #{startPage}, #{perPageNum}
     </select>
+    <select id="boardManagerListCount" resultType="java.lang.Integer">
+        select count(seq) from boardmanager
+        <include refid="search"></include>
+    </select>
+
+    <sql id="search">
+        <if test="schText != null and schText != '' ">
+            where title = #{schText}
+        </if>
+    </sql>
 </mapper>

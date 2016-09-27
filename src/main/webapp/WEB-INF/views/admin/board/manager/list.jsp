@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- page content -->
     <div class="">
         <div class="page-title">
@@ -48,29 +49,50 @@
                                 <table id="datatable" class="table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Seq</th>
-                                        <th>UserId</th>
-                                        <th>RemoteIP</th>
-                                        <th>date</th>
-                                        <th>Result</th>
-                                        <th>Flag</th>
+                                        <th>seq</th>
+                                        <th>title</th>
+                                        <th>description</th>
+                                        <th>totalArticle</th>
+                                        <th>createDate</th>
+                                        <th>modifyDate</th>
+                                        <th>displayType</th>
+                                        <th>isComment</th>
+                                        <th>writer</th>
+                                        <th>isArticleWriter</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <%--<c:forEach items="${list}" var="loginHistoryVO">
+                                    <c:if test="${fn:length(list) == 0}">
                                         <tr>
-                                            <td>${loginHistoryVO.seq}</td>
-                                            <td>${loginHistoryVO.userid}</td>
-                                            <td>${loginHistoryVO.remoteip}</td>
-                                            <td><fmt:formatDate value="${loginHistoryVO.date}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                                            <td>${loginHistoryVO.result}</td>
-                                            <td>${loginHistoryVO.flag}</td>
+                                            <td colspan="10" class="text-center">내용이 없습니다.</td>
                                         </tr>
-                                    </c:forEach>--%>
+                                    </c:if>
+                                    <c:if test="${fn:length(list) > 0}">
+                                    <c:forEach items="${list}" var="boardManageVO">
+                                        <tr>
+                                            <td>${boardManageVO.seq}</td>
+                                            <td>${boardManageVO.title}</td>
+                                            <td>${boardManageVO.description}</td>
+                                            <td>${boardManageVO.totalArticle}</td>
+                                            <td>${boardManageVO.createDate}</td>
+                                            <td><fmt:formatDate value="${boardManageVO.modifiyDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                                            <td><fmt:formatDate value="${boardManageVO.displayType}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                                            <td>${boardManageVO.isComment}</td>
+                                            <td>${boardManageVO.writer}</td>
+                                            <td>${boardManageVO.isArticleWriter}</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </c:if>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="text-right">
+                        <a href="${adminPath}/board/manager/create" class="btn btn-primary">등록</a>
                     </div>
                 </div>
             </div>
