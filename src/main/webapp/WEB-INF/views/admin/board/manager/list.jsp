@@ -57,6 +57,7 @@
                                         <th>modifyDate</th>
                                         <th>displayType</th>
                                         <th>isComment</th>
+                                        <td>listSize</td>
                                         <th>writer</th>
                                         <th>isArticleWriter</th>
                                     </tr>
@@ -64,7 +65,7 @@
                                     <tbody>
                                     <c:if test="${fn:length(list) == 0}">
                                         <tr>
-                                            <td colspan="10" class="text-center">내용이 없습니다.</td>
+                                            <td colspan="11" class="text-center">내용이 없습니다.</td>
                                         </tr>
                                     </c:if>
                                     <c:if test="${fn:length(list) > 0}">
@@ -74,10 +75,11 @@
                                             <td>${boardManageVO.title}</td>
                                             <td>${boardManageVO.description}</td>
                                             <td>${boardManageVO.totalArticle}</td>
-                                            <td>${boardManageVO.createDate}</td>
+                                            <td><fmt:formatDate value="${boardManageVO.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                                             <td><fmt:formatDate value="${boardManageVO.modifiyDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                                            <td><fmt:formatDate value="${boardManageVO.displayType}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                                            <td>${boardManageVO.displayType}</td>
                                             <td>${boardManageVO.isComment}</td>
+                                            <td>${boardManageVO.listSize}</td>
                                             <td>${boardManageVO.writer}</td>
                                             <td>${boardManageVO.isArticleWriter}</td>
                                         </tr>

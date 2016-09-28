@@ -60,6 +60,7 @@ CREATE TABLE `boardManager` (
   `modifyDate` datetime DEFAULT NULL,
   `displayType` tinyint(1) DEFAULT '1' COMMENT '1-목록,2-썸네일,3-블로그형',
   `isComment` tinyint(1) DEFAULT '1' COMMENT '1-사용, 0 - 미사용',
+	`listSize` INT(11) NULL DEFAULT '1',
   `writer` varchar(50) DEFAULT NULL COMMENT '게시판 생성자 정보',
   `isArticleWriter` tinyint(1) DEFAULT '1' COMMENT '1 - 게시물 작성 가능, 0 -게시물 작성 불가',
   PRIMARY KEY (`seq`)

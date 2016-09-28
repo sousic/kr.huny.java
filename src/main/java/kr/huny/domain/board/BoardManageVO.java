@@ -17,6 +17,7 @@ public class BoardManageVO {
     private Date modifiyDate;
     private short displayType;
     private boolean isComment;
+    private int listSize;
     private String writer;
     private boolean isArticleWriter;
 }

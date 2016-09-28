@@ -38,6 +38,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery.validate/1.11.1/jquery.validate.js" type="text/javascript"></script>
     <%--<script src="/resources/js/bootstrap/bootstrap.js"></script>--%>
     <!-- FastClick -->
     <script src="${pageContext.request.contextPath}/resources/js/fastclick.js"></script>
@@ -47,6 +48,8 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-wysiwyg.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/jquery.hotkeys.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/prettify.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/iCheck/icheck.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/autosize/autosize.js"></script>
 </head>
 
 <body class="nav-md">
