@@ -29,13 +29,13 @@
                     <div class="row">
                         <div class="x_content">
                             <br />
-                            <form id="sForm" data-parsley-validate class="form-horizontal form-label-left" method="post" action="/${adminPath}/board/manager/create">
+                            <form id="sForm" data-parsley-validate class="form-horizontal form-label-left" method="post" action="${adminPath}/board/manager/create">
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">제목 <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="title" name="title" required="required" class="form-control col-md-7 col-xs-12" value="">
+                                        <input type="text" id="title" name="title" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -107,8 +107,8 @@
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                        <button type="submit" class="btn btn-primary">Cancel</button>
-                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <a href="${adminPath}/board/manager/list" class="btn btn-primary">취소</a>
+                                        <button type="submit" class="btn btn-success">등록</button>
                                     </div>
                                 </div>
 
@@ -121,14 +121,5 @@
     </div>
 </div>
 <script>
-    $.validator.setDefaults({
-        submitHandler:function() {
-            alert("submit!!");
-            return false;
-        }
-    });
 
-    $(function(){
-        //$("#sForm").validate();
-    });
 </script>

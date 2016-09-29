@@ -106,7 +106,5 @@
     </div>
 <!-- /page content -->
 <script>
-    $(function(){
 
-    });
 </script>
