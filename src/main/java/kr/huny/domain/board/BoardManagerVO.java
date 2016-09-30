@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by sousic on 2016. 9. 8..
  */
 @Data
-public class BoardManageVO {
+public class BoardManagerVO {
     private int seq;
     private String title;
     private String description;
@@ -16,8 +16,8 @@ public class BoardManageVO {
     private Date createDate;
     private Date modifiyDate;
     private short displayType;
-    private boolean isComment;
+    private short isComment;
     private int listSize;
     private String writer;
-    private boolean isArticleWriter;
+    private short isArticleWriter;
 }

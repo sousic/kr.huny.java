@@ -1,8 +1,11 @@
 package kr.huny.controller.admin;
 
+import kr.huny.Exceptions.LogException;
 import kr.huny.controller.common.baseController;
 import kr.huny.domain.PageInfo;
+import kr.huny.domain.board.BoardManagerVO;
 import kr.huny.persistence.board.BoardManagerDAO;
+import kr.huny.utils.CookieHelper;
 import kr.huny.utils.PagingHelper;
 import kr.huny.utils.RequestHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +13,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Created by sousic on 2016-09-27.
  */
 @Controller
 @RequestMapping(value = "${adminPath}/board/manager")
-public class BoardManager extends baseController {
-    //@Autowired
-    //PagingHelper pagingHelper;
-
+public class BoardManagerController extends baseController {
     @Autowired
     BoardManagerDAO boardManagerDAO;
 
@@ -30,8 +31,11 @@ public class BoardManager extends baseController {
         pagingHelper.setPageInfo(pageInfo);
         pagingHelper.setTotalCount(boardManagerDAO.boardManagerListCount(pageInfo));
 
-        model.addAttribute("pagingHelper", pagingHelper);
         model.addAttribute("list", boardManagerDAO.boardManagerList(pageInfo));
+        model.addAttribute("pagingHelper", pagingHelper);
+
+        //logger.info(boardManagerDAO.boardManagerList(pageInfo).toString());
+        logger.info(pagingHelper.toString());
 
         return "admin/board/manager/list";
     }
@@ -40,6 +44,26 @@ public class BoardManager extends baseController {
     public String create(Model model)
     {
         return "admin/board/manager/create";
+    }
+
+    @RequestMapping(value = "create", method = RequestMethod.POST)
+    public String createOK(BoardManagerVO boardManagerVO, Model model, RedirectAttributes rttr)
+    {
+        try {
+            boardManagerVO.setWriter(CookieHelper.NickName(propertyHelper));
+            boardManagerDAO.insertBoardManager(boardManagerVO);
+
+            return "admin/board/manager/list";
+        }
+        catch (Exception ex)
+        {
+            new LogException(ex).printStackTrace();
+
+            rttr.addFlashAttribute("flag","error");
+            rttr.addFlashAttribute(boardManagerVO);
+
+            return "admin/board/manager/create";
+        }
     }
 
     @RequestMapping(value = "view", method = RequestMethod.GET)

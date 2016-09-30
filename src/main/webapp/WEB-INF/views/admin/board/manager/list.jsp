@@ -40,7 +40,9 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
-                                        <div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="검색어를 넣어주세요" aria-controls="datatable" id="schText" name="schText" value="${pagingHelper.pageInfo.schText}"><button type="submit" class="btn btn-default">검색</button></label>
+                                        <div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="검색어를 넣어주세요" aria-controls="datatable" id="schText" name="schText" value="${pagingHelper.pageInfo.schText}"><button type="submit" class="btn btn-default">검색</button>
+                                            <c:if test="${pagingHelper.pageInfo.schText ne null && pagingHelper.pageInfo.schText != ''}"><a href="<%=RequestHelper.getCurrentRequest().getRequestURI()%>" class="btn btn-primary">목록</a></c:if>
+                                        </label>
                                         </div>
                                     </div>
                                 </div>
@@ -60,28 +62,30 @@
                                         <td>listSize</td>
                                         <th>writer</th>
                                         <th>isArticleWriter</th>
+                                        <td>-</td>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <c:if test="${fn:length(list) == 0}">
                                         <tr>
-                                            <td colspan="11" class="text-center">내용이 없습니다.</td>
+                                            <td colspan="12" class="text-center">내용이 없습니다.</td>
                                         </tr>
                                     </c:if>
                                     <c:if test="${fn:length(list) > 0}">
-                                    <c:forEach items="${list}" var="boardManageVO">
+                                    <c:forEach items="${list}" var="boardManagerVO">
                                         <tr>
-                                            <td>${boardManageVO.seq}</td>
-                                            <td>${boardManageVO.title}</td>
-                                            <td>${boardManageVO.description}</td>
-                                            <td>${boardManageVO.totalArticle}</td>
-                                            <td><fmt:formatDate value="${boardManageVO.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                                            <td><fmt:formatDate value="${boardManageVO.modifiyDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                                            <td>${boardManageVO.displayType}</td>
-                                            <td>${boardManageVO.isComment}</td>
-                                            <td>${boardManageVO.listSize}</td>
-                                            <td>${boardManageVO.writer}</td>
-                                            <td>${boardManageVO.isArticleWriter}</td>
+                                            <td>${boardManagerVO.seq}</td>
+                                            <td>${boardManagerVO.title}</td>
+                                            <td>${boardManagerVO.description}</td>
+                                            <td>${boardManagerVO.totalArticle}</td>
+                                            <td><fmt:formatDate value="${boardManagerVO.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                                            <td><c:if test="${boardManagerVO.modifiyDate ne null || boardManagerVO.modifiyDate != ''}"> <fmt:formatDate value="${boardManagerVO.modifiyDate}" pattern="yyyy-MM-dd HH:mm:ss"/></c:if></td>
+                                            <td>${boardManagerVO.displayType}</td>
+                                            <td>${boardManagerVO.isComment}</td>
+                                            <td>${boardManagerVO.listSize}</td>
+                                            <td>${boardManagerVO.writer}</td>
+                                            <td>${boardManagerVO.isArticleWriter}</td>
+                                            <td><a href="${adminPath}/board/manager/modify?seq=${boardManagerVO.seq}" class="btn btn-danger btn-sm">수정</a></td>
                                         </tr>
                                     </c:forEach>
                                     </c:if>

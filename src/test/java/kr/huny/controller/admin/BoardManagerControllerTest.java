@@ -1,9 +1,6 @@
-package kr.huny.controller.Sign;
+package kr.huny.controller.admin;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import kr.huny.service.LoginHistoryService;
-import kr.huny.service.SignService;
-import org.junit.Assert;
+import kr.huny.persistence.board.BoardManagerDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,15 +15,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.hamcrest.core.Is.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Created by sousic on 2016-08-30.
+ * Created by sousic on 2016-09-30.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -34,16 +27,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
         "file:src/main/webapp/WEB-INF/spring/appServlet/beans-context.xml"
 })
+//@TestPropertySource(value = {"file:src/main/resources/config/config.properties"})
 @WebAppConfiguration
-public class SignControllerTest {
+public class BoardManagerControllerTest {
     @Mock
-    private SignService signService;
-    @Mock
-    private LoginHistoryService loginHistoryService;
-    @Mock
-    private SignInHelper signInHelper;
+    BoardManagerDAO boardManagerDAO;
     @InjectMocks
-    private SignController signController;
+    private BoardManagerController boardManagerController;
     @Autowired
     private WebApplicationContext webApplicationContext;
 
@@ -52,20 +42,27 @@ public class SignControllerTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(signController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(boardManagerController).build();
     }
 
     @Test
-    public void test_idChecker() throws Exception {
-        mockMvc.perform(get("/sign/checker?userid=tests")).andExpect(status().isOk());
-        String resultContent = mockMvc.perform(get("/sign/checker?userid=tests")).andReturn().getResponse().getContentAsString();
+    public void list() throws Exception {
+        mockMvc.perform(get("/a/board/manager/list")).andExpect(status().isOk());
+    }
 
-        Map<String, Object> result = new HashMap<String, Object>();
-        ObjectMapper objectMapper = new ObjectMapper();
-        result = objectMapper.readValue(resultContent, Map.class);
-        System.out.println(result.toString());
+    //@Test
+    public void create() throws Exception {
 
-        Assert.assertThat(1, is(result.get("resultCode")));
+    }
+
+    //@Test
+    public void createOK() throws Exception {
+
+    }
+
+    //@Test
+    public void modify() throws Exception {
+
     }
 
 }

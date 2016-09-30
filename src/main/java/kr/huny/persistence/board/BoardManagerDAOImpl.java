@@ -1,7 +1,7 @@
 package kr.huny.persistence.board;
 
 import kr.huny.domain.PageInfo;
-import kr.huny.domain.board.BoardManageVO;
+import kr.huny.domain.board.BoardManagerVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -20,12 +20,27 @@ public class BoardManagerDAOImpl implements BoardManagerDAO
     private final static String namespace = "kr.huny.persistence.board.BoardManagerDAO";
 
     @Override
-    public List<BoardManageVO> boardManagerList(PageInfo pageInfo) {
-        return sqlSession.selectList(namespace + ".boardManagerList");
+    public List<BoardManagerVO> boardManagerList(PageInfo pageInfo) {
+        return sqlSession.selectList(namespace + ".boardManagerList", pageInfo);
     }
 
     @Override
     public int boardManagerListCount(PageInfo pageInfo) {
-        return sqlSession.selectOne(namespace + ".boardManagerListCount");
+        return sqlSession.selectOne(namespace + ".boardManagerListCount", pageInfo);
+    }
+
+    @Override
+    public void insertBoardManager(BoardManagerVO boardManagerVO) {
+        sqlSession.insert(namespace + ".insertBoardManager", boardManagerVO);
+    }
+
+    @Override
+    public BoardManagerVO readBoardManager(int seq) {
+        return sqlSession.selectOne(namespace + ".readBoardManager", seq);
+    }
+
+    @Override
+    public void updateBoardManager(BoardManagerVO boardManagerVO) {
+        sqlSession.update(namespace + ".updateBoardManager", boardManagerVO);
     }
 }

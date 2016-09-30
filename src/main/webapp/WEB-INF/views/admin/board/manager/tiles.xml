@@ -11,10 +11,6 @@
         <put-attribute name="content" value="/WEB-INF/views/admin/board/manager/create.jsp"/>
     </definition>
 
-    <definition name="admin/board/manager/view" extends="admin_layout">
-        <put-attribute name="content" value="/WEB-INF/views/admin/board/manager/view.jsp"/>
-    </definition>
-
     <definition name="admin/board/manager/modify" extends="admin_layout">
         <put-attribute name="content" value="/WEB-INF/views/admin/board/manager/modify.jsp"/>
     </definition>

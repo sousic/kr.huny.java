@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kr.huny.persistence.board.BoardManagerDAO">
-    <select id="boardManagerList" resultType="kr.huny.domain.board.BoardManageVO">
+    <insert id="insertBoardManager">
+        insert into boardmanager(title, description, displayType, isComment, listSize, writer)
+        values(#{title}, #{description}, #{displayType}, #{isComment}, #{listSize}, #{writer})
+    </insert>
+    <update id="updateBoardManager">
+        update boardmanager set title = #{title}, description = #{description}, isComment = #{isComment}, listSize = #{listSize}, modifyDate = current_timestamp, isArticleWriter = #{isArticleWriter}
+        where seq = #{seq}
+    </update>
+    <select id="boardManagerList" resultType="kr.huny.domain.board.BoardManagerVO">
         select * From boardmanager
         <include refid="search"></include>
         order by seq desc limit #{startPage}, #{perPageNum}
@@ -9,6 +17,9 @@
     <select id="boardManagerListCount" resultType="java.lang.Integer">
         select count(seq) from boardmanager
         <include refid="search"></include>
+    </select>
+    <select id="readBoardManager" resultType="kr.huny.domain.board.BoardManagerVO">
+        select * From boardmanager where seq = #{seq}
     </select>
 
     <sql id="search">
