@@ -28,12 +28,12 @@ public class LoginHistoryServiceImpl implements LoginHistoryService {
     }
 
     @Override
-    public List<LoginHistoryVO> GetLoginHistoryList(PageInfo pageInfo) {
+    public List<LoginHistoryVO> GetLoginHistoryList(PageInfo pageInfo) throws Exception {
         return loginHistoryDAO.GetLoginHistoryList(pageInfo);
     }
 
     @Override
-    public int GetLoginHistoryListCount(PageInfo pageInfo) {
+    public int GetLoginHistoryListCount(PageInfo pageInfo) throws Exception {
         return loginHistoryDAO.GetLoginHistoryListCount(pageInfo);
     }
 }

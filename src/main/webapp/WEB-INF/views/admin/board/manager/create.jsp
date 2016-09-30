@@ -97,6 +97,21 @@
                                         <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
                                     </div>
                                 </div>--%>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">글작성제한</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" class="flat" name="isArticleWriter" id="isArticleWriter1" value="1"  <c:if test="${1 == boardManagerVO.isArticleWriter}">checked=""</c:if> required/> 가능
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" class="flat" name="isArticleWriter" id="isArticleWriter0" value="0" <c:if test="${0 == boardManagerVO.isArticleWriter}">checked=""</c:if>/> 불가능
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

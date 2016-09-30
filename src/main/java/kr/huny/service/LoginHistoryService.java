@@ -11,7 +11,7 @@ import java.util.List;
 public interface LoginHistoryService {
     public void InsertLoginHistory(LoginHistoryVO loginHistoryVO) throws Exception;
 
-    public List<LoginHistoryVO> GetLoginHistoryList(PageInfo pageInfo);
+    public List<LoginHistoryVO> GetLoginHistoryList(PageInfo pageInfo) throws Exception;
 
-    public int GetLoginHistoryListCount(PageInfo pageInfo);
+    public int GetLoginHistoryListCount(PageInfo pageInfo) throws Exception;
 }

@@ -29,9 +29,14 @@ public class BoardManagerController extends baseController {
     {
         PagingHelper pagingHelper = new PagingHelper(RequestHelper.getCurrentRequest());
         pagingHelper.setPageInfo(pageInfo);
-        pagingHelper.setTotalCount(boardManagerDAO.boardManagerListCount(pageInfo));
-
-        model.addAttribute("list", boardManagerDAO.boardManagerList(pageInfo));
+        try {
+            pagingHelper.setTotalCount(boardManagerDAO.boardManagerListCount(pageInfo));
+            model.addAttribute("list", boardManagerDAO.boardManagerList(pageInfo));
+        }
+        catch (Exception ex)
+        {
+            new LogException(ex).printStackTrace();
+        }
         model.addAttribute("pagingHelper", pagingHelper);
 
         //logger.info(boardManagerDAO.boardManagerList(pageInfo).toString());
@@ -66,15 +71,44 @@ public class BoardManagerController extends baseController {
         }
     }
 
-    @RequestMapping(value = "view", method = RequestMethod.GET)
-    public String view(Model model)
+    @RequestMapping(value = "modify", method = RequestMethod.GET)
+    public String modify(int seq, Model model)
     {
-        return "admin/baord/manager/view";
+        BoardManagerVO boardManagerVO = null;
+
+        try {
+            boardManagerVO = boardManagerDAO.readBoardManager(seq);
+
+            if (boardManagerVO == null) {
+                return "admin/board/manager/list";
+            }
+        }
+        catch (Exception ex)
+        {
+            new LogException(ex).printStackTrace();
+        }
+
+        model.addAttribute(boardManagerVO);
+
+        return "admin/board/manager/modify";
     }
 
-    @RequestMapping(value = "modify", method = RequestMethod.GET)
-    public String modify(Model model)
+    @RequestMapping(value = "modify", method = RequestMethod.POST)
+    public String modifyOK(BoardManagerVO boardManagerVO, Model model, RedirectAttributes rttr)
     {
+        try {
+            if(boardManagerVO != null) {
+                boardManagerDAO.updateBoardManager(boardManagerVO);
+            }
+            return "admin/board/manager/list";
+        }
+        catch (Exception ex)
+        {
+            new LogException(ex).printStackTrace();
+
+            rttr.addFlashAttribute("flag","error");
+        }
+        rttr.addFlashAttribute(boardManagerVO);
         return "admin/board/manager/modify";
     }
 }

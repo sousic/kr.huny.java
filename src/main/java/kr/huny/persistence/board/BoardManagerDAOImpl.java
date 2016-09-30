@@ -20,27 +20,27 @@ public class BoardManagerDAOImpl implements BoardManagerDAO
     private final static String namespace = "kr.huny.persistence.board.BoardManagerDAO";
 
     @Override
-    public List<BoardManagerVO> boardManagerList(PageInfo pageInfo) {
+    public List<BoardManagerVO> boardManagerList(PageInfo pageInfo) throws Exception {
         return sqlSession.selectList(namespace + ".boardManagerList", pageInfo);
     }
 
     @Override
-    public int boardManagerListCount(PageInfo pageInfo) {
+    public int boardManagerListCount(PageInfo pageInfo) throws Exception {
         return sqlSession.selectOne(namespace + ".boardManagerListCount", pageInfo);
     }
 
     @Override
-    public void insertBoardManager(BoardManagerVO boardManagerVO) {
+    public void insertBoardManager(BoardManagerVO boardManagerVO) throws Exception {
         sqlSession.insert(namespace + ".insertBoardManager", boardManagerVO);
     }
 
     @Override
-    public BoardManagerVO readBoardManager(int seq) {
+    public BoardManagerVO readBoardManager(int seq) throws Exception {
         return sqlSession.selectOne(namespace + ".readBoardManager", seq);
     }
 
     @Override
-    public void updateBoardManager(BoardManagerVO boardManagerVO) {
+    public void updateBoardManager(BoardManagerVO boardManagerVO) throws Exception {
         sqlSession.update(namespace + ".updateBoardManager", boardManagerVO);
     }
 }
