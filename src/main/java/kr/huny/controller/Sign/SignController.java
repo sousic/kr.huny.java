@@ -40,9 +40,6 @@ public class SignController extends baseController {
     @Inject
     private SignInHelper signInHelper;
 
-    @Autowired
-    private LoginHistoryVO loginHistoryVO;
-
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public String login(Model model)
     {
@@ -73,7 +70,7 @@ public class SignController extends baseController {
             if (membersVO.getPwdfailcnt() >= propertyHelper.getLoginFailLimitCount()) {
                 signService.SetIsLoginBlock(membersVO.getSeq(), 1);
             }
-
+            LoginHistoryVO loginHistoryVO = new LoginHistoryVO();
             loginHistoryVO.setUserid(loginDTO.getUserid());
             loginHistoryVO.setRemoteip(RequestHelper.remoteIP(request));
             loginHistoryVO.setFlag((short) 1);
