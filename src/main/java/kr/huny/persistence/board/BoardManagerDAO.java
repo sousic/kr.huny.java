@@ -15,4 +15,6 @@ public interface BoardManagerDAO {
     public void insertBoardManager(BoardManagerVO boardManagerVO) throws Exception;
     public BoardManagerVO readBoardManager(int seq) throws Exception;
     public void updateBoardManager(BoardManagerVO boardManagerVO) throws Exception;
+
+    public String GetBoardIdToTitle(long bm_seq) throws Exception;
 }

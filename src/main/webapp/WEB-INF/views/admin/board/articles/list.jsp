@@ -7,7 +7,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>게시판 관리 <small>게시판 목록</small></h3>
+                <h3>${boardTitle} 관리 <small>게시물 목록</small></h3>
             </div>
         </div>
 
@@ -17,7 +17,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>게시판 목록<small></small></h2>
+                        <h2>${boardTitle} 목록<small></small></h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -75,7 +75,7 @@
                                     <c:forEach items="${list}" var="boardManagerVO">
                                         <tr>
                                             <td>${boardManagerVO.seq}</td>
-                                            <td><a href="${adminPath}/board/article/${boardManagerVO.seq}/list">${boardManagerVO.title}</a></td>
+                                            <td>${boardManagerVO.title}</td>
                                             <td>${boardManagerVO.description}</td>
                                             <td>${boardManagerVO.totalArticle}</td>
                                             <td><fmt:formatDate value="${boardManagerVO.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>

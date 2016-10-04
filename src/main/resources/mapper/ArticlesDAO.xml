@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.huny.persistence.board.ArticlesDAO">
+    <insert id="articleCreate">
+        insert into articles(bm_seq, title, contents, writer, isNotice, isComment)
+        VALUES (#{bm_seq}, #{title}, #{contents}, #{writer}, #{createdate}, #{isNotice}, #{isComment})
+    </insert>
+    <update id="articleModify">
+        update articles
+          set title = #{title}, contents = #{contents}, isNotice = #{isNotice}, isComment = #{isComment}
+          ,modifyDate = current_timestamp
+        where
+          seq = #{seq} and bm_seq = #{bm_seq}
+    </update>
+    <update id="articleDelete">
+        update articles set deletedate = current_timestamp, isDelete = 1
+        where
+        seq = #{seq} and bm_seq = #{bm_seq}
+    </update>
+    <select id="articlesListCount" resultType="java.lang.Integer">
+        select count(seq) from articles
+        where isNotice = 0 and isDelete = 0
+        <include refid="search"/>
+    </select>
+    <select id="articlesList" resultType="kr.huny.domain.board.ArticlesVO">
+        select * from articles
+        where isNotice = 0 and isDelete = 0
+        <include refid="search"/>
+    </select>
+
+    <sql id="search">
+        <if test="schText != null and schText != '' ">
+            and title = #{schText}
+        </if>
+    </sql>
+</mapper>

@@ -65,3 +65,26 @@ CREATE TABLE `boardManager` (
   `isArticleWriter` tinyint(1) DEFAULT '1' COMMENT '1 - 게시물 작성 가능, 0 -게시물 작성 불가',
   PRIMARY KEY (`seq`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--게시물 관리
+CREATE TABLE `articles` (
+	`seq` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`bm_seq` BIGINT(20) NOT NULL COMMENT '게시판 seq',
+	`title` VARCHAR(200) NULL DEFAULT NULL,
+	`contents` TEXT NULL,
+	`writer` VARCHAR(50) NULL DEFAULT NULL,
+	`createdate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+	`modifydate` DATETIME NULL DEFAULT NULL,
+	`deletedate` DATETIME NULL DEFAULT NULL,
+	`isNotice` BIT(1) NOT NULL DEFAULT b'0' COMMENT '0-일반,1-공지',
+	`isComment` BIT(1) NOT NULL DEFAULT b'0' COMMENT '0-댓글허용,1-댓글불가(게시물당선택가능)',
+	`isDelete` BIT(1) NOT NULL DEFAULT b'0' COMMENT '0-미삭제,1-삭제',
+	PRIMARY KEY (`seq`),
+	UNIQUE INDEX `seq_bm_seq_isNotice_isComment_isDelete` (`seq`, `bm_seq`, `isNotice`, `isDelete`)
+)
+ENGINE=InnoDB
+;
+
+
+
+

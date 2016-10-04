@@ -43,4 +43,9 @@ public class BoardManagerDAOImpl implements BoardManagerDAO
     public void updateBoardManager(BoardManagerVO boardManagerVO) throws Exception {
         sqlSession.update(namespace + ".updateBoardManager", boardManagerVO);
     }
+
+    @Override
+    public String GetBoardIdToTitle(long bm_seq) throws Exception {
+        return sqlSession.selectOne(namespace + ".GetBoardIdToTitle", bm_seq);
+    }
 }
