@@ -23,8 +23,8 @@
                     <div class="row">
                         <div class="x_content">
                             <br />
-                            <form id="sForm" data-parsley-validate class="form-horizontal form-label-left" method="post" action="${adminPath}/board/articles/${bm_seq}/create" onsubmit="return ChkFrm();">
-
+                            <form id="sForm" data-parsley-validate class="form-horizontal form-label-left" method="post" action="${adminPath}/board/articles/create" onsubmit="return ChkFrm();">
+                                <input type="hidden" id="bm_seq" name="bm_seq" value="${bm_seq}"/>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">제목 <span class="required">*</span>
                                     </label>

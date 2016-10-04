@@ -79,7 +79,7 @@
                                             <td><c:if test="${articlesVO.modifydate ne null || articlesVO.modifydate != ''}"> <fmt:formatDate value="${articlesVO.modifydate}" pattern="yyyy-MM-dd HH:mm:ss"/></c:if></td>
                                             <td></td>
                                             <td></td>
-                                            <td><a href="${adminPath}/board/articles/${bm_seq}/modify?seq=${articlesVO.seq}" class="btn btn-danger btn-sm">수정</a></td>
+                                            <td><a href="${adminPath}/board/articlesmodify?seq=${articlesVO.seq}&bm_seq=${bm_seq}" class="btn btn-danger btn-sm">수정</a></td>
                                         </tr>
                                     </c:forEach>
                                     </c:if>
@@ -92,7 +92,7 @@
                     <div class="clearfix"></div>
 
                     <div class="text-right">
-                        <a href="${adminPath}/board/articles/${bm_seq}/create" class="btn btn-primary">등록</a>
+                        <a href="${adminPath}/board/articles/create?bm_seq=${bm_seq}" class="btn btn-primary">등록</a>
                     </div>
                 </div>
             </div>

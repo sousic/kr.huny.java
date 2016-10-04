@@ -75,7 +75,7 @@
                                     <c:forEach items="${list}" var="boardManagerVO">
                                         <tr>
                                             <td>${boardManagerVO.seq}</td>
-                                            <td><a href="${adminPath}/board/articles/${boardManagerVO.seq}/list">${boardManagerVO.title}</a></td>
+                                            <td><a href="${adminPath}/board/articles/list?bm_seq=${boardManagerVO.seq}">${boardManagerVO.title}</a></td>
                                             <td>${boardManagerVO.description}</td>
                                             <td>${boardManagerVO.totalArticle}</td>
                                             <td><fmt:formatDate value="${boardManagerVO.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>

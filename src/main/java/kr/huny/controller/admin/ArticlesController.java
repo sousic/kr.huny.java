@@ -11,9 +11,10 @@ import kr.huny.utils.RequestHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -21,7 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
  * Created by sousic on 2016-10-04.
  */
 @Controller
-@RequestMapping(value = "${adminPath}/board/articles/{bm_seq}")
+@RequestMapping(value = "${adminPath}/board/articles")
 public class ArticlesController extends baseController {
 
     @Autowired
@@ -30,10 +31,10 @@ public class ArticlesController extends baseController {
     private ArticlesDAO articlesDAO;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public String list(@PathVariable("bm_seq") long bm_seq, Model model, PageInfo pageInfo)
+    public String list(@RequestParam("bm_seq") long bm_seq, Model model, PageInfo pageInfo)
     {
         String boardTitle = null;
-        PagingHelper pagingHelper = new PagingHelper(RequestHelper.getCurrentRequest());
+        PagingHelper pagingHelper = new PagingHelper(RequestHelper.getCurrentRequest(), "bm_seq");
         pagingHelper.setPageInfo(pageInfo);
 
         model.addAttribute("bm_seq", bm_seq);
@@ -59,7 +60,7 @@ public class ArticlesController extends baseController {
     }
 
     @RequestMapping(value = "create", method = RequestMethod.GET)
-    public String create(@PathVariable("bm_seq") long bm_seq, Model model)
+    public String create(@RequestParam("bm_seq") long bm_seq, Model model)
     {
         String boardTitle = null;
         model.addAttribute("bm_seq", bm_seq);
@@ -73,24 +74,27 @@ public class ArticlesController extends baseController {
         catch (Exception ex)
         {
             new LogException(ex).printStackTrace();
-            return "admin/board/manager/list";
+            return "admin/board/manager/list?bm_seq="+bm_seq;
         }
 
         return "admin/board/articles/create";
     }
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public String createOK(@PathVariable("bm_seq") long bm_seq, ArticlesVO articlesVO, Model model, RedirectAttributes rttr)
+    public ModelAndView createOK(ArticlesVO articlesVO, Model model, RedirectAttributes rttr)
     {
-        model.addAttribute("bm_seq", bm_seq);
+        model.addAttribute("bm_seq", articlesVO.getBm_seq());
 
         RedirectView rv = null;
 
         try {
-            articlesVO.setBm_seq(bm_seq);
+            articlesVO.setBm_seq(articlesVO.getBm_seq());
             articlesDAO.articleCreate(articlesVO);
+            rv = new RedirectView("/" + adminPath +"/board/articles/list?bm_seq="+articlesVO.getBm_seq());
+            rv.setExposeModelAttributes(false);
 
-            return "redirect:/" + adminPath + "/board/articles/" + bm_seq + "/list";
+
+            return new ModelAndView(rv);
         }
         catch (Exception ex)
         {
@@ -99,7 +103,7 @@ public class ArticlesController extends baseController {
             rttr.addFlashAttribute("flag","error");
             rttr.addFlashAttribute(articlesVO);
 
-            return "redirect:/" + adminPath + "/board/articles/" + bm_seq + "/create";
+            return new ModelAndView("admin/board/articles/create");
         }
     }
 }
