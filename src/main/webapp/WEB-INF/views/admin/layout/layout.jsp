@@ -32,6 +32,7 @@
     <!-- Custom styling plus plugins -->
     <link href="${pageContext.request.contextPath}/resources/css/custom.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/summernote/summernote.css" rel="stylesheet"/>
 
     <!-- jQuery -->
     <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--%>
@@ -52,6 +53,8 @@
     <script src="${pageContext.request.contextPath}/resources/js/autosize/autosize.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/parsleyjs/parsley.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/parsleyjs/i18n/ko.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/summernote/summernote.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/summernote/lang/summernote-ko-KR.js"></script>
 </head>
 
 <body class="nav-md">

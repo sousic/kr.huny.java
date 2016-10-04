@@ -31,7 +31,8 @@ public class ArticlesDAOImpl implements ArticlesDAO {
 
     @Override
     public void articleCreate(ArticlesVO articlesVO) throws Exception {
-        sqlSession.insert(namespace + ".articleCreate", articlesVO);
+        throw new Exception();
+        //sqlSession.insert(namespace + ".articleCreate", articlesVO);
     }
 
     @Override

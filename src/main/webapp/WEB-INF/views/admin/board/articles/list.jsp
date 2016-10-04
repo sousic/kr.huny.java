@@ -51,41 +51,35 @@
                                 <table id="datatable" class="table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>seq</th>
-                                        <th>title</th>
-                                        <th>description</th>
-                                        <th>totalArticle</th>
-                                        <th>createDate</th>
-                                        <th>modifyDate</th>
-                                        <th>displayType</th>
-                                        <th>isComment</th>
-                                        <td>listSize</td>
-                                        <th>writer</th>
-                                        <th>isArticleWriter</th>
+                                        <th>글번호</th>
+                                        <th>게시판번호</th>
+                                        <th>제목</th>
+                                        <th>등록자</th>
+                                        <th>등록일</th>
+                                        <th>최종수정일</th>
+                                        <th>공지유무</th>
+                                        <th>댓글허용</th>
                                         <td>-</td>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <c:if test="${fn:length(list) == 0}">
                                         <tr>
-                                            <td colspan="12" class="text-center">내용이 없습니다.</td>
+                                            <td colspan="9" class="text-center">내용이 없습니다.</td>
                                         </tr>
                                     </c:if>
                                     <c:if test="${fn:length(list) > 0}">
-                                    <c:forEach items="${list}" var="boardManagerVO">
+                                    <c:forEach items="${list}" var="articlesVO">
                                         <tr>
-                                            <td>${boardManagerVO.seq}</td>
-                                            <td>${boardManagerVO.title}</td>
-                                            <td>${boardManagerVO.description}</td>
-                                            <td>${boardManagerVO.totalArticle}</td>
-                                            <td><fmt:formatDate value="${boardManagerVO.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                                            <td><c:if test="${boardManagerVO.modifiyDate ne null || boardManagerVO.modifiyDate != ''}"> <fmt:formatDate value="${boardManagerVO.modifiyDate}" pattern="yyyy-MM-dd HH:mm:ss"/></c:if></td>
-                                            <td>${boardManagerVO.displayType}</td>
-                                            <td>${boardManagerVO.isComment}</td>
-                                            <td>${boardManagerVO.listSize}</td>
-                                            <td>${boardManagerVO.writer}</td>
-                                            <td>${boardManagerVO.isArticleWriter}</td>
-                                            <td><a href="${adminPath}/board/manager/modify?seq=${boardManagerVO.seq}" class="btn btn-danger btn-sm">수정</a></td>
+                                            <td>${articlesVO.seq}</td>
+                                            <td>${articlesVO.bm_seq}</td>
+                                            <td>${articlesVO.title}</td>
+                                            <td>${articlesVO.writer}</td>
+                                            <td><fmt:formatDate value="${articlesVO.createdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                                            <td><c:if test="${articlesVO.modifydate ne null || articlesVO.modifydate != ''}"> <fmt:formatDate value="${articlesVO.modifydate}" pattern="yyyy-MM-dd HH:mm:ss"/></c:if></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><a href="${adminPath}/board/articles/${bm_seq}/modify?seq=${articlesVO.seq}" class="btn btn-danger btn-sm">수정</a></td>
                                         </tr>
                                     </c:forEach>
                                     </c:if>
@@ -98,7 +92,7 @@
                     <div class="clearfix"></div>
 
                     <div class="text-right">
-                        <a href="${adminPath}/board/manager/create" class="btn btn-primary">등록</a>
+                        <a href="${adminPath}/board/articles/${bm_seq}/create" class="btn btn-primary">등록</a>
                     </div>
                 </div>
             </div>
