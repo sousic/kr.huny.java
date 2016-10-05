@@ -246,5 +246,6 @@
     });
 </script>>
 <!-- /compose -->
+<tiles:insertAttribute name="footerScript" ignore="true"/>
 </body>
 </html>

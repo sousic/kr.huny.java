@@ -5,17 +5,21 @@
 <tiles-definitions>
     <definition name="admin/board/articles/list" extends="admin_layout">
         <put-attribute name="content" value="/WEB-INF/views/admin/board/articles/list.jsp"/>
+        <put-attribute name="footerScript" value="/WEB-INF/views/admin/board/articles/script_footer.jsp"/>
     </definition>
 
     <definition name="admin/board/articles/create" extends="admin_layout">
         <put-attribute name="content" value="/WEB-INF/views/admin/board/articles/create.jsp"/>
+        <put-attribute name="footerScript" value="/WEB-INF/views/admin/board/articles/script_footer.jsp"/>
     </definition>
 
     <definition name="admin/board/articles/modify" extends="admin_layout">
         <put-attribute name="content" value="/WEB-INF/views/admin/board/articles/modify.jsp"/>
+        <put-attribute name="footerScript" value="/WEB-INF/views/admin/board/articles/script_footer.jsp"/>
     </definition>
 
     <definition name="admin/board/articles/read" extends="admin_layout">
         <put-attribute name="content" value="/WEB-INF/views/admin/board/articles/read.jsp"/>
+        <put-attribute name="footerScript" value="/WEB-INF/views/admin/board/articles/script_footer.jsp"/>
     </definition>
 </tiles-definitions>
