@@ -57,7 +57,7 @@
                                         <th>등록자</th>
                                         <th>등록일</th>
                                         <th>최종수정일</th>
-                                        <th>공지유무</th>
+                                        <%--<th>공지유무</th>--%>
                                         <th>댓글허용</th>
                                         <td>-</td>
                                     </tr>
@@ -65,7 +65,7 @@
                                     <tbody>
                                     <c:if test="${fn:length(list) == 0}">
                                         <tr>
-                                            <td colspan="9" class="text-center">내용이 없습니다.</td>
+                                            <td colspan="8" class="text-center">내용이 없습니다.</td>
                                         </tr>
                                     </c:if>
                                     <c:if test="${fn:length(list) > 0}">
@@ -73,16 +73,16 @@
                                         <tr>
                                             <td>${articlesVO.seq}</td>
                                             <td>${articlesVO.bm_seq}</td>
-                                            <td><a href="${adminPath}/board/articles/view?bm_seq=${bm_seq}&seq=${articlesVO.seq}">${articlesVO.title}</a></td>
+                                            <td><c:if test="${true == articlesVO.isNotice}">[공지]</c:if><a href="${adminPath}/board/articles/view?bm_seq=${bm_seq}&seq=${articlesVO.seq}">${articlesVO.title}</a></td>
                                             <td>${articlesVO.writer}</td>
                                             <td><fmt:formatDate value="${articlesVO.createdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                                             <td><c:if test="${articlesVO.modifydate ne null || articlesVO.modifydate != ''}"> <fmt:formatDate value="${articlesVO.modifydate}" pattern="yyyy-MM-dd HH:mm:ss"/></c:if></td>
-                                            <td>
+                                            <%--<td>
                                                 <c:choose>
                                                     <c:when test="${false == articlesVO.isNotice}">일반</c:when>
                                                     <c:when test="${true == articlesVO.isNotice}">공지</c:when>
                                                 </c:choose>
-                                            </td>
+                                            </td>--%>
                                             <td>
                                                 <c:choose>
                                                     <c:when test="${false == articlesVO.isComment}">가능</c:when>

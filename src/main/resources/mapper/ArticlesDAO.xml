@@ -33,6 +33,10 @@
         where isDelete = 0
         and seq = #{seq} and bm_seq = #{bm_seq}
     </select>
+    <select id="articlesListNotice" resultType="kr.huny.domain.board.ArticlesVO">
+        select * from articles where isNotice = 1 and isDelete = 0
+        order by seq desc
+    </select>
 
     <sql id="search">
         <if test="schText != null and schText != '' ">

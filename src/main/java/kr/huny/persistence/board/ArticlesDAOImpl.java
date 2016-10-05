@@ -48,4 +48,9 @@ public class ArticlesDAOImpl implements ArticlesDAO {
     public ArticlesVO articleView(ArticlesVO articlesVO) {
         return sqlSession.selectOne(namespace + ".articleView", articlesVO);
     }
+
+    @Override
+    public List<ArticlesVO> articlesListNotice() {
+        return sqlSession.selectList(namespace + ".articlesListNotice");
+    }
 }

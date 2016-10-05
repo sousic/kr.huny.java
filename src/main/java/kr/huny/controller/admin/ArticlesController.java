@@ -6,6 +6,7 @@ import kr.huny.domain.PageInfo;
 import kr.huny.domain.board.ArticlesVO;
 import kr.huny.persistence.board.ArticlesDAO;
 import kr.huny.persistence.board.BoardManagerDAO;
+import kr.huny.utils.CookieHelper;
 import kr.huny.utils.PagingHelper;
 import kr.huny.utils.RequestHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sousic on 2016-10-04.
@@ -43,7 +47,11 @@ public class ArticlesController extends baseController {
             boardTitle = boardManagerDAO.GetBoardIdToTitle(bm_seq);
             pagingHelper.setTotalCount(articlesDAO.articlesListCount(pageInfo));
             //목록조회
-            model.addAttribute("list", articlesDAO.articlesList(pageInfo));
+            List<ArticlesVO> newList = new ArrayList<ArticlesVO>();
+            newList.addAll(articlesDAO.articlesListNotice());
+            newList.addAll(articlesDAO.articlesList(pageInfo));
+
+            model.addAttribute("list", newList);
 
             model.addAttribute("boardTitle", boardTitle);
         }
@@ -86,6 +94,7 @@ public class ArticlesController extends baseController {
 
         try {
             articlesVO.setBm_seq(articlesVO.getBm_seq());
+            articlesVO.setWriter(CookieHelper.NickName(propertyHelper));
             articlesDAO.articleCreate(articlesVO);
 
             return "redirect:/" + adminPath +"/board/articles/list?bm_seq="+articlesVO.getBm_seq();
