@@ -14,9 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 /**
  * Created by sousic on 2016-10-04.
@@ -81,29 +79,22 @@ public class ArticlesController extends baseController {
     }
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public ModelAndView createOK(ArticlesVO articlesVO, Model model, RedirectAttributes rttr)
+    public String createOK(ArticlesVO articlesVO, Model model, RedirectAttributes rttr)
     {
         model.addAttribute("bm_seq", articlesVO.getBm_seq());
-
-        RedirectView rv = null;
 
         try {
             articlesVO.setBm_seq(articlesVO.getBm_seq());
             articlesDAO.articleCreate(articlesVO);
-            rv = new RedirectView("/" + adminPath +"/board/articles/list?bm_seq="+articlesVO.getBm_seq());
-            rv.setExposeModelAttributes(false);
-
-
-            return new ModelAndView(rv);
+            return "redirect:/" + adminPath +"/board/articles/list?bm_seq="+articlesVO.getBm_seq();
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             new LogException(ex).printStackTrace();
 
-            rttr.addFlashAttribute("flag","error");
+            rttr.addFlashAttribute("flag", "error");
             rttr.addFlashAttribute(articlesVO);
 
-            return new ModelAndView("admin/board/articles/create");
+            return "redirect:/" + adminPath + "/board/articles/create";
         }
     }
 }

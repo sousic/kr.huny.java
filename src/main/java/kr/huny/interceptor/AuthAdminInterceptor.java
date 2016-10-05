@@ -1,7 +1,6 @@
 package kr.huny.interceptor;
 
 import kr.huny.dto.SessionAdminDTO;
-import kr.huny.dto.SessionDTO;
 import kr.huny.utils.CookieHelper;
 import kr.huny.utils.PropertyHelper;
 import org.slf4j.Logger;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by sousic on 2016-09-13.
@@ -47,10 +45,12 @@ public class AuthAdminInterceptor extends HandlerInterceptorAdapter {
 
             //관리자 페이지의 모델 정보가 있을시 관리자 페이지 경로가 커스텀이라서 모델에 추가해 준다
             //닉네임도 같이 넣어줌
-            if (modelMap != null) {
-                modelMap.addAttribute("nickname", CookieHelper.NickName(propertyHelper));
-                modelMap.addAttribute("adminPath", String.format("/%s", propertyHelper.getAdminPath()));
-            }
+            //if (modelMap != null) {
+                //modelMap.addAttribute("nickname", CookieHelper.NickName(propertyHelper));
+                //modelMap.addAttribute("adminPath", String.format("/%s", propertyHelper.getAdminPath()));
+            //}
+            request.setAttribute("nickname", CookieHelper.NickName(propertyHelper));
+            request.setAttribute("adminPath", String.format("/%s", propertyHelper.getAdminPath()));
         }
     }
 }
