@@ -13,7 +13,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>${boardTitle} 등록<small></small></h2>
+                    <h2>${boardTitle} 보기<small></small></h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -23,57 +23,46 @@
                     <div class="row">
                         <div class="x_content">
                             <br />
-                            <form id="sForm" data-parsley-validate class="form-horizontal form-label-left" method="post" action="${adminPath}/board/articles/create" onsubmit="return ChkFrm();">
+                            <form id="sForm" data-parsley-validate class="form-horizontal form-label-left" method="post" action="${adminPath}/board/articles/create">
                                 <input type="hidden" id="bm_seq" name="bm_seq" value="${bm_seq}"/>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">제목 <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">제목 <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="title" name="title" required="required" class="form-control col-md-7 col-xs-12" value="${articlesVO.title}" data-parsley-length="[4,150]">
+                                        ${articlesVO.title}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">공지유무</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" class="flat" name="isNotice" id="isNotice0" value="0"  required <c:if test="${false == articlesVO.isNotice}">checked=""</c:if>/> 일반</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" class="flat" name="isNotice" id="isNotice1" value="1" <c:if test="${true == articlesVO.isNotice}">checked=""</c:if>/> 공지
-                                            </label>
-                                        </div>
+                                        <c:choose>
+                                            <c:when test="${false == articlesVO.isNotice}">일반글</c:when>
+                                            <c:when test="${true == articlesVO.isNotice}">공지글</c:when>
+                                        </c:choose>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">댓글유무</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" class="flat" name="isComment" id="isComment0" value="0"  <c:if test="${false == articlesVO.isComment}">checked=""</c:if> required/> 사용
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" class="flat" name="isComment" id="isComment1" value="1" <c:if test="${true == articlesVO.isComment}">checked=""</c:if>/> 미사용
-                                            </label>
-                                        </div>
+                                        <c:choose>
+                                            <c:when test="${false == articlesVO.isComment}">가능</c:when>
+                                            <c:when test="${true == articlesVO.isComment}">불가능</c:when>
+                                        </c:choose>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="contents">내용 <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">내용 <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <div id="summernote">${articlesVO.contents}</div>
-                                        <input type="hidden" id="contents" name="contents" required="required" class="form-control col-md-7 col-xs-12" value="">
+                                        ${articlesVO.contents}
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                        <a href="${adminPath}/board/articles/list?bm_seq=${bm_seq}" class="btn btn-primary">취소</a>
-                                        <button type="submit" class="btn btn-success">등록</button>
+                                        <a href="${adminPath}/board/articles/list?bm_seq=${bm_seq}" class="btn btn-default">목록</a>
+                                        <a href="${adminPath}/board/articles/delete?bm_seq=${bm_seq}&seq=${articlesVO.seq}" class="btn btn-danger">삭제</a>
+                                        <a href="${adminPath}/board/articles/modify?bm_seq=${bm_seq}&seq=${articlesVO.seq}" class="btn btn-primary">수정</a>
                                     </div>
                                 </div>
 

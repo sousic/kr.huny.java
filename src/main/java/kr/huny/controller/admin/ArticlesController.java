@@ -28,10 +28,11 @@ public class ArticlesController extends baseController {
     @Autowired
     private ArticlesDAO articlesDAO;
 
+    private String boardTitle = null;
+
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String list(@RequestParam("bm_seq") long bm_seq, Model model, PageInfo pageInfo)
     {
-        String boardTitle = null;
         PagingHelper pagingHelper = new PagingHelper(RequestHelper.getCurrentRequest(), "bm_seq");
         pagingHelper.setPageInfo(pageInfo);
 
@@ -60,7 +61,7 @@ public class ArticlesController extends baseController {
     @RequestMapping(value = "create", method = RequestMethod.GET)
     public String create(@RequestParam("bm_seq") long bm_seq, Model model)
     {
-        String boardTitle = null;
+
         model.addAttribute("bm_seq", bm_seq);
 
         try {
@@ -86,6 +87,7 @@ public class ArticlesController extends baseController {
         try {
             articlesVO.setBm_seq(articlesVO.getBm_seq());
             articlesDAO.articleCreate(articlesVO);
+
             return "redirect:/" + adminPath +"/board/articles/list?bm_seq="+articlesVO.getBm_seq();
         }
         catch (Exception ex) {
@@ -95,6 +97,28 @@ public class ArticlesController extends baseController {
             rttr.addFlashAttribute(articlesVO);
 
             return "redirect:/" + adminPath + "/board/articles/create";
+        }
+    }
+
+    @RequestMapping(value = "view", method = RequestMethod.GET)
+    public String view(ArticlesVO articlesVO, Model model)
+    {
+        model.addAttribute("bm_seq", articlesVO.getBm_seq());
+
+        try
+        {
+            //게시물 타이틀 추출
+            boardTitle = boardManagerDAO.GetBoardIdToTitle(articlesVO.getBm_seq());
+            model.addAttribute("boardTitle", boardTitle);
+            model.addAttribute(articlesDAO.articleView(articlesVO));
+
+            return "admin/board/articles/read";
+        }
+        catch (Exception ex)
+        {
+            new LogException(ex).printStackTrace();
+
+            return "redirect:/" + adminPath +"/board/articles/list?bm_seq="+articlesVO.getBm_seq();
         }
     }
 }

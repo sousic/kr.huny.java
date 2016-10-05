@@ -14,4 +14,8 @@
     <definition name="admin/board/articles/modify" extends="admin_layout">
         <put-attribute name="content" value="/WEB-INF/views/admin/board/articles/modify.jsp"/>
     </definition>
+
+    <definition name="admin/board/articles/read" extends="admin_layout">
+        <put-attribute name="content" value="/WEB-INF/views/admin/board/articles/read.jsp"/>
+    </definition>
 </tiles-definitions>

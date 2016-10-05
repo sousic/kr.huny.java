@@ -28,6 +28,11 @@
         <include refid="search"/>
         order by seq desc limit #{startPage}, #{perPageNum}
     </select>
+    <select id="articleView" resultType="kr.huny.domain.board.ArticlesVO">
+        select * from articles
+        where isDelete = 0
+        and seq = #{seq} and bm_seq = #{bm_seq}
+    </select>
 
     <sql id="search">
         <if test="schText != null and schText != '' ">

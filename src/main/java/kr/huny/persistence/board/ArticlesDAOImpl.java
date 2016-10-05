@@ -43,4 +43,9 @@ public class ArticlesDAOImpl implements ArticlesDAO {
     public void articleDelete(ArticlesVO articlesVO) throws Exception {
         sqlSession.update(namespace + ".articleDelete", articlesVO);
     }
+
+    @Override
+    public ArticlesVO articleView(ArticlesVO articlesVO) {
+        return sqlSession.selectOne(namespace + ".articleView", articlesVO);
+    }
 }

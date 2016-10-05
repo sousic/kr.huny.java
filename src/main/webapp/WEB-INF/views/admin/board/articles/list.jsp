@@ -73,13 +73,23 @@
                                         <tr>
                                             <td>${articlesVO.seq}</td>
                                             <td>${articlesVO.bm_seq}</td>
-                                            <td>${articlesVO.title}</td>
+                                            <td><a href="${adminPath}/board/articles/view?bm_seq=${bm_seq}&seq=${articlesVO.seq}">${articlesVO.title}</a></td>
                                             <td>${articlesVO.writer}</td>
                                             <td><fmt:formatDate value="${articlesVO.createdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                                             <td><c:if test="${articlesVO.modifydate ne null || articlesVO.modifydate != ''}"> <fmt:formatDate value="${articlesVO.modifydate}" pattern="yyyy-MM-dd HH:mm:ss"/></c:if></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><a href="${adminPath}/board/articlesmodify?seq=${articlesVO.seq}&bm_seq=${bm_seq}" class="btn btn-danger btn-sm">수정</a></td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${false == articlesVO.isNotice}">일반</c:when>
+                                                    <c:when test="${true == articlesVO.isNotice}">공지</c:when>
+                                                </c:choose>
+                                            </td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${false == articlesVO.isComment}">가능</c:when>
+                                                    <c:when test="${true == articlesVO.isComment}">불가능</c:when>
+                                                </c:choose>
+                                            </td>
+                                            <td><a href="${adminPath}/board/articles/modify?seq=${articlesVO.seq}&bm_seq=${bm_seq}" class="btn btn-danger btn-sm">수정</a></td>
                                         </tr>
                                     </c:forEach>
                                     </c:if>
