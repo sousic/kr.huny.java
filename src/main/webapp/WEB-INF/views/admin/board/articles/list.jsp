@@ -26,6 +26,7 @@
                         </p>
                         <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                             <form method="get" action="<%=RequestHelper.getCurrentRequest().getRequestURI()%>">
+                                <input type="hidden" id="bm_seq" name="bm_seq" value="${bm_seq}"/>
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="dataTables_length" id="perPageNum">
@@ -41,7 +42,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div id="datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="검색어를 넣어주세요" aria-controls="datatable" id="schText" name="schText" value="${pagingHelper.pageInfo.schText}"><button type="submit" class="btn btn-default">검색</button>
-                                            <c:if test="${pagingHelper.pageInfo.schText ne null && pagingHelper.pageInfo.schText != ''}"><a href="<%=RequestHelper.getCurrentRequest().getRequestURI()%>" class="btn btn-primary">목록</a></c:if>
+                                            <c:if test="${pagingHelper.pageInfo.schText ne null && pagingHelper.pageInfo.schText != ''}"><a href="<%=RequestHelper.getCurrentRequest().getRequestURI()%>?bm_seq=${bm_seq}" class="btn btn-primary">목록</a></c:if>
                                         </label>
                                         </div>
                                     </div>

@@ -61,11 +61,15 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <a href="${adminPath}/board/articles/list?bm_seq=${bm_seq}" class="btn btn-default">목록</a>
-                                        <a href="${adminPath}/board/articles/delete?bm_seq=${bm_seq}&seq=${articlesVO.seq}" class="btn btn-danger">삭제</a>
+                                        <button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
                                         <a href="${adminPath}/board/articles/modify?bm_seq=${bm_seq}&seq=${articlesVO.seq}" class="btn btn-primary">수정</a>
                                     </div>
                                 </div>
 
+                            </form>
+                            <form id="aForm" method="post">
+                                <input type="hidden" id="seq" name="seq" value="${articlesVO.seq}"/>
+                                <input type="hidden" id="bm_seq" name="bm_seq" value="${articlesVO.bm_seq}"/>
                             </form>
                         </div>
                     </div>
@@ -91,6 +95,14 @@
             </c:when>
             </c:choose>
         </c:if>
+
+        $("#btnDelete").on("click", function() {
+            if(!confirm("삭제하시겠습니까?")) {
+                return false;
+            } else {
+                $("#aForm").attr("action","${adminPath}/board/articles/delete").submit();
+            }
+        });
     });
 
     function ChkFrm()

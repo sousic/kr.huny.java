@@ -130,4 +130,59 @@ public class ArticlesController extends baseController {
             return "redirect:/" + adminPath +"/board/articles/list?bm_seq="+articlesVO.getBm_seq();
         }
     }
+
+    @RequestMapping(value = "modify", method = RequestMethod.GET)
+    public String modify(ArticlesVO articlesVO, Model model)
+    {
+        model.addAttribute("bm_seq", articlesVO.getBm_seq());
+
+        try
+        {
+            boardTitle = boardManagerDAO.GetBoardIdToTitle(articlesVO.getBm_seq());
+            model.addAttribute("boardTitle", boardTitle);
+            model.addAttribute(articlesDAO.articleView(articlesVO));
+        }
+        catch (Exception ex)
+        {
+            new LogException(ex).printStackTrace();
+
+            return "redirect:/" + adminPath + "/board/articles/view?bm_seq="+ articlesVO.getBm_seq() + "&seq="+ articlesVO.getSeq();
+        }
+
+        return "admin/board/articles/modify";
+    }
+
+    @RequestMapping(value = "modify", method = RequestMethod.POST)
+    public String modifyOK(ArticlesVO articlesVO, Model model, RedirectAttributes rttr)
+    {
+        model.addAttribute("bm_seq", articlesVO.getBm_seq());
+
+        try {
+            articlesDAO.articleModify(articlesVO);
+
+            return "redirect:/" + adminPath +"/board/articles/view?bm_seq="+ articlesVO.getBm_seq() + "&seq="+ articlesVO.getSeq();
+        }
+        catch (Exception ex) {
+            new LogException(ex).printStackTrace();
+
+            rttr.addFlashAttribute("flag", "error");
+            rttr.addFlashAttribute(articlesVO);
+
+            return "redirect:/" + adminPath + "/board/articles/modify?bm_seq="+ articlesVO.getBm_seq() + "&seq="+ articlesVO.getSeq();
+        }
+    }
+
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public String delete(ArticlesVO articlesVO)
+    {
+        try {
+            articlesDAO.articleDelete(articlesVO);
+        }
+        catch (Exception ex)
+        {
+            new LogException(ex).printStackTrace();
+        }
+
+        return "redirect:/" + adminPath + "/board/articles/modify?bm_seq="+ articlesVO.getBm_seq();
+    }
 }
