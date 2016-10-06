@@ -22,20 +22,25 @@
         where isNotice = 0 and isDelete = 0
         <include refid="search"/>
     </select>
-    <select id="articlesList" resultType="kr.huny.domain.board.ArticlesVO">
-        select * from articles
-        where isNotice = 0 and isDelete = 0
+    <!--<select id="articlesList" resultType="kr.huny.domain.board.ArticlesVO">-->
+    <select id="articlesList" resultMap="articleResultMap">
+        select a.*, b.title as b_title from articles as a
+        inner join boardmanager b on a.bm_seq = b.seq
+        where a.isNotice = 0 and a.isDelete = 0
         <include refid="search"/>
-        order by seq desc limit #{startPage}, #{perPageNum}
+        order by a.seq desc limit #{startPage}, #{perPageNum}
     </select>
     <select id="articleView" resultType="kr.huny.domain.board.ArticlesVO">
         select * from articles
         where isDelete = 0
         and seq = #{seq} and bm_seq = #{bm_seq}
     </select>
-    <select id="articlesListNotice" resultType="kr.huny.domain.board.ArticlesVO">
-        select * from articles where isNotice = 1 and isDelete = 0
-        order by seq desc
+    <!--<select id="articlesListNotice" resultType="kr.huny.domain.board.ArticlesVO">-->
+    <select id="articlesListNotice" resultMap="articleResultMap">
+        select a.*, b.title as b_title from articles as a
+        inner join boardmanager b on a.bm_seq = b.seq
+        where a.isNotice = 1 and a.isDelete = 0
+        order by a.seq desc
     </select>
 
     <sql id="search">
@@ -43,4 +48,23 @@
             and title = #{schText}
         </if>
     </sql>
+
+    <resultMap id="articleResultMap" type="ArticlesVO">
+        <result property="seq" column="seq"/>
+        <result property="bm_seq" column="bm_seq"/>
+        <result property="title" column="title"/>
+        <result property="contents" column="contents"/>
+        <result property="writer" column="writer"/>
+        <result property="createdate" column="createdate"/>
+        <result property="modifydate" column="modifydate"/>
+        <result property="isNotice" column="seq"/>
+        <result property="isComment" column="seq"/>
+        <result property="isDelete" column="seq"/>
+        <collection property="boardManagerVO" column="bm_seq" ofType="BoardManagerVO" javaType="boardManagerVO" resultMap="boardResultMap"/>
+    </resultMap>
+
+    <resultMap id="boardResultMap" type="BoardManagerVO">
+        <id property="seq" column="seq"/>
+        <result property="title" column="b_title"/>
+    </resultMap>
 </mapper>

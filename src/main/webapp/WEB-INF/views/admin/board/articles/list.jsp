@@ -53,7 +53,7 @@
                                     <thead>
                                     <tr>
                                         <th>글번호</th>
-                                        <th>게시판번호</th>
+                                        <th>게시판명</th>
                                         <th>제목</th>
                                         <th>등록자</th>
                                         <th>등록일</th>
@@ -73,7 +73,7 @@
                                     <c:forEach items="${list}" var="articlesVO">
                                         <tr>
                                             <td>${articlesVO.seq}</td>
-                                            <td>${articlesVO.bm_seq}</td>
+                                            <td>${articlesVO.boardManagerVO.title}</td>
                                             <td><c:if test="${true == articlesVO.isNotice}">[공지]</c:if><a href="${adminPath}/board/articles/view?bm_seq=${bm_seq}&seq=${articlesVO.seq}">${articlesVO.title}</a></td>
                                             <td>${articlesVO.writer}</td>
                                             <td><fmt:formatDate value="${articlesVO.createdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
