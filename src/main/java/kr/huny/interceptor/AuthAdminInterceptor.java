@@ -5,7 +5,6 @@ import kr.huny.utils.CookieHelper;
 import kr.huny.utils.PropertyHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -40,8 +39,8 @@ public class AuthAdminInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         //super.postHandle(request, response, handler, modelAndView);
 
-        if(modelAndView != null) {
-            ModelMap modelMap = modelAndView.getModelMap();
+        //if(modelAndView != null) {
+        //    ModelMap modelMap = modelAndView.getModelMap();
 
             //관리자 페이지의 모델 정보가 있을시 관리자 페이지 경로가 커스텀이라서 모델에 추가해 준다
             //닉네임도 같이 넣어줌
@@ -51,6 +50,6 @@ public class AuthAdminInterceptor extends HandlerInterceptorAdapter {
             //}
             request.setAttribute("nickname", CookieHelper.NickName(propertyHelper));
             request.setAttribute("adminPath", String.format("/%s", propertyHelper.getAdminPath()));
-        }
+        //}
     }
 }
