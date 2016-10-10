@@ -29,13 +29,13 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">제목 <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-6 col-xs-12">
                                         <input type="text" id="title" name="title" required="required" class="form-control col-md-7 col-xs-12" value="${articlesVO.title}" data-parsley-length="[4,150]">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">공지유무</label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-6 col-xs-12">
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" class="flat" name="isNotice" id="isNotice0" value="0"  required <c:if test="${false == articlesVO.isNotice}">checked=""</c:if>/> 일반</label>
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">댓글유무</label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-6 col-xs-12">
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" class="flat" name="isComment" id="isComment0" value="0"  <c:if test="${false == articlesVO.isComment}">checked=""</c:if> required/> 사용
@@ -65,14 +65,14 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="contents">내용 <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="col-md-9 col-sm-6 col-xs-12" style="min-width: 500px;">
                                         <div id="summernote">${articlesVO.contents}</div>
                                         <input type="hidden" id="contents" name="contents" required="required" class="form-control col-md-7 col-xs-12" value="">
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
-                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-3">
                                         <a href="${adminPath}/board/articles/list?bm_seq=${bm_seq}" class="btn btn-primary">취소</a>
                                         <button type="submit" class="btn btn-success">등록</button>
                                     </div>
