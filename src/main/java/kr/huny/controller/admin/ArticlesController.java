@@ -9,6 +9,7 @@ import kr.huny.persistence.board.BoardManagerDAO;
 import kr.huny.utils.CookieHelper;
 import kr.huny.utils.PagingHelper;
 import kr.huny.utils.RequestHelper;
+import kr.huny.utils.UploadFileHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -191,12 +192,20 @@ public class ArticlesController extends baseController {
     }
 
     @RequestMapping(value = "uploadImage", method = RequestMethod.POST, produces = "application/json;charset=utf8")
-    public @ResponseBody Map<String, Object> uploadImage(MultipartFile upladdFile)
+    public @ResponseBody Map<String, Object> uploadImage(MultipartFile uploadFile)
     {
         resultJson = new HashMap<String, Object>();
         resultJson.put("resultCode", 1);
         resultJson.put("resultMsg", "성공");
-        resultJson.put("url", "http://t1.daumcdn.net/news/201610/10/yonhap/20161010102839387yxey.jpg");
+
+        String savedPath = null;
+        try {
+            savedPath = UploadFileHelper.uploadFile(propertyHelper.getUploadPath(), uploadFile.getOriginalFilename(), uploadFile.getBytes());
+        } catch (Exception ex) {
+            new LogException(ex).printStackTrace();
+        }
+
+        resultJson.put("url", savedPath);
 
         return resultJson;
     }

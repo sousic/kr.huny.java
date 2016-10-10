@@ -30,4 +30,7 @@ public class PropertyHelper {
 
     @Value("#{prop['adminPath']}")
     private String adminPath;
+
+    @Value("#{prop['upload.path']}")
+    private String uploadPath;
 }
