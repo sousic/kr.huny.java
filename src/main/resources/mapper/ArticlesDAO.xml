@@ -57,9 +57,9 @@
         <result property="writer" column="writer"/>
         <result property="createdate" column="createdate"/>
         <result property="modifydate" column="modifydate"/>
-        <result property="isNotice" column="seq"/>
-        <result property="isComment" column="seq"/>
-        <result property="isDelete" column="seq"/>
+        <result property="isNotice" column="isNotice"/>
+        <result property="isComment" column="isComment"/>
+        <result property="isDelete" column="isDelete"/>
         <collection property="boardManagerVO" column="bm_seq" ofType="BoardManagerVO" javaType="boardManagerVO" resultMap="boardResultMap"/>
     </resultMap>
 

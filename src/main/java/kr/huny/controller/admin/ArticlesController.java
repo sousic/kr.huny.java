@@ -15,10 +15,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sousic on 2016-10-04.
@@ -184,5 +188,16 @@ public class ArticlesController extends baseController {
         }
 
         return "redirect:/" + adminPath + "/board/articles/modify?bm_seq="+ articlesVO.getBm_seq();
+    }
+
+    @RequestMapping(value = "uploadImage", method = RequestMethod.POST, produces = "application/json;charset=utf8")
+    public @ResponseBody Map<String, Object> uploadImage(MultipartFile upladdFile)
+    {
+        resultJson = new HashMap<String, Object>();
+        resultJson.put("resultCode", 1);
+        resultJson.put("resultMsg", "성공");
+        resultJson.put("url", "http://t1.daumcdn.net/news/201610/10/yonhap/20161010102839387yxey.jpg");
+
+        return resultJson;
     }
 }

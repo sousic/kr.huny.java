@@ -88,12 +88,31 @@
 <script>
     $(function(){
         $('#summernote').summernote({
-            height: 300,                 // set editor height
-            minHeight: 300,             // set minimum height of editor
+            height: 350,                 // set editor height
+            minHeight: 350,             // set minimum height of editor
             maxHeight: 500,
             lang:'ko-KR',
-            placeholder:''
+            onImageUpload:function(files, editor, welEditable) {
+                sendFile(files[0], editor, welEditable);
+            }
         });
+
+        function sendFile(file, editor, welEditable) {
+            var data = new FormData();
+            data.append("uploadFile", file);
+
+            $.ajax({
+                data:data,
+                type:"POST",
+                url : "${adminPath}/board/articles/uploadImage",
+                cache:false,
+                contentType : false,
+                processData: false,
+                success:function (result) {
+                    editor.insertImage(welEditable, result.url);
+                }
+            });
+        }
 
         <c:if test="${flag ne null}">
             <c:choose>

@@ -93,8 +93,29 @@
             minHeight: 300,             // set minimum height of editor
             maxHeight: 500,
             lang:'ko-KR',
-            placeholder:''
+            callbacks: {
+                onImageUpload: function (files) {
+                    sendFile(files[0], this);
+                }
+            }
         });
+
+        function sendFile(file, editor) {
+            var data = new FormData();
+            data.append("uploadFile", file);
+            $.ajax({
+                data:data,
+                type:"POST",
+                url : "${adminPath}/board/articles/uploadImage",
+                cache:false,
+                contentType : false,
+                processData: false,
+                success:function (result) {
+                    console.log(result.url);
+                    $(editor).summernote('editor.insertImage', result.url);
+                }
+            });
+        }
 
         <c:if test="${flag ne null}">
         <c:choose>
