@@ -85,6 +85,22 @@ CREATE TABLE `articles` (
 ENGINE=InnoDB
 ;
 
+CREATE TABLE `attachments` (
+	`seq` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`bm_seq` BIGINT(20) NOT NULL DEFAULT '0' COMMENT '게시판번호',
+	`a_seq` BIGINT(20) NOT NULL DEFAULT '0' COMMENT '게시물번호',
+	`filename` VARCHAR(255) NOT NULL DEFAULT '0',
+	`filesize` BIGINT(20) NOT NULL DEFAULT '0',
+	`download` INT(11) NULL DEFAULT NULL,
+	`save_path` VARCHAR(255) NULL DEFAULT NULL,
+	`save_name` VARCHAR(255) NULL DEFAULT NULL,
+	`contentType` VARCHAR(255) NULL DEFAULT NULL,
+	PRIMARY KEY (`seq`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
 
 
 
