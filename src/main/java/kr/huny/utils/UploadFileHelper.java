@@ -15,19 +15,23 @@ import java.util.UUID;
 public class UploadFileHelper {
     private static final Logger logger = LoggerFactory.getLogger(UploadFileHelper.class);
 
-    public static String uploadFile(String uploadPath, String orignalName, byte[] fileDate) throws Exception
+    public static FileInfo uploadFile(String uploadPath, String orignalName, byte[] fileDate) throws Exception
     {
         UUID uuid = UUID.randomUUID();
 
-        String savedName = uuid.toString() + "_" + orignalName;
+        String savedName = uuid.toString() + orignalName.substring(orignalName.lastIndexOf('.'));
         String savedPath = calcPath(uploadPath);
 
         File target = new File(uploadPath + savedPath, savedName);
         FileCopyUtils.copy(fileDate, target);
 
-        String uploadFileName = uploadPath + savedPath + File.separator + savedName;
+        //String uploadFileName = uploadPath + savedPath + File.separator + savedName;
 
-        return uploadFileName;
+        FileInfo fileInfo = new FileInfo();
+        fileInfo.setDestFileName(savedName);
+        fileInfo.setDestSavePath(savedPath);
+
+        return fileInfo;
     }
 
     private static String calcPath(String uploadPath) {
@@ -56,6 +60,28 @@ public class UploadFileHelper {
             if(!dirPath.exists()) {
                 dirPath.mkdir();
             }
+        }
+    }
+
+    public static class FileInfo
+    {
+        private String destFileName;
+        private String destSavePath;
+
+        public String getDestSavePath() {
+            return destSavePath;
+        }
+
+        public void setDestSavePath(String destSavePath) {
+            this.destSavePath = destSavePath;
+        }
+
+        public String getDestFileName() {
+            return destFileName;
+        }
+
+        public void setDestFileName(String destFileName) {
+            this.destFileName = destFileName;
         }
     }
 }

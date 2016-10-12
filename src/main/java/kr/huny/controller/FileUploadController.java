@@ -2,7 +2,10 @@ package kr.huny.controller;
 
 import kr.huny.Exceptions.LogException;
 import kr.huny.controller.common.baseController;
+import kr.huny.domain.board.AttachmentsVO;
+import kr.huny.service.AttachmentsService;
 import kr.huny.utils.UploadFileHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +21,8 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/attach")
 public class FileUploadController extends baseController {
-
+    @Autowired
+    private AttachmentsService attachmentsService;
 
 
     @RequestMapping(value = "upload", method = RequestMethod.POST, produces = "application/json;charset=utf8")
@@ -29,17 +33,29 @@ public class FileUploadController extends baseController {
         resultJson.put("resultCode", 1);
         resultJson.put("resultMsg", "성공");
 
-        String savedPath = null;
+        String attachmentsURL = null;
+
+        AttachmentsVO attachmentsVO = new AttachmentsVO();
+
         try {
-            savedPath = UploadFileHelper.uploadFile(propertyHelper.getUploadPath(), uploadFile.getOriginalFilename(), uploadFile.getBytes());
+            UploadFileHelper.FileInfo fileInfo = UploadFileHelper.uploadFile(propertyHelper.getUploadPath(), uploadFile.getOriginalFilename(), uploadFile.getBytes());
 
+            attachmentsVO.setFilename(uploadFile.getOriginalFilename());
+            attachmentsVO.setFilesize(uploadFile.getSize());
+            attachmentsVO.setContentType(uploadFile.getContentType());
+            attachmentsVO.setSave_name(fileInfo.getDestFileName());
+            attachmentsVO.setSave_path(fileInfo.getDestSavePath().replace("\\","/"));
 
+            attachmentsService.insertAttachments(attachmentsVO);
+            logger.info(attachmentsVO.toString());
+
+            attachmentsURL = String.format("/attach/file?seq=%s", attachmentsVO.getSeq());
 
         } catch (Exception ex) {
             new LogException(ex).printStackTrace();
         }
 
-        resultJson.put("url", savedPath);
+        resultJson.put("url", attachmentsURL);
 
         return resultJson;
     }

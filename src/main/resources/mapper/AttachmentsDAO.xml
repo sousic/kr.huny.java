@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kr.huny.persistence.AttachmentsDAO">
-    <insert id="insertAttachments">
+    <insert id="insertAttachments" keyProperty="seq" parameterType="kr.huny.domain.board.AttachmentsVO" useGeneratedKeys="true">
         insert into attachments (
             a_seq,
             bm_seq,
@@ -27,6 +27,9 @@
         where
             seq = #{seq}
     </update>
+    <delete id="deleteAttachments">
+        delete attachments where seq = #{seq};
+    </delete>
     <select id="readAttachments" resultType="kr.huny.domain.board.AttachmentsVO">
         select
             a_seq,

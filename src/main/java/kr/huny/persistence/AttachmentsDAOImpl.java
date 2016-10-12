@@ -20,21 +20,26 @@ public class AttachmentsDAOImpl implements AttachmentsDAO {
 
     @Override
     public void insertAttachments(AttachmentsVO attachmentsVO) throws Exception {
-
+        sqlSession.insert(namespace + ".insertAttachments", attachmentsVO);
     }
 
     @Override
     public AttachmentsVO readAttachments(AttachmentsVO attachmentsVO) throws Exception {
-        return null;
+        return sqlSession.selectOne(namespace + ".readAttachments", attachmentsVO);
     }
 
     @Override
     public void updateAttachments(AttachmentsVO attachmentsVO) throws Exception {
-
+        sqlSession.update(namespace + ".updateAttachments");
     }
 
     @Override
     public List<AttachmentsVO> selectAttachemtnsList(AttachmentsVO attachmentsVO) throws Exception {
-        return null;
+        return sqlSession.selectList(namespace + ".selectAttachemtnsList", attachmentsVO);
+    }
+
+    @Override
+    public void deleteAttachments(AttachmentsVO attachmentsVO) throws Exception {
+        sqlSession.delete(namespace + ".deleteAttachments", attachmentsVO);
     }
 }
