@@ -4,7 +4,7 @@ import kr.huny.Exceptions.LogException;
 import kr.huny.controller.common.baseController;
 import kr.huny.domain.PageInfo;
 import kr.huny.domain.board.BoardManagerVO;
-import kr.huny.persistence.board.BoardManagerDAO;
+import kr.huny.service.BoardManagerService;
 import kr.huny.utils.CookieHelper;
 import kr.huny.utils.PagingHelper;
 import kr.huny.utils.RequestHelper;
@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping(value = "${adminPath}/board/manager")
 public class BoardManagerController extends baseController {
     @Autowired
-    BoardManagerDAO boardManagerDAO;
+    BoardManagerService boardManagerService;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public String list(Model model, PageInfo pageInfo)
@@ -30,8 +30,8 @@ public class BoardManagerController extends baseController {
         PagingHelper pagingHelper = new PagingHelper(RequestHelper.getCurrentRequest());
         pagingHelper.setPageInfo(pageInfo);
         try {
-            pagingHelper.setTotalCount(boardManagerDAO.boardManagerListCount(pageInfo));
-            model.addAttribute("list", boardManagerDAO.boardManagerList(pageInfo));
+            pagingHelper.setTotalCount(boardManagerService.boardManagerListCount(pageInfo));
+            model.addAttribute("list", boardManagerService.boardManagerList(pageInfo));
         }
         catch (Exception ex)
         {
@@ -56,7 +56,7 @@ public class BoardManagerController extends baseController {
     {
         try {
             boardManagerVO.setWriter(CookieHelper.NickName(propertyHelper));
-            boardManagerDAO.insertBoardManager(boardManagerVO);
+            boardManagerService.insertBoardManager(boardManagerVO);
 
             return "admin/board/manager/list";
         }
@@ -77,7 +77,7 @@ public class BoardManagerController extends baseController {
         BoardManagerVO boardManagerVO = null;
 
         try {
-            boardManagerVO = boardManagerDAO.readBoardManager(seq);
+            boardManagerVO = boardManagerService.readBoardManager(seq);
 
             if (boardManagerVO == null) {
                 return "admin/board/manager/list";
@@ -98,7 +98,7 @@ public class BoardManagerController extends baseController {
     {
         try {
             if(boardManagerVO != null) {
-                boardManagerDAO.updateBoardManager(boardManagerVO);
+                boardManagerService.updateBoardManager(boardManagerVO);
             }
             return "admin/board/manager/list";
         }

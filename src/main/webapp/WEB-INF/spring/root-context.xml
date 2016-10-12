@@ -34,6 +34,6 @@
 	</bean>
 
 	<context:component-scan base-package="kr.huny.utils"></context:component-scan>
-	<context:component-scan base-package="kr.huny.persistence.*"></context:component-scan>
+	<context:component-scan base-package="kr.huny.persistence"></context:component-scan>
 	<context:component-scan base-package="kr.huny.service"></context:component-scan>
 </beans>

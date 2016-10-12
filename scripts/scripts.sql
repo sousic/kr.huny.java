@@ -95,11 +95,13 @@ CREATE TABLE `attachments` (
 	`save_path` VARCHAR(255) NULL DEFAULT NULL,
 	`save_name` VARCHAR(255) NULL DEFAULT NULL,
 	`contentType` VARCHAR(255) NULL DEFAULT NULL,
-	PRIMARY KEY (`seq`)
+	PRIMARY KEY (`seq`),
+	UNIQUE INDEX `seq_bm_seq_a_seq` (`seq`, `bm_seq`, `a_seq`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
+
 
 
 

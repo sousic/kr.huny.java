@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
-                                    <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-3 text-center">
                                         <a href="${adminPath}/board/articles/list?bm_seq=${bm_seq}" class="btn btn-primary">취소</a>
                                         <button type="submit" class="btn btn-success">등록</button>
                                     </div>
@@ -103,10 +103,12 @@
         function sendFile(file, editor) {
             var data = new FormData();
             data.append("uploadFile", file);
+            data.append("bm_seq", ${bm_seq});
+            data.append("b_seq", ${articlesVO.seq});
             $.ajax({
                 data:data,
                 type:"POST",
-                url : "${adminPath}/board/articles/uploadImage",
+                url : "/attach/upload",
                 cache:false,
                 contentType : false,
                 processData: false,

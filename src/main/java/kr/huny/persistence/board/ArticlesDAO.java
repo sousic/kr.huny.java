@@ -16,7 +16,7 @@ public interface ArticlesDAO {
     public void articleModify(ArticlesVO articlesVO) throws Exception;
     public void articleDelete(ArticlesVO articlesVO) throws Exception;
 
-    public ArticlesVO articleView(ArticlesVO articlesVO);
+    public ArticlesVO articleView(ArticlesVO articlesVO) throws Exception;
 
-    public List<ArticlesVO> articlesListNotice();
+    public List<ArticlesVO> articlesListNotice() throws Exception;
 }
