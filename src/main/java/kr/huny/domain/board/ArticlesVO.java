@@ -20,6 +20,8 @@ public class ArticlesVO {
     private Boolean isNotice;
     private Boolean isComment;
     private Boolean isDelete;
+    private int attachmentCount;
+    private int readCount;
 
     private BoardManagerVO boardManagerVO;
 }

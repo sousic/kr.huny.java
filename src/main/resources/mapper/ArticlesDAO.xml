@@ -60,6 +60,8 @@
         <result property="isNotice" column="isNotice"/>
         <result property="isComment" column="isComment"/>
         <result property="isDelete" column="isDelete"/>
+        <result property="attachmentCount" column="attachmentCount"/>
+        <result property="readCount" column="readCount"/>
         <collection property="boardManagerVO" column="bm_seq" ofType="BoardManagerVO" javaType="boardManagerVO" resultMap="boardResultMap"/>
     </resultMap>
 

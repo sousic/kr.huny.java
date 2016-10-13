@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,5 +60,24 @@ public class FileUploadController extends baseController {
         resultJson.put("url", attachmentsURL);
 
         return resultJson;
+    }
+
+    @RequestMapping(value = "file", method = RequestMethod.GET)
+    public void file(long seq)
+    {
+        AttachmentsVO attachmentsVO = new AttachmentsVO();
+        try {
+            attachmentsVO.setSeq(seq);
+            attachmentsVO = attachmentsService.selectAttachments(attachmentsVO);
+
+            String path = propertyHelper.getUploadPath() + attachmentsVO.getSave_path().replace("/","\\") + File.separator + attachmentsVO.getSave_name();
+
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+        }
+        catch (Exception ex)
+        {
+            new LogException(ex).printStackTrace();
+        }
     }
 }

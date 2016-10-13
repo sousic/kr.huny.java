@@ -79,6 +79,8 @@ CREATE TABLE `articles` (
 	`isNotice` BIT(1) NOT NULL DEFAULT b'0' COMMENT '0-일반,1-공지',
 	`isComment` BIT(1) NOT NULL DEFAULT b'0' COMMENT '0-댓글허용,1-댓글불가(게시물당선택가능)',
 	`isDelete` BIT(1) NOT NULL DEFAULT b'0' COMMENT '0-미삭제,1-삭제',
+	`attachmentCount` INT(11) NULL DEFAULT '0',
+	`readCount` INT(11) NULL DEFAULT '0',
 	PRIMARY KEY (`seq`),
 	UNIQUE INDEX `seq_bm_seq_isNotice_isComment_isDelete` (`seq`, `bm_seq`, `isNotice`, `isDelete`)
 )
