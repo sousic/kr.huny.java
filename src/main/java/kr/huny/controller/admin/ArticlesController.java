@@ -93,9 +93,14 @@ public class ArticlesController extends baseController {
         model.addAttribute("bm_seq", articlesVO.getBm_seq());
 
         try {
+            if(articlesVO.getAttachments() == null) {
+                articlesVO.setAttachments(null);
+            }
+
             articlesVO.setBm_seq(articlesVO.getBm_seq());
             articlesVO.setWriter(CookieHelper.NickName(propertyHelper));
             articlesService.articleCreate(articlesVO);
+
 
             return "redirect:/" + adminPath +"/board/articles/list?bm_seq="+articlesVO.getBm_seq();
         }
@@ -158,6 +163,12 @@ public class ArticlesController extends baseController {
         model.addAttribute("bm_seq", articlesVO.getBm_seq());
 
         try {
+            if(articlesVO.getAttachments() == null) {
+                articlesVO.setAttachments(null);
+            }
+
+            logger.info(articlesVO.toString());
+
             articlesService.articleModify(articlesVO);
 
             return "redirect:/" + adminPath +"/board/articles/view?bm_seq="+ articlesVO.getBm_seq() + "&seq="+ articlesVO.getSeq();

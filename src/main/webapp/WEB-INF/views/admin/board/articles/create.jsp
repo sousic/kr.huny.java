@@ -76,7 +76,6 @@
                                         <button type="submit" class="btn btn-success">등록</button>
                                     </div>
                                 </div>
-
                             </form>
                         </div>
                     </div>
@@ -99,11 +98,12 @@
             }
         });
 
+        var index = 0;
         function sendFile(file, editor) {
             var data = new FormData();
             data.append("uploadFile", file);
             data.append("bm_seq", ${bm_seq});
-            data.append("b_seq", 0);
+            data.append("a_seq", 0);
             $.ajax({
                 data:data,
                 type:"POST",
@@ -112,8 +112,11 @@
                 contentType : false,
                 processData: false,
                 success:function (result) {
-                    console.log(result.url);
-                    $(editor).summernote('editor.insertImage', result.url);
+                    if(result.resultCode == 1) {
+                        $(editor).summernote('editor.insertImage', result.url);
+                        $("#sForm").append("<input type='hidden' name='attachments[" + index + "].seq' value='"+ result.f_seq + "'/>");
+                        index++;
+                    }
                 }
             });
         }

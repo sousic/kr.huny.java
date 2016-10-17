@@ -97,6 +97,7 @@ CREATE TABLE `attachments` (
 	`save_path` VARCHAR(255) NULL DEFAULT NULL,
 	`save_name` VARCHAR(255) NULL DEFAULT NULL,
 	`contentType` VARCHAR(255) NULL DEFAULT NULL,
+	`isTemporary` BIT(1) NULL DEFAULT b'1' COMMENT '1-임시, 0-임시아님',
 	PRIMARY KEY (`seq`),
 	UNIQUE INDEX `seq_bm_seq_a_seq` (`seq`, `bm_seq`, `a_seq`)
 )

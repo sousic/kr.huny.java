@@ -2,9 +2,12 @@ package kr.huny.service;
 
 import kr.huny.domain.PageInfo;
 import kr.huny.domain.board.ArticlesVO;
+import kr.huny.domain.board.AttachmentsVO;
+import kr.huny.persistence.AttachmentsDAO;
 import kr.huny.persistence.board.ArticlesDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
@@ -15,6 +18,8 @@ import java.util.Collection;
 public class ArticlesServiceImpl implements ArticlesService {
     @Autowired
     private ArticlesDAO articlesDAO;
+    @Autowired
+    private AttachmentsDAO attachmentsDAO;
 
     @Override
     public int articlesListCount(PageInfo pageInfo) throws Exception {
@@ -31,9 +36,17 @@ public class ArticlesServiceImpl implements ArticlesService {
         return articlesDAO.articlesList(pageInfo);
     }
 
+    @Transactional
     @Override
     public void articleCreate(ArticlesVO articlesVO) throws Exception {
         articlesDAO.articleCreate(articlesVO);
+        for(AttachmentsVO attachmentsVO : articlesVO.getAttachments())
+        {
+            attachmentsVO.setA_seq(articlesVO.getSeq());
+            attachmentsVO.setBm_seq(articlesVO.getBm_seq());
+
+            attachmentsDAO.updateAttachments(attachmentsVO);
+        }
     }
 
     @Override

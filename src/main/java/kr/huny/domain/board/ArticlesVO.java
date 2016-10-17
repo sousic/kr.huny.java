@@ -3,6 +3,7 @@ package kr.huny.domain.board;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by sousic on 2016-10-04.
@@ -24,4 +25,6 @@ public class ArticlesVO {
     private int readCount;
 
     private BoardManagerVO boardManagerVO;
+
+    private List<AttachmentsVO> attachments;
 }

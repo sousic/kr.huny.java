@@ -16,4 +16,5 @@ public class AttachmentsVO {
     private String save_path;
     private String save_name;
     private String contentType;
+    private Boolean isTemporary;
 }
