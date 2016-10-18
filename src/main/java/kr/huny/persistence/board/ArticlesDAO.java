@@ -19,4 +19,6 @@ public interface ArticlesDAO {
     public ArticlesVO articleView(ArticlesVO articlesVO) throws Exception;
 
     public List<ArticlesVO> articlesListNotice() throws Exception;
+
+    public void updateAttachmentsCount(ArticlesVO articlesVO) throws Exception;
 }

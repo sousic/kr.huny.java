@@ -16,4 +16,6 @@ public interface ArticlesService {
     public ArticlesVO articleView(ArticlesVO articlesVO) throws Exception;
     public void articleModify(ArticlesVO articlesVO) throws Exception;
     public void articleDelete(ArticlesVO articlesVO) throws Exception;
+
+    public void updateAttachmentsCount(ArticlesVO articlesVO) throws Exception;
 }

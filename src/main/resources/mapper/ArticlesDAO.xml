@@ -17,6 +17,9 @@
         where
         seq = #{seq} and bm_seq = #{bm_seq}
     </update>
+    <update id="updateAttachmentsCount">
+        update articles set attachmentCount = #{attachmentCount} where seq = #{seq}
+    </update>
     <select id="articlesListCount" resultType="java.lang.Integer">
         select count(seq) from articles
         where isNotice = 0 and isDelete = 0

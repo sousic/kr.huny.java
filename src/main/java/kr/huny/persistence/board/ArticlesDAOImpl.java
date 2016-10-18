@@ -53,4 +53,9 @@ public class ArticlesDAOImpl implements ArticlesDAO {
     public List<ArticlesVO> articlesListNotice() {
         return sqlSession.selectList(namespace + ".articlesListNotice");
     }
+
+    @Override
+    public void updateAttachmentsCount(ArticlesVO articlesVO) throws Exception {
+        sqlSession.update(namespace + ".updateAttachmentsCount", articlesVO);
+    }
 }

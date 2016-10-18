@@ -99,7 +99,7 @@ CREATE TABLE `attachments` (
 	`contentType` VARCHAR(255) NULL DEFAULT NULL,
 	`isTemporary` BIT(1) NULL DEFAULT b'1' COMMENT '1-임시, 0-임시아님',
 	PRIMARY KEY (`seq`),
-	UNIQUE INDEX `seq_bm_seq_a_seq` (`seq`, `bm_seq`, `a_seq`)
+	INDEX `bm_seq_a_seq_isTemporary` (`bm_seq`, `a_seq`, `isTemporary`)
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB

@@ -102,7 +102,6 @@ public class ArticlesController extends baseController {
 
             articlesService.articleCreate(articlesVO);
 
-
             return "redirect:/" + adminPath +"/board/articles/list?bm_seq="+articlesVO.getBm_seq();
         }
         catch (Exception ex) {

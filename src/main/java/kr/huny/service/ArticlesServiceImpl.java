@@ -42,6 +42,8 @@ public class ArticlesServiceImpl implements ArticlesService {
     public void articleCreate(ArticlesVO articlesVO) throws Exception {
         articlesDAO.articleCreate(articlesVO);
         attachmentsUpdate(articlesVO);
+
+        updateArticleAttachmentCount(articlesVO);
     }
 
     @Override
@@ -53,8 +55,17 @@ public class ArticlesServiceImpl implements ArticlesService {
     @Override
     public void articleModify(ArticlesVO articlesVO) throws Exception {
         articlesDAO.articleModify(articlesVO);
-
         attachmentsUpdate(articlesVO);
+
+        updateArticleAttachmentCount(articlesVO);
+    }
+
+    private void updateArticleAttachmentCount(ArticlesVO articlesVO) throws Exception {
+        AttachmentsVO attachmentsVO = new AttachmentsVO();
+        attachmentsVO.setBm_seq(articlesVO.getBm_seq());
+        attachmentsVO.setA_seq(articlesVO.getSeq());
+        articlesVO.setAttachmentCount(attachmentsDAO.selectAttachmentsCount(attachmentsVO));
+        articlesDAO.updateAttachmentsCount(articlesVO);
     }
 
     private void attachmentsUpdate(ArticlesVO articlesVO) throws Exception {
@@ -70,5 +81,10 @@ public class ArticlesServiceImpl implements ArticlesService {
     @Override
     public void articleDelete(ArticlesVO articlesVO) throws Exception {
         articlesDAO.articleDelete(articlesVO);
+    }
+
+    @Override
+    public void updateAttachmentsCount(ArticlesVO articlesVO) throws Exception {
+        articlesDAO.updateAttachmentsCount(articlesVO);
     }
 }

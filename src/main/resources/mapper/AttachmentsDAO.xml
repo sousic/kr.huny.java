@@ -44,7 +44,7 @@
         from
             attachments where seq = #{seq}
     </select>
-    <select id="selectAttachemtnsList" resultType="kr.huny.domain.board.AttachmentsVO">
+    <select id="selectAttachmentsList" resultType="kr.huny.domain.board.AttachmentsVO">
         select
             a_seq,
             bm_seq,
@@ -58,5 +58,8 @@
         from
             attachments where bm_seq = #{bm_seq} and a_seq = #{a_seq}
         order by seq desc
+    </select>
+    <select id="selectAttachmentsCount" resultType="java.lang.Integer">
+        select count(seq) from attachments where bm_seq = #{bm_seq} and a_seq = #{a_seq} and isTemporary = 0
     </select>
 </mapper>

@@ -34,12 +34,17 @@ public class AttachmentsDAOImpl implements AttachmentsDAO {
     }
 
     @Override
-    public List<AttachmentsVO> selectAttachemtnsList(AttachmentsVO attachmentsVO) throws Exception {
-        return sqlSession.selectList(namespace + ".selectAttachemtnsList", attachmentsVO);
+    public List<AttachmentsVO> selectAttachmentsList(AttachmentsVO attachmentsVO) throws Exception {
+        return sqlSession.selectList(namespace + ".selectAttachmentsList", attachmentsVO);
     }
 
     @Override
     public void deleteAttachments(AttachmentsVO attachmentsVO) throws Exception {
         sqlSession.delete(namespace + ".deleteAttachments", attachmentsVO);
+    }
+
+    @Override
+    public int selectAttachmentsCount(AttachmentsVO attachmentsVO) throws Exception {
+        return sqlSession.selectOne(namespace + ".selectAttachmentsCount", attachmentsVO);
     }
 }
