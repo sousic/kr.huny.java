@@ -16,6 +16,7 @@ import java.util.Collection;
  */
 @Service
 public class ArticlesServiceImpl implements ArticlesService {
+
     @Autowired
     private ArticlesDAO articlesDAO;
     @Autowired
@@ -40,13 +41,7 @@ public class ArticlesServiceImpl implements ArticlesService {
     @Override
     public void articleCreate(ArticlesVO articlesVO) throws Exception {
         articlesDAO.articleCreate(articlesVO);
-        for(AttachmentsVO attachmentsVO : articlesVO.getAttachments())
-        {
-            attachmentsVO.setA_seq(articlesVO.getSeq());
-            attachmentsVO.setBm_seq(articlesVO.getBm_seq());
-
-            attachmentsDAO.updateAttachments(attachmentsVO);
-        }
+        attachmentsUpdate(articlesVO);
     }
 
     @Override
@@ -54,9 +49,22 @@ public class ArticlesServiceImpl implements ArticlesService {
         return articlesDAO.articleView(articlesVO);
     }
 
+    @Transactional
     @Override
     public void articleModify(ArticlesVO articlesVO) throws Exception {
         articlesDAO.articleModify(articlesVO);
+
+        attachmentsUpdate(articlesVO);
+    }
+
+    private void attachmentsUpdate(ArticlesVO articlesVO) throws Exception {
+        if(articlesVO.getAttachments() != null) {
+            for (AttachmentsVO attachmentsVO : articlesVO.getAttachments()) {
+                attachmentsVO.setA_seq(articlesVO.getSeq());
+                attachmentsVO.setBm_seq(articlesVO.getBm_seq());
+                attachmentsDAO.updateAttachments(attachmentsVO);
+            }
+        }
     }
 
     @Override

@@ -99,6 +99,7 @@ public class ArticlesController extends baseController {
 
             articlesVO.setBm_seq(articlesVO.getBm_seq());
             articlesVO.setWriter(CookieHelper.NickName(propertyHelper));
+
             articlesService.articleCreate(articlesVO);
 
 
@@ -166,8 +167,6 @@ public class ArticlesController extends baseController {
             if(articlesVO.getAttachments() == null) {
                 articlesVO.setAttachments(null);
             }
-
-            logger.info(articlesVO.toString());
 
             articlesService.articleModify(articlesVO);
 

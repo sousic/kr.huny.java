@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,7 +61,7 @@ public class FileUploadController extends baseController {
             attachmentsService.insertAttachments(attachmentsVO);
             logger.info(attachmentsVO.toString());
 
-            attachmentsURL = String.format("/attach/file?seq=%s", attachmentsVO.getSeq());
+            attachmentsURL = String.format("/attach/file/%s", attachmentsVO.getSeq());
 
         } catch (Exception ex) {
             new LogException(ex).printStackTrace();
@@ -73,8 +74,8 @@ public class FileUploadController extends baseController {
         return resultJson;
     }
 
-    @RequestMapping(value = "file", method = RequestMethod.GET)
-    public ResponseEntity<byte[]> file(long seq) throws IOException {
+    @RequestMapping(value = "file/{seq}", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> file(@PathVariable("seq") long seq) throws IOException {
         InputStream in = null;
         ResponseEntity<byte[]> entity = null;
 

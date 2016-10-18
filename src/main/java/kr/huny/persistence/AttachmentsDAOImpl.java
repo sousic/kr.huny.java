@@ -30,7 +30,7 @@ public class AttachmentsDAOImpl implements AttachmentsDAO {
 
     @Override
     public void updateAttachments(AttachmentsVO attachmentsVO) throws Exception {
-        sqlSession.update(namespace + ".updateAttachments");
+        sqlSession.update(namespace + ".updateAttachments", attachmentsVO);
     }
 
     @Override

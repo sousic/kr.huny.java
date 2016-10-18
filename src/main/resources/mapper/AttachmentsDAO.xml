@@ -23,7 +23,7 @@
     </insert>
     <update id="updateAttachments">
         update attachments
-            set a_seq = #{a_seq}
+            set bm_seq = #{bm_seq}, a_seq = #{a_seq}, isTemporary = 0
         where
             seq = #{seq}
     </update>
