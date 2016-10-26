@@ -19,12 +19,6 @@
   ],
   "dependencies": {
     "jquery": "1.12.4",
-    "nprogress": "^0.2.0",
-    "font-awesome": "fontawesome#^4.6.3",
-    "iCheck": "icheck#^1.0.2",
-    "autosize": "^3.0.17",
-    "parsleyjs": "^2.4.4",
-    "summernote": "^0.8.2"
   },
   "install": {
     "path": {

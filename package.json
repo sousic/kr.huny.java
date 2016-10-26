@@ -1,0 +1,30 @@
+{
+  "name": "kr.huny.java",
+  "version": "1.0.0",
+  "description": "java micro dev site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sousic/kr.huny.java.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sousic/kr.huny.java/issues"
+  },
+  "homepage": "https://github.com/sousic/kr.huny.java#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery.1": "^1.0.0",
+    "summernote": "^0.8.2"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-css": "^0.5.4"
+  }
+}
