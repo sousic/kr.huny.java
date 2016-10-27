@@ -18,18 +18,16 @@
 
 <body>
 <div>
-    <nav>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
     <tiles:insertAttribute name="top"/>
     </nav>
-    <main>
-        <div class="container-fluid">
-            <tiles:insertAttribute name="left" ignore="true"/>
-            <tiles:insertAttribute name="content"/>
+    <div class="container-fluid">
+        <tiles:insertAttribute name="left" ignore="true"/>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <tiles:insertAttribute name="content"/>
         </div>
-    </main>
-    <foot>
+    </div>
     <tiles:insertAttribute name="footer"/>
-    </foot>
 </div>
 <script src="${pageContext.request.contextPath}/resources/js/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap/bootstrap.min.js"></script>
