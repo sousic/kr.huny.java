@@ -1,0 +1,13 @@
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 50px auto;
+    border: solid 1px #EEE;
+}
+
+.form-signin-header {
+    color: #555;
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: solid 1px #AAA;
+}

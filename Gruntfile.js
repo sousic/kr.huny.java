@@ -40,6 +40,17 @@ module.exports = function (grunt) {
                 flatten:true,
                 src : 'node_modules/summernote/dist/font/*.*',
                 dest : dest_css_path + '/summernote/font/'
+            },
+            font_awesome : {
+                src : 'node_modules/font-awesome/css/font-awesome.min.css',
+                dest : dest_css_path + '/font-awesome/font-awesome.min.css'
+            },
+            font_asesome_fonts : {
+                filter:'isFile',
+                expand:true,
+                flatten:true,
+                src : 'node_modules/font-awesome/fonts/*.*',
+                dest : dest_css_path + '/fonts/'
             }
         },
 
