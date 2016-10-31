@@ -23,9 +23,7 @@
     </nav>
     <div class="container-fluid">
         <tiles:insertAttribute name="left" ignore="true"/>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <tiles:insertAttribute name="content"/>
-        </div>
     </div>
     <tiles:insertAttribute name="footer"/>
 </div>

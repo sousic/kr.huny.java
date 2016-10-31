@@ -100,9 +100,9 @@ body {
         padding-left: 40px;
     }
 }
-.main .page-header {
-    margin-top: 0;
-}
+/*.main .page-header {*/
+    /*margin-top: 0;*/
+/*}*/
 
 
 /*
@@ -122,4 +122,26 @@ body {
 .placeholder img {
     display: inline-block;
     border-radius: 50%;
+}
+
+/* board */
+.page-header {
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+    border-bottom: solid 1px #9d9d9d;
+}
+
+.searchForm
+{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.searchForm .inputText {
+    width:200px;
+}
+
+.boardWrapper
+{
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
