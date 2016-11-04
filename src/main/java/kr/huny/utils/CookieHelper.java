@@ -1,19 +1,15 @@
 package kr.huny.utils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kr.huny.domain.member.MembersVO;
 import kr.huny.dto.SessionAdminDTO;
 import kr.huny.dto.SessionDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.util.WebUtils;
 
-import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +24,7 @@ public class CookieHelper {
 
     private final Logger logger = LoggerFactory.getLogger(CookieHelper.class);
 
-    public static void SetLoginSessionAdmin(MembersVO membersVO, HttpServletResponse response, PropertyHelper propertyHelper)
+    /*public static void SetLoginSessionAdmin(MembersVO membersVO, HttpServletResponse response, PropertyHelper propertyHelper)
     {
         SessionAdminDTO sessionAdminDTO = new SessionAdminDTO();
         sessionAdminDTO.setUserid(membersVO.getUserid());
@@ -59,7 +55,7 @@ public class CookieHelper {
         }
 
         MakeCookies(response, propertyHelper.getAESSecretKey(), propertyHelper.getCookieName(), strSessionDTO);
-    }
+    }*/
 
     /**
      * 쿠키 생성

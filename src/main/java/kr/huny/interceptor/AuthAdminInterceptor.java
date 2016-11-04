@@ -49,7 +49,6 @@ public class AuthAdminInterceptor extends HandlerInterceptorAdapter {
                 //modelMap.addAttribute("adminPath", String.format("/%s", propertyHelper.getAdminPath()));
             //}
             request.setAttribute("nickname", CookieHelper.NickName(propertyHelper));
-            request.setAttribute("adminPath", String.format("/%s", propertyHelper.getAdminPath()));
         //}
     }
 }

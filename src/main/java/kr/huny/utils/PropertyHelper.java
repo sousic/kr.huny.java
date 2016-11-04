@@ -10,26 +10,14 @@ import org.springframework.stereotype.Component;
 @Getter
 @Component
 public class PropertyHelper {
-    @Value("#{prop['loginFailLimitCount']}")
-    private int loginFailLimitCount;
-
     @Value("#{prop['aes.secretkey']}")
     private String AESSecretKey;
 
     @Value("#{prop['cookie.name']}")
     private String cookieName;
 
-    @Value("#{prop['register.member.grade']}")
-    private int registerMemberGrade;
-
-    @Value("#{prop['signin.logging']}")
-    private boolean SigninLogging;
-
     @Value("#{prop['cookie.name.admin']}")
     private String cookieNameAdmin;
-
-    @Value("#{prop['adminPath']}")
-    private String adminPath;
 
     @Value("#{prop['upload.path']}")
     private String uploadPath;

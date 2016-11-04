@@ -1,0 +1,32 @@
+div {
+    display: block;
+}
+.main {
+    position: relative;
+    width:1050px;
+    padding-left: 30px;
+    margin-left: 210px;
+}
+.footer{
+    padding: 30px;
+    border-top: solid 1px #aaaaaa;
+}
+
+.sidebar
+{
+    position: fixed;
+    top: 0px;
+    left:0px;
+    bottom: 0px;
+    display: block;
+    width:200px;
+    height: auto;
+    overflow: hidden;
+    background-color: black;
+    color:#ffffff;
+}
+
+.content {
+    width:850px;
+    min-height: 845px;
+}

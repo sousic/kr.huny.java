@@ -4,8 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="kr.huny.domain.board.ArticlesVO" alias="ArticlesVO"/>
-        <typeAlias type="kr.huny.domain.board.BoardManagerVO" alias="BoardManagerVO"/>
+
     </typeAliases>
 </configuration>
 
