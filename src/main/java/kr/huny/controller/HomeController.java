@@ -33,7 +33,7 @@ public class HomeController extends baseController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		model.addAttribute("pageTitle","Home");
+		model.addAttribute("pageTitle","Home1");
 
 		return "home";
 	}
