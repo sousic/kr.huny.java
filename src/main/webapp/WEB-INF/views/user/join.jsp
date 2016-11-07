@@ -13,13 +13,14 @@
         <!-- GND end -->
         </div>
         <div class="container content">
+            <!-- content -->
             <div class="sign">
                 <div class="col-md-4 col-md-offset-4">
-                    <div>
+                    <div class="row">
                     <h4>가입하기</h4>
                     </div>
-                    <div>
-                        <form class="" method="post" action="/join">
+                    <div class="row">
+                        <form method="post" action="/join">
                             <div class="form-group">
                                 <label for="userid">아이디</label>
                                 <input type="text" id="userid" name="userid" value="" class="form-control input-sm" required="required"/>
@@ -41,6 +42,7 @@
                     </div>
                 </div>
             </div>
+            <!-- content end -->
         </div>
         <div class="footer">
             <!-- footer -->

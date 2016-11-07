@@ -30,6 +30,8 @@
 .content {
     min-height: 845px;
     padding-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 @media (max-width: 768px) {
@@ -37,13 +39,6 @@
         width:inherit;
         min-height: 450px;
     }
-}
-
-.joinLayout {
-    margin-top: 50px;
-    border: solid 1px #EEEEEE;
-    padding:20px;
-    text-align: center;
 }
 
 /* NAVI start */
