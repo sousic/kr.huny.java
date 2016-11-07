@@ -13,33 +13,38 @@
         <!-- GND end -->
         </div>
         <div class="container content">
+            <div class="row">
             <!-- content -->
-            <div class="sign">
-                <div class="col-md-4 col-md-offset-4">
-                    <div class="row">
-                    <h4>가입하기</h4>
-                    </div>
-                    <div class="row">
-                        <form method="post" action="/join">
-                            <div class="form-group">
-                                <label for="userid">아이디</label>
-                                <input type="text" id="userid" name="userid" value="" class="form-control input-sm" required="required"/>
+                <div class="col-md-5 col-md-offset-4">
+                    <form method="post" action="/join" class="reg-page">
+                        <div class="reg-header">
+                            <h4>가입하기</h4>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userid">아이디</label>
+                            <input type="text" id="userid" name="userid" value="" class="form-control input-sm" required="required"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password1">비밀번호</label>
+                                    <input type="password" id="password1" name="password" value=""  class="form-control input-sm" required="required"/>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="password1">비밀번호</label>
-                                <input type="password" id="password1" name="password" value=""  class="form-control input-sm" required="required"/>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password2">비밀번호 확인</label>
+                                    <input type="password" id="password2" name="password" value=""  class="form-control input-sm"  required="required"/>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="password2">비밀번호 확인</label>
-                                <input type="password" id="password2" name="password" value=""  class="form-control input-sm"  required="required"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="name">이름</label>
-                                <input type="text" id="name" name="name" value="" class="form-control input-sm" required="required"/>
-                            </div>
-                            <input type="submit" class="btn btn-block btn-primary" value="가입하기"/>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">이름</label>
+                            <input type="text" id="name" name="name" value="" class="form-control input-sm" required="required"/>
+                        </div>
+                        <input type="submit" class="btn btn-block btn-primary" value="가입하기"/>
+                    </form>
                 </div>
             </div>
             <!-- content end -->
