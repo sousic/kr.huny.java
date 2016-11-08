@@ -13,6 +13,7 @@
         <ul class="blog-nav">
             <li><a href="<c:url value="/home"/>" class="blog-nav-item <%=NaviHelper.activeNavi(currentURL, "/home", activeCSS, nonActiveCss)%>">홈</a></li>
             <li><a href="<c:url value="/board/free"/>" class="blog-nav-item <%=NaviHelper.activeNavi(currentURL, "/board/free", activeCSS, nonActiveCss)%>">게시판</a></li>
+            <li class="login"><a href="<c:url value="/sign"/>" class="blog-nav-item"><i class="fa fa-sign-in" aria-hidden="true"></i> 로그인</a></li>
         </ul>
     </div>
 </div>
