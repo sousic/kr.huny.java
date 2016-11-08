@@ -8,7 +8,10 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/font-awesome/font-awesome.min.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main.css"/>
 <!--[if lt IE 9]>
-<script src="<%=request.getContextPath()%>/resources/js/plugin/respond.js"/>
-<script src="<%=request.getContextPath()%>/resources/js/plugin/html5shiv.js"/>
-<script src="<%=request.getContextPath()%>/resources/js/plugin/placeholder-IE-fixes.js"/>
+<script src="<%=request.getContextPath()%>/resources/js/plugin/respond.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/plugin/html5shiv.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/plugin/placeholder-IE-fixes.js"></script>
 <![endif]-->
+
+<script src="<%=request.getContextPath()%>/resources/js/jquery/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/angular/angular.min.js"></script>

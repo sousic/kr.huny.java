@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 
         copy : {
             jquery : {
-                src : 'node_modules/jquery.1/node_modules/jquery/dist/jquery.min.js',
+                src : 'node_modules/jquery/dist/jquery.min.js',
                 dest : dest_js_path + '/jquery/jquery.min.js'
             },
             bootstrap : {
@@ -46,11 +46,15 @@ module.exports = function (grunt) {
                 dest : dest_css_path + '/font-awesome/font-awesome.min.css'
             },
             font_asesome_fonts : {
-                filter:'isFile',
-                expand:true,
-                flatten:true,
-                src : 'node_modules/font-awesome/fonts/*.*',
-                dest : dest_css_path + '/fonts/'
+                filter: 'isFile',
+                expand: true,
+                flatten: true,
+                src: 'node_modules/font-awesome/fonts/*.*',
+                dest: dest_css_path + '/fonts/'
+            },
+            angular : {
+                src : 'node_modules/angular/angular.min.js',
+                dest : dest_js_path + '/angular/angular.min.js'
             }
         },
 

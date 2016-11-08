@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java"%>
 <!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><spring:message code="title"/> > <spring:message code="title.main"/></title>
@@ -29,7 +30,5 @@
         <!-- footer end -->
     </div>
 </div>
-</div>
-<script src="/resources/js/jquery/jquery.min.js"/>
 </body>
 </html>
