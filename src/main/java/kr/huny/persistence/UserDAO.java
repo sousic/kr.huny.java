@@ -7,4 +7,6 @@ import kr.huny.domain.db.User;
  */
 public interface UserDAO {
     User findById(String userid);
+
+    void joinUser(User user);
 }

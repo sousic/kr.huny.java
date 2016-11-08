@@ -36,6 +36,10 @@
 		<level value="debug"/>
 	</logger>
 
+	<logger name="kr.huny.service">
+		<level value="debug"/>
+	</logger>
+
 	<logger name="kr.huny.utils">
 		<level value="debug"/>
 	</logger>

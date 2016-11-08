@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <head>
@@ -16,35 +17,37 @@
             <div class="row">
             <!-- content -->
                 <div class="col-md-5 col-md-offset-4">
-                    <form method="post" action="/join" class="reg-page">
+                    <form:form modelAttribute="userJoin" method="post" cssClass="reg-page" action="/join">
                         <div class="reg-header">
                             <h4>가입하기</h4>
                         </div>
-
+                        <div>
+                            <form:errors path="password_confirm"/>
+                        </div>
                         <div class="form-group">
                             <label for="userid">아이디</label>
-                            <input type="text" id="userid" name="userid" value="" class="form-control input-sm" required="required"/>
+                            <form:input path="userid" class="form-control input-sm" required="required"/>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="password1">비밀번호</label>
-                                    <input type="password" id="password1" name="password" value=""  class="form-control input-sm" required="required"/>
+                                    <label for="password">비밀번호</label>
+                                    <form:password path="password" class="form-control input-sm" required="required" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="password2">비밀번호 확인</label>
-                                    <input type="password" id="password2" name="password" value=""  class="form-control input-sm"  required="required"/>
+                                    <label for="password_confirm">비밀번호 확인</label>
+                                    <form:password path="password_confirm" class="form-control input-sm"  required="required"/>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="name">이름</label>
-                            <input type="text" id="name" name="name" value="" class="form-control input-sm" required="required"/>
+                            <form:input path="name" class="form-control input-sm" required="required"/>
                         </div>
                         <input type="submit" class="btn btn-block btn-primary" value="가입하기"/>
-                    </form>
+                    </form:form>
                 </div>
             </div>
             <!-- content end -->

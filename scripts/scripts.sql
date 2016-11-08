@@ -17,7 +17,7 @@ USE `kr.huny`;
 
 -- 테이블 kr.huny.user 구조 내보내기
 CREATE TABLE IF NOT EXISTS `user` (
-  `seq` bigint(20) DEFAULT NULL COMMENT '일련번호',
+  `seq` bigint(20) NULL AUTO_INCREMENT COMMENT '일련번호',
   `userid` varchar(50) NOT NULL COMMENT '아이디',
   `password` varchar(100) NOT NULL COMMENT '비밀번호',
   `name` varchar(50) NOT NULL COMMENT '닉네임',

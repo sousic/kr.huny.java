@@ -2,4 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kr.huny.persistence.UserDAO">
 
+    <insert id="joinUser">
+        insert into user(userid, password, name) values(#{userid}, #{password}, #{name})
+    </insert>
+    <select id="findById" resultType="kr.huny.domain.db.User">
+
+    </select>
 </mapper>
