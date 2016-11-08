@@ -1,6 +1,8 @@
 package kr.huny.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import kr.huny.domain.db.User;
 import kr.huny.dto.SessionAdminDTO;
 import kr.huny.dto.SessionDTO;
 import org.slf4j.Logger;
@@ -40,11 +42,12 @@ public class CookieHelper {
 
         MakeCookies(response, propertyHelper.getAESSecretKey(), propertyHelper.getCookieNameAdmin(), strSessionDTO);
     }
+    */
 
-    public static void SetLoginSession(MembersVO membersVO, HttpServletResponse response, PropertyHelper propertyHelper) {
+    public static void SetLoginSession(User user, HttpServletResponse response, PropertyHelper propertyHelper) {
         SessionDTO sessionDTO = new SessionDTO();
-        sessionDTO.setUserid(membersVO.getUserid());
-        sessionDTO.setNickname(membersVO.getNickname());
+        sessionDTO.setUserid(user.getUserid());
+        sessionDTO.setNickname(user.getName());
 
         ObjectMapper objectMapper = new ObjectMapper();
         String strSessionDTO = null;
@@ -55,7 +58,7 @@ public class CookieHelper {
         }
 
         MakeCookies(response, propertyHelper.getAESSecretKey(), propertyHelper.getCookieName(), strSessionDTO);
-    }*/
+    }
 
     /**
      * 쿠키 생성

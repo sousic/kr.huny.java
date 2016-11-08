@@ -16,13 +16,18 @@ USE `kr.huny`;
 
 
 -- 테이블 kr.huny.user 구조 내보내기
-CREATE TABLE IF NOT EXISTS `user` (
-  `seq` bigint(20) NULL AUTO_INCREMENT COMMENT '일련번호',
-  `userid` varchar(50) NOT NULL COMMENT '아이디',
-  `password` varchar(100) NOT NULL COMMENT '비밀번호',
-  `name` varchar(50) NOT NULL COMMENT '닉네임',
-  `reg_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록일'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `user` (
+	`seq` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '일련번호',
+	`userid` VARCHAR(50) NOT NULL COMMENT '아이디',
+	`password` VARCHAR(100) NOT NULL COMMENT '비밀번호',
+	`name` VARCHAR(50) NOT NULL COMMENT '닉네임',
+	`reg_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록일',
+	PRIMARY KEY (`seq`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
 
 -- 테이블 데이터 kr.huny.user:~0 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;

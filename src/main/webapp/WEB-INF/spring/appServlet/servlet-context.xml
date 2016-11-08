@@ -32,6 +32,7 @@
 		<beans:property name="basenames">
 			<beans:list>
 				<beans:value>messages.user</beans:value>
+				<beans:value>messages.title</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="defaultEncoding" value="UTF-8"/>

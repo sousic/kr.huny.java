@@ -1,5 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java"%>
 <!DOCTYPE html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <div class="layout-container">
     <div class="main">
         <!-- GNB -->
-        <jsp:include page="/WEB-INF/views/include/navi.jsp"/>
+        <%@ include file="/WEB-INF/views/include/navi.jsp"%>
         <!-- GND end -->
         </div>
         <div class="container content">

@@ -1,17 +1,15 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java"%>
 <!DOCTYPE html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><spring:message code="title"/> > <spring:message code="title.main"/></title>
+    <title>타이틀 영역</title>
     <jsp:include page="/WEB-INF/views/include/header_html.jsp"/>
 </head>
 <body>
 <div class="layout-container">
     <div class="main">
         <!-- GNB -->
-        <%--<%@ include file="/WEB-INF/views/include/navi.jsp"%>--%>
-        <jsp:include page="/WEB-INF/views/include/navi.jsp"/>
+        <%@ include file="/WEB-INF/views/include/navi.jsp"%>
         <!-- GND end -->
     </div>
     <div class="container content">
