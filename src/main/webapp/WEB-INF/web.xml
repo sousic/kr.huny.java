@@ -22,7 +22,7 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				<!--/WEB-INF/spring/appServlet/servlet-context.xml-->
+				<!--/WEB-INF/spring/appServlet/servlet-context_live.xml-->
 				<!--/WEB-INF/spring/appServlet/tiles-context-->
 				/WEB-INF/spring/appServlet/*context.xml
 			</param-value>

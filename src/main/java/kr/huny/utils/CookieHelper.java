@@ -180,4 +180,14 @@ public class CookieHelper {
 
         return sessionDTO == null ? false : true;
     }
+
+    public static void ClearLoginSession(HttpServletResponse response, PropertyHelper propertyHelper)
+    {
+        String cookieName = propertyHelper.getCookieName();
+
+        Cookie cookie = new Cookie(cookieName, null);
+        cookie.setPath("/");
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+    }
 }

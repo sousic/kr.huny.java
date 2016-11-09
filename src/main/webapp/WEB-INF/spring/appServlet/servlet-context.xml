@@ -58,7 +58,7 @@
 	<!-- 사용자 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/board/**/*"/>
+			<mapping path="/**/*"/>
 			<!-- 로그인 페이지 예외 -->
 			<exclude-mapping path="/join"/>
 			<exclude-mapping path="/login"/>

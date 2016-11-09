@@ -3,6 +3,7 @@ package kr.huny.controller;
 import kr.huny.controller.common.baseController;
 import kr.huny.domain.web.user.UserLogin;
 import kr.huny.service.UserService;
+import kr.huny.utils.CookieHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -52,6 +53,14 @@ public class SignController extends baseController {
             logger.debug("result="+ result);
             return "user/login";
         }
+
+        return "redirect:/home";
+    }
+
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    public String logout(HttpServletResponse response)
+    {
+        CookieHelper.ClearLoginSession(response, propertyHelper);
 
         return "redirect:/home";
     }

@@ -26,11 +26,11 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
         SessionDTO sessionDTO = CookieHelper.LoginSession(request, propertyHelper);
         //logger.info(sessionAdminDTO.toString());
-        if(sessionDTO == null)
-        {
+        //if(sessionDTO == null)
+        //{
             //response.sendRedirect("/");
-            return false;
-        }
+        //    return false;
+        //}
 
         return true;
     }
@@ -48,8 +48,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
                 //modelMap.addAttribute("nickname", CookieHelper.NickName(propertyHelper));
                 //modelMap.addAttribute("adminPath", String.format("/%s", propertyHelper.getAdminPath()));
             //}
-            request.setAttribute("isLogin", CookieHelper.IsLoginSession(propertyHelper));
-            request.setAttribute("nickname", CookieHelper.NickName(propertyHelper));
+            boolean isLogin = CookieHelper.IsLoginSession(propertyHelper);
+            request.setAttribute("isLogin", isLogin);
+            request.setAttribute("nickname", (isLogin == true) ? CookieHelper.NickName(propertyHelper) : "");
         //}
     }
 }
