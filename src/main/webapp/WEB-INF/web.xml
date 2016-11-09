@@ -57,4 +57,11 @@
 		<!--<error-code>500</error-code>-->
 		<!--<location>/WEB-INF/views/common/500.jsp</location>-->
 	<!--</error-page>-->
+
+	<!--<resource-ref>
+		<description>Connection</description>
+		<res-ref-name>huny/java</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>-->
 </web-app>
