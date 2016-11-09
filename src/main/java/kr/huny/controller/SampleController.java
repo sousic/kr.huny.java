@@ -19,4 +19,10 @@ public class SampleController extends baseController {
     {
         return "s/angulartest";
     }
+
+    @RequestMapping(value = "/board", method = RequestMethod.GET)
+    public String board_test()
+    {
+        return "s/basicBoard";
+    }
 }

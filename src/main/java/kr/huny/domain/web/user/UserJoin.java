@@ -1,10 +1,12 @@
 package kr.huny.domain.web.user;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class UserJoin extends UserLogin {
 
     @NotNull
