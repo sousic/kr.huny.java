@@ -19,16 +19,16 @@
             <div class="row">
             <!-- content -->
                 <div class="col-md-5 col-md-offset-4">
-                    <form:form modelAttribute="userJoin" method="post" cssClass="reg-page" action="/join" ng-submit="onsubmit($event)">
+                    <form:form modelAttribute="userJoin" method="post" cssClass="reg-page" action="/join">
                         <div class="reg-header">
                             <h4>가입하기</h4>
                         </div>
                         <div>
-                            <form:errors path="password_confirm"/>
+                            <form:errors path="*"/>
                         </div>
                         <div class="form-group">
                             <label for="userid">아이디</label>
-                            <input type="text" name="userid" id="userid" value="${userJoin.userid}" class="form-control input-sm" ng-model="userid" required="required"/>
+                            <input type="text" name="userid" id="userid" value="${userJoin.userid}" class="form-control input-sm" required="required"/>
                         </div>
                         <div class="row">
                             <div class="col-md-6">

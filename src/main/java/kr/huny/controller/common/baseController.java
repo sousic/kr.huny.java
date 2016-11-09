@@ -1,5 +1,6 @@
 package kr.huny.controller.common;
 
+import kr.huny.service.CommonService;
 import kr.huny.utils.PropertyHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,9 @@ public abstract class baseController {
 
     @Autowired
     protected PropertyHelper propertyHelper;
+
+    @Autowired
+    protected CommonService commonService;
 
     protected Map<String, Object> resultJson;
 }

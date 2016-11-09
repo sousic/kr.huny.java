@@ -12,7 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="kr.huny.controller">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

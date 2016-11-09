@@ -158,14 +158,26 @@ public class CookieHelper {
         return sessionAdminDTO;
     }
 
-    public static String NickName(PropertyHelper propertyHelper) {
+    public static String AdminNickName(PropertyHelper propertyHelper) {
         SessionAdminDTO sessionAdminDTO = LoginSessionAdmin(getRequest(), propertyHelper);
 
         return sessionAdminDTO.getNickname();
     }
 
+    public static String NickName(PropertyHelper propertyHelper) {
+        SessionDTO sessionDTO = LoginSession(getRequest(), propertyHelper);
+
+        return sessionDTO.getNickname();
+    }
+
     public static HttpServletRequest getRequest() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         return request;
+    }
+
+    public static Boolean IsLoginSession(PropertyHelper propertyHelper) {
+        SessionDTO sessionDTO = LoginSession(getRequest(), propertyHelper);
+
+        return sessionDTO == null ? false : true;
     }
 }
