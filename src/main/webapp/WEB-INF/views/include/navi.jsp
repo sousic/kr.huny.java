@@ -8,7 +8,7 @@
     String nonActiveCss = "";
     //out.println(currentURL);
 %>
-<div class="blog-masthead">
+<div class="blog-masthead navbar-fixed-top">
     <div class="container">
         <ul class="blog-nav">
             <li><a href="<c:url value="/home"/>" class="blog-nav-item <%=NaviHelper.activeNavi(currentURL, "/home", activeCSS, nonActiveCss)%>">홈</a></li>
