@@ -13,7 +13,6 @@
         <!-- GND end -->
     </div>
     <div class="container content">
-        <div class="row">
             <!-- content -->
             <div class="article-list">
                 <div class="article-list-header">
@@ -35,25 +34,114 @@
                 </div>
                 <div class="article-list-main">
                     <ul>
-                        <li>
-                            <div>제목영역</div>
-                            <div>조회수/추천</div>
-                            <div>작성자정보</div>
+                        <li class="item item-has-comment clearfix">
+                            <div class="list-title-wrapper clearfix">
+                                <div>
+                                    <span>#111111</span>
+                                    <span>자유게시판</span>
+                                </div>
+                                <div class="title">
+                                    <span >
+                                   제목영역 제목영역 제목영역 제목영역 제목영역 제목영역 제목영역 제목영역 제목영역 제목영역 제목영역 제목영역
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="list-count-wrapper clearfix">
+                                <div class="list-count-wrapper-box">
+                                    <div class="list-count-vote">
+                                        <i class="fa fa-star" aria-hidden="true">추천수</i> 0
+                                    </div>
+                                    <div class="list-count-comment">
+                                        <i class="fa fa-comments" aria-hidden="true">댓글수</i> 0
+                                    </div>
+                                    <%--<i class="fa fa-eye" aria-hidden="true">조회수</i>--%>
+                                </div>
+                            </div>
+                            <div class="list-writer-wrapper clearfix">
+                                <div class="list-writer-wrapper-box">
+                                    <div class="list-writer">
+                                        <span>홍길동</span>
+                                        <span class="small"><i class="fa fa-bolt" aria-hidden="true"> 11111</i></span>
+                                    </div>
+                                    <div class="list-write-date">
+                                        <span class="small"><i class="fa fa-clock-o" aria-hidden="true"></i>1분전</span>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
-                        <li>
-                            <div>제목영역</div>
-                            <div>조회수/추천</div>
-                            <div>작성자정보</div>
+                        <li class="item clearfix">
+                            <div class="list-title-wrapper clearfix">
+                                <div>
+                                    <span>#111111</span>
+                                    <span>자유게시판</span>
+                                </div>
+                                <div class="title">
+                                    <span >
+                                    제목영역 제목영역 제목영역 제목영역 제목영역 제목영역 제목영역
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="list-count-wrapper clearfix">
+                                <div class="list-count-wrapper-box">
+                                    <div class="list-count-vote">
+                                        <i class="fa fa-star" aria-hidden="true">추천수</i> 0
+                                    </div>
+                                    <div class="list-count-comment">
+                                        <i class="fa fa-comments" aria-hidden="true">댓글수</i> 0
+                                    </div>
+                                    <%--<i class="fa fa-eye" aria-hidden="true">조회수</i>--%>
+                                </div>
+                            </div>
+                            <div class="list-writer-wrapper clearfix">
+                                <div class="list-writer-wrapper-box">
+                                    <div class="list-writer">
+                                        <span>홍길동</span>
+                                        <span class="small"><i class="fa fa-bolt" aria-hidden="true"> 11111</i></span>
+                                    </div>
+                                    <div class="list-write-date">
+                                        <span class="small"><i class="fa fa-clock-o" aria-hidden="true"></i>1분전</span>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
-                        <li>
-                            <div>제목영역</div>
-                            <div>조회수/추천</div>
-                            <div>작성자정보</div>
+                        <li class="item item-has-comment clearfix">
+                            <div class="list-title-wrapper clearfix">
+                                <div>
+                                    <span>#111111</span>
+                                    <span>자유게시판</span>
+                                </div>
+                                <div class="title">
+                                    <span >
+                                    제목영역 제목영역 제목영역 제목영역
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="list-count-wrapper clearfix">
+                                <div class="list-count-wrapper-box">
+                                    <div class="list-count-vote">
+                                        <i class="fa fa-star" aria-hidden="true">추천수</i> 0
+                                    </div>
+                                    <div class="list-count-comment">
+                                        <i class="fa fa-comments" aria-hidden="true">댓글수</i> 0
+                                    </div>
+                                    <%--<i class="fa fa-eye" aria-hidden="true">조회수</i>--%>
+                                </div>
+                            </div>
+                            <div class="list-writer-wrapper clearfix">
+                                <div class="list-writer-wrapper-box">
+                                    <div class="list-writer">
+                                        <span>홍길동</span>
+                                        <span class="small"><i class="fa fa-bolt" aria-hidden="true"> 11111</i></span>
+                                    </div>
+                                    <div class="list-write-date">
+                                        <span class="small"><i class="fa fa-clock-o" aria-hidden="true"></i>1분전</span>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
         <!-- content end -->
     </div>
     <div class="footer">
