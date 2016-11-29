@@ -47,14 +47,15 @@
 	<beans:bean id="authAdminInterceptor" class="kr.huny.interceptor.AuthAdminInterceptor"/>
 	<beans:bean id="authInterceptor" class="kr.huny.interceptor.AuthInterceptor"/>
 	<!-- 관리자 -->
-	<interceptors>
+	<!--<interceptors>
 		<interceptor>
 			<mapping path="/admin/**/*"/>
-			<!-- 로그인 페이지 예외 -->
+			<mapping path="/category/**/*"/>
+			&lt;!&ndash; 로그인 페이지 예외 &ndash;&gt;
 			<exclude-mapping path="/admin/login"/>
 			<beans:ref bean="authAdminInterceptor"/>
 		</interceptor>
-	</interceptors>
+	</interceptors>-->
 	<!-- 사용자 -->
 	<interceptors>
 		<interceptor>
@@ -70,4 +71,14 @@
 		<beans:property name="defaultLocale" value="ko"/>
 	</beans:bean>
 
+
+	<!-- 관리자 path 체크 -->
+	<beans:bean id="adminPath" class="java.util.ArrayList">
+		<beans:constructor-arg>
+			<beans:list>
+				<beans:value>/admin</beans:value>
+				<beans:value>/category</beans:value>
+			</beans:list>
+		</beans:constructor-arg>
+	</beans:bean>
 </beans:beans>

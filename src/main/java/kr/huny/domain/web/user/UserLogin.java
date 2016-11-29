@@ -17,4 +17,6 @@ public class UserLogin {
     @NotNull
     @Size(min=6, max=20)
     private String password;
+
+    private int grade;
 }

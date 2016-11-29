@@ -6,6 +6,6 @@
         insert into user(userid, password, name) values(#{userid}, #{password}, #{name})
     </insert>
     <select id="findById" resultType="kr.huny.domain.db.User">
-        select seq, userid, password, name, reg_date from user where userid = #{userid}
+        select seq, userid, password, name, reg_date, grade from user where userid = #{userid}
     </select>
 </mapper>

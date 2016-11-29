@@ -58,6 +58,6 @@ public class UserController extends baseController {
 
         CookieHelper.SetLoginSession(user, response, propertyHelper);
 
-        return "redirect:/home";
+        return "redirect:/login";
     }
 }

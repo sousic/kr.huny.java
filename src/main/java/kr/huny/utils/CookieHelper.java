@@ -8,8 +8,6 @@ import kr.huny.dto.SessionDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
@@ -46,8 +44,7 @@ public class CookieHelper {
 
     public static void SetLoginSession(User user, HttpServletResponse response, PropertyHelper propertyHelper) {
         SessionDTO sessionDTO = new SessionDTO();
-        sessionDTO.setUserid(user.getUserid());
-        sessionDTO.setNickname(user.getName());
+        sessionDTO.SessionCopy(user);
 
         ObjectMapper objectMapper = new ObjectMapper();
         String strSessionDTO = null;
@@ -159,26 +156,9 @@ public class CookieHelper {
     }
 
     public static String AdminNickName(PropertyHelper propertyHelper) {
-        SessionAdminDTO sessionAdminDTO = LoginSessionAdmin(getRequest(), propertyHelper);
+        SessionAdminDTO sessionAdminDTO = LoginSessionAdmin(RequestHelper.getCurrentRequest(), propertyHelper);
 
         return sessionAdminDTO.getNickname();
-    }
-
-    public static String NickName(PropertyHelper propertyHelper) {
-        SessionDTO sessionDTO = LoginSession(getRequest(), propertyHelper);
-
-        return sessionDTO.getNickname();
-    }
-
-    public static HttpServletRequest getRequest() {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        return request;
-    }
-
-    public static Boolean IsLoginSession(PropertyHelper propertyHelper) {
-        SessionDTO sessionDTO = LoginSession(getRequest(), propertyHelper);
-
-        return sessionDTO == null ? false : true;
     }
 
     public static void ClearLoginSession(HttpServletResponse response, PropertyHelper propertyHelper)

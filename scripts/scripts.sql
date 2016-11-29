@@ -16,19 +16,18 @@ USE `kr.huny`;
 
 
 -- 테이블 kr.huny.article 구조 내보내기
-CREATE TABLE IF NOT EXISTS `article` (
+CREATE TABLE `article` (
   `seq` bigint(20) NOT NULL AUTO_INCREMENT,
   `category` bigint(20) NOT NULL DEFAULT '0',
   `title` varchar(250) NOT NULL DEFAULT '0',
   `contents` mediumtext,
   PRIMARY KEY (`seq`,`category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 
 -- 테이블 kr.huny.category 구조 내보내기
-CREATE TABLE IF NOT EXISTS `category` (
+CREATE TABLE `category` (
   `seq` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(20) NOT NULL COMMENT '카테고리 코드',
   `writable` tinyint(4) unsigned NOT NULL DEFAULT '1' COMMENT '게시물 작성 제어 : 1-가능,0-불가능',
@@ -41,20 +40,35 @@ CREATE TABLE IF NOT EXISTS `category` (
   PRIMARY KEY (`code`),
   UNIQUE KEY `seq` (`seq`),
   KEY `parentCode` (`parentCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 
 -- 테이블 kr.huny.user 구조 내보내기
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `seq` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '일련번호',
   `userid` varchar(50) NOT NULL COMMENT '아이디',
   `password` varchar(100) NOT NULL COMMENT '비밀번호',
   `name` varchar(50) NOT NULL COMMENT '닉네임',
   `reg_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록일',
+  `grade` tinyint(4) unsigned DEFAULT '1' COMMENT '회원등급값',
   PRIMARY KEY (`seq`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `grade` (
+  `gradeCode` tinyint(3) unsigned NOT NULL,
+  `gradeName` varchar(50) DEFAULT NULL,
+  `regdate` timestamp(6) NULL DEFAULT NULL,
+  `desc` varchar(200) NOT NULL,
+  PRIMARY KEY (`gradeCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

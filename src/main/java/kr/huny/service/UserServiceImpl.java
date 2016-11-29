@@ -42,6 +42,8 @@ public class UserServiceImpl implements UserService {
 
         User user = userDAO.findById(userLogin.getUserid());
 
+        log.info(user.toString());
+
         if(user == null) {
             //throw new NotFoundAccountException(commonService.getResourceBundleMessage(locale, "messages.user","user.msg.login.failure"));
             results = false;

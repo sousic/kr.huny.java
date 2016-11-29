@@ -1,8 +1,9 @@
 package kr.huny.interceptor;
 
-import kr.huny.dto.SessionAdminDTO;
+import kr.huny.dto.SessionDTO;
 import kr.huny.utils.CookieHelper;
 import kr.huny.utils.PropertyHelper;
+import kr.huny.utils.session.LoginSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,13 +21,24 @@ public class AuthAdminInterceptor extends HandlerInterceptorAdapter {
 
     @Inject
     private PropertyHelper propertyHelper;
+    @Inject
+    private LoginSession loginSession;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        /*
         SessionAdminDTO sessionAdminDTO = CookieHelper.LoginSessionAdmin(request, propertyHelper);
         //logger.info(sessionAdminDTO.toString());
         if(sessionAdminDTO == null)
+        {
+            response.sendRedirect("/");
+            return false;
+        }
+        */
+        SessionDTO sessionDTO = CookieHelper.LoginSession(request, propertyHelper);
+        logger.info(sessionDTO == null ? "NOT ADMIN" : sessionDTO.toString());
+        if(sessionDTO == null)
         {
             response.sendRedirect("/");
             return false;
@@ -48,7 +60,9 @@ public class AuthAdminInterceptor extends HandlerInterceptorAdapter {
                 //modelMap.addAttribute("nickname", CookieHelper.NickName(propertyHelper));
                 //modelMap.addAttribute("adminPath", String.format("/%s", propertyHelper.getAdminPath()));
             //}
-            request.setAttribute("nickname", CookieHelper.NickName(propertyHelper));
+
+            request.setAttribute("isLogin", loginSession.IsLoginSession());
+            request.setAttribute("nickname", loginSession.NickName());
         //}
     }
 }
