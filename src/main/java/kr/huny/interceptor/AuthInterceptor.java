@@ -1,8 +1,6 @@
 package kr.huny.interceptor;
 
 import kr.huny.dto.SessionDTO;
-import kr.huny.utils.CookieHelper;
-import kr.huny.utils.PropertyHelper;
 import kr.huny.utils.session.LoginSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +18,8 @@ import java.util.ArrayList;
 public class AuthInterceptor extends HandlerInterceptorAdapter {
     private static final Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
 
-    @Inject
-    private PropertyHelper propertyHelper;
+    //@Inject
+    //private PropertyHelper propertyHelper;
     @Inject
     private LoginSession loginSession;
     @Inject
@@ -30,7 +28,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        SessionDTO sessionDTO = CookieHelper.LoginSession(request, propertyHelper);
+        //SessionDTO sessionDTO = CookieHelper.LoginSession(request, propertyHelper);
+        SessionDTO sessionDTO = loginSession.GetSessionDTO();
         logger.info(sessionDTO == null ? "NOT ADMIN" : sessionDTO.toString());
         String getURL = request.getRequestURI();
         logger.info(adminPath.toString() + " : "  + getURL);

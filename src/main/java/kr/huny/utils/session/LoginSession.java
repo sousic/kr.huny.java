@@ -47,7 +47,11 @@ public class LoginSession {
         return GetSessionDTO() == null ? false : true;
     }
 
-    private SessionDTO GetSessionDTO()
+    /**
+     * 로그인 세션 객체 반환
+     * @return
+     */
+    public SessionDTO GetSessionDTO()
     {
         return CookieHelper.LoginSession(RequestHelper.getCurrentRequest(), propertyHelper);
     }
